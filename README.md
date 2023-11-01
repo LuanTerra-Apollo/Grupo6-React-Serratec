@@ -43,26 +43,38 @@ como gostei ou não gostei. Qualquer usuário que logar na aplicação, irá ver
 nota dada por outros usuários.
 ● Ao finalizar a compra a mesma deverá ser registrada via API na rota de
 pedidos.
-Regras:
-● Não será permitido utilizar Tailwindcss e Bootstrap.
-● Qualquer biblioteca de componentes pode ser utilizada.
-● Para gerenciamento de estados, apenas o Context API poderá ser utilizado. Libs
-como Redux, Recoil, Zustand e etc. não podem.
-● TODOS os integrantes do grupo devem participar.
-● Não poderá ser utilizado Next nem outro framework parecido e as rotas devem ser
-feitas utilizando React Router Dom conforme versão 6.
-● A entidade “Users”, deve conter no mínimo os seguintes campos:
-○ nome
-○ email
-○ senha
-● A entidade “Produto”, deve conter no mínimo os seguintes campos:
-○ nome
-○ preco
-○ quantidade
-○ descrição
-○ imgurl
-○ favoritos
-● A entidade “Pedidos”, deve conter no mínimo os seguintes campos:
-○ valortotal
-○ iduser
-○ itens
+**Extras:**
+- Tela de Cadastro de Usuário, com os campos:
+  - Nome completo
+  - Email
+  - Senha
+
+- Permitir ver os produtos por categoria, utilizando rotas dinámicas.
+  - Dentro da tela de um produto específico será posible avaliar o produto como gostei ou não gostei. Qualquer usuário que logar na aplicação, irá ver a nota dada por outros usuários.
+  - Ao finalizar a compra a mesma deverá ser registrada via API na rota de pedidos.
+
+**Regras:**
+- Não será permitido utilizar Tailwindcss e Bootstrap.
+- Qualquer biblioteca de componentes pode ser utilizada.
+- Para gerenciamento de estados, apenas o Context API poderá ser utilizado. Libs como Redux, Recoil, Zustand e etc. não podem.
+- TODOS os integrantes do grupo devem participar.
+- Não poderá ser utilizado Next nem outro framework parecido e as rotas devem ser feitas utilizando React Router Dom conforme versão 6.
+
+**Entidades:**
+- A entidade "Users" deve conter no mínimo os seguintes campos:
+  - Nome
+  - Email
+  - Senha
+
+- A entidade "Produto" deve conter no mínimo os seguintes campos:
+  - Nome
+  - Preço
+  - Quantidade
+  - Descrição
+  - Imgurl
+  - Favoritos
+
+- A entidade "Pedidos" deve conter no mínimo os seguintes campos:
+  - Valor Total
+  - Iduser
+  - Itens
