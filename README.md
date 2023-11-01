@@ -1,13 +1,13 @@
 # Grupo6-React-Serratec
 Projeto final da Unidade de Desenvolvimento Web (React).
 
-Visão geral
+## Visão geral
 Como projeto final da Disciplina WEB do SERRATEC, o desafio proposto é a criação de uma
-aplicação “e-commerce”.
+aplicação “e-commerce”.  
 Objetivos
 1. Criar uma aplicação React que disponibilize produtos para que um usuário possa,
 conforme navega pelo site, incluir os produtos desejados no Carrinho e no
-momento que quiser, realizar a compra dos produtos selecionados.
+momento que quiser, realizar a compra dos produtos selecionados.  
 Especificações
 Para a execução do projeto é necessário deixar as seguintes considerações e regras do que
 tem que ser feito:
