@@ -1,57 +1,46 @@
 # Grupo6-React-Serratec
 Projeto final da Unidade de Desenvolvimento Web (React).
 
-## Visão geral
-Como projeto final da Disciplina WEB do SERRATEC, o desafio proposto é a criação de uma
-aplicação “e-commerce”.  
-Objetivos
-1. Criar uma aplicação React que disponibilize produtos para que um usuário possa,
-conforme navega pelo site, incluir os produtos desejados no Carrinho e no
-momento que quiser, realizar a compra dos produtos selecionados.  
-Especificações
-Para a execução do projeto é necessário deixar as seguintes considerações e regras do que
-tem que ser feito:
-1. Tela de Login, solicitando:
-a. Email
-b. Senha
-2. Tela de Listagem de Produtos:
-a. Nesta tela deverá ser possível filtrar um produto pelo nome do mesmo.
-b. Não deverão ser exibidos os produtos sem quantidade em estoque.
-3. Tela de informação sobre um produto específico.
-a. Nesta tela, o produto será descrito por completo.
-4. Tela ou Modal para Carrinho:
-a. Qualquer produto poderá ser adicionado no carrinho.
-b. O usuário escolherá a quantidade e incluirá no carrinho.
-c. Opção para esvaziar o carrinho.
-d. O carrinho deve ser acessível de
-5. Caso o usuário queira comprar, o mesmo poderá acessar o carrinho onde irá
-finalizar a compra.
-a. Por termos a limitação da API, ao finalizar a compra, deverá ser realizada
-requisição para diminuir a quantidade de produtos logo após a finalização da
-compra.
-b. Após os passos acima redirecionar para a tela de Pedidos realizados, onde
-conterá uma listagem de todos os pedidos feitos por aquele usuário.
-2
-Extras:
-● Tela de Cadastro de Usuário, com os campos:
-○ Nome completo
-○ Email
-○ Senha
-● Permitir ver os produtos por categoria, utilizando rotas dinâmicas.
-● Dentro da tela de um produto específico será possível avaliar o produto
-como gostei ou não gostei. Qualquer usuário que logar na aplicação, irá ver a
-nota dada por outros usuários.
-● Ao finalizar a compra a mesma deverá ser registrada via API na rota de
-pedidos.
-**Extras:**
-- Tela de Cadastro de Usuário, com os campos:
-  - Nome completo
-  - Email
-  - Senha
+# Visão Geral
 
-- Permitir ver os produtos por categoria, utilizando rotas dinámicas.
-  - Dentro da tela de um produto específico será posible avaliar o produto como gostei ou não gostei. Qualquer usuário que logar na aplicação, irá ver a nota dada por outros usuários.
-  - Ao finalizar a compra a mesma deverá ser registrada via API na rota de pedidos.
+O projeto final da disciplina de WEB no SERRATEC consiste na criação de uma aplicação de comércio eletrônico (e-commerce).
+
+## Objetivos
+
+1. Criar uma aplicação React que permita aos usuários navegar pelo site, adicionar produtos desejados ao carrinho e realizar compras quando desejarem.
+
+## Especificações
+
+Para a execução do projeto, é necessário levar em consideração as seguintes considerações e regras:
+
+### Tela de Login
+
+1. Tela de login que solicita:
+   a. Email
+   b. Senha
+
+### Tela de Listagem de Produtos
+
+2. Tela de listagem de produtos:
+   a. Deve ser possível filtrar produtos pelo nome.
+   b. Produtos sem quantidade em estoque não devem ser exibidos.
+
+### Tela de Informações do Produto
+
+3. Tela de informações detalhadas sobre um produto específico.
+
+### Tela ou Modal do Carrinho
+
+4. Qualquer produto pode ser adicionado ao carrinho.
+   a. O usuário poderá escolher a quantidade e adicionar ao carrinho.
+   b. Opção para esvaziar o carrinho.
+   c. O carrinho deve ser acessível de qualquer parte da aplicação.
+
+### Finalização da Compra
+
+5. Se o usuário desejar comprar, poderá acessar o carrinho para finalizar a compra.
+   a. Devido à limitação da API, ao finalizar a compra, deve ser feita uma solicitação para reduzir imediatamente a quantidade de produtos.
+   b. Após os passos acima, redirecionar para a tela de Pedidos Realizados, que conterá uma lista de todos os pedidos feitos por esse usuário.
 
 **Regras:**
 - Não será permitido utilizar Tailwindcss e Bootstrap.
