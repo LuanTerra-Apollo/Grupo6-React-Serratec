@@ -1,8 +1,5 @@
-const theme = {
+export const theme = {
     colors: {
-        
-    },
-sizes: {
-
+       primary: "red" 
     }
 }

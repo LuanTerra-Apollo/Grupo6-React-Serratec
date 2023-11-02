@@ -1,11 +1,45 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Login from './pages/Login/Login'
-import { GlobalStyle } from './components/styles/GlobalStyle.style'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Produtos from './pages/Produtos/Produtos.jsx' ;
+import Produto from './pages/Produto/Produto.jsx';
+import Login from './pages/Login/Login.jsx';
+import Cadastro from './pages/Cadastro/Cadastro.jsx';
+import Carrinho from './pages/Carrinho/Carrinho.jsx';
+import Pedido from './pages/Pedidos/Pedidos.jsx';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Produtos />,
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/cadastro",
+    element: <Cadastro />
+  },
+  {
+    path: "/pedido",
+    element: <Pedido />
+  },
+  {
+    path: "/produto",
+    element: <Produto />
+  },
+  {
+    path: "/carrinho",
+    element: <Carrinho />
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GlobalStyle/>
-    <Login/>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
