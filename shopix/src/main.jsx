@@ -12,6 +12,7 @@ import Carrinho from './pages/Carrinho/Carrinho.jsx';
 import Pedido from './pages/Pedidos/Pedidos.jsx';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './components/styles/Theme.style.jsx';
+import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      <GlobalStyle/>
       <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>,

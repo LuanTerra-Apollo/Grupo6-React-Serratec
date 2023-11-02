@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 import { useState, } from 'react'
 import { api } from '../../api/api'
-import { InputBarraPesquisa } from "../../components/styles/Inputs"
+import { Input } from '../../components/styles/Inputs.style'
+import { Wrapper } from "../../components/styles/Wrapper.style"
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -26,13 +27,15 @@ const Login = () => {
 
     return (
         <>
-        <form className='formLogin' onSubmit={handleLogin}>
-            <h1>Login</h1>
-            <input type="text" value={email} onChange={(e) => { setEmail(e.target.value)}} placeholder='email' /> <br />
-            <input type="text" value={senha} onChange={(e) => { setSenha(e.target.value)}} placeholder='senha'  /> <br />
-            <button type='submit'>Entrar</button> <br />
-            <Link to={'/cadastro'} >Cadastre-se</Link>
-        </form>
+        <Wrapper>
+            <form className='formLogin' onSubmit={handleLogin}>
+                <h1>Login</h1>
+                <Input width='385px' height='43px' type="text" value={email} onChange={(e) => { setEmail(e.target.value)}} placeholder='email' /> <br />
+                <Input width='385px' height='43px' type="text" value={senha} onChange={(e) => { setSenha(e.target.value)}} placeholder='senha'  /> <br />
+                <button type='submit'>Entrar</button> <br />
+                <Link to={'/cadastro'} >Cadastre-se</Link>
+            </form>
+        </Wrapper>
         <br />
         </>
     )
