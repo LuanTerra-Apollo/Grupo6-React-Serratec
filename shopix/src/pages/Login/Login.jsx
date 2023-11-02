@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState, } from 'react'
 import { api } from '../../api/api'
+import { InputBarraPesquisa } from "../../components/styles/Inputs"
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -32,6 +33,7 @@ const Login = () => {
             <button type='submit'>Entrar</button> <br />
             <Link to={'/cadastro'} >Cadastre-se</Link>
         </form>
+        <br />
         </>
     )
 }
