@@ -1,0 +1,8 @@
+const theme = {
+    colors: {
+        
+    },
+sizes: {
+
+    }
+}
