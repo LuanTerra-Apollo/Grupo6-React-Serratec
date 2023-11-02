@@ -10,6 +10,8 @@ import Login from './pages/Login/Login.jsx';
 import Cadastro from './pages/Cadastro/Cadastro.jsx';
 import Carrinho from './pages/Carrinho/Carrinho.jsx';
 import Pedido from './pages/Pedidos/Pedidos.jsx';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './components/styles/Theme.style.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>,
 )
