@@ -10,11 +10,14 @@ import Login from './pages/Login/Login.jsx';
 import Cadastro from './pages/Cadastro/Cadastro.jsx';
 import Carrinho from './pages/Carrinho/Carrinho.jsx';
 import Pedido from './pages/Pedidos/Pedidos.jsx';
+import { LoginProvider } from './context/LoginContext.jsx';
+import { ProdutosProvider } from './context/ProdutosContext.jsx';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Produtos />,
+    element: <ProdutosProvider><Produtos /></ProdutosProvider>,
   },
   {
     path: "/login",
@@ -40,6 +43,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+    <LoginProvider>
+        <RouterProvider router={router} />
+    </LoginProvider>
+  </React.StrictMode>
 )
