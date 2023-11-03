@@ -5,20 +5,6 @@
       "nome": "Raphael da Rocha Pinto Barboza",
       "email": "Raphael da Rocha Pinto",
       "senha": "123456"
-    },
-    {
-      "id": 2,
-      "nome": "teste",
-      "email": "teste",
-      "senha": "1234561111"
-    },
-    {
-      "params": {},
-      "id": 3
-    },
-    {
-      "params": {},
-      "id": 4
     }
   ],
   "produtos": [
@@ -30,6 +16,15 @@
       "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
       "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
       "favoritos": 30
+    },
+    {
+      "nome": "Teclado Gamer",
+      "preco": 89.99,
+      "quantidade": 5,
+      "descricao": "Teclado com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play, o melhor para games em 2023",
+      "imgurl": "https://www.portaldosjornalistas.com.br/wp-content/uploads/2020/01/Teclado.jpg",
+      "favoritos": 30,
+      "id": 2
     }
   ],
   "pedidos": [

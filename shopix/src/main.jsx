@@ -12,6 +12,8 @@ import Carrinho from './pages/Carrinho/Carrinho.jsx';
 import Pedido from './pages/Pedidos/Pedidos.jsx';
 import { LoginProvider } from './context/LoginContext.jsx';
 import { ProdutosProvider } from './context/ProdutosContext.jsx';
+import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx';
+import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
 
 
 const router = createBrowserRouter([
@@ -32,18 +34,19 @@ const router = createBrowserRouter([
     element: <Pedido />
   },
   {
-    path: "/produto",
-    element: <Produto />
+    path: "/produto/:id",
+    element: <CarrinhoProvider><Produto /></CarrinhoProvider>
   },
   {
     path: "/carrinho",
-    element: <Carrinho />
+    element: <CarrinhoProvider><Carrinho /></CarrinhoProvider>
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <LoginProvider>
+        <GlobalStyle />
         <RouterProvider router={router} />
     </LoginProvider>
   </React.StrictMode>
