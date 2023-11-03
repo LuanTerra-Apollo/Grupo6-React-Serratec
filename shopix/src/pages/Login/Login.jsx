@@ -30,12 +30,12 @@ const Login = () => {
     return (
         <>
         <Wrapper>
-            <Form width='449px' height='563px' className='formLogin' onSubmit={handleLogin}>
+            <Form width='31%' height='55%' className='formLogin' onSubmit={handleLogin}>
                 <h1 style={{fontSize: '60px', marginTop: '24px', marginBottom:'60px'}}>Login</h1>
-                <Input style={{marginBottom:'-36px'}} width='385px' height='43px' type="text" value={email} onChange={(e) => { setEmail(e.target.value)}} placeholder='email' /> <br />
-                <Input width='385px' height='43px' type="text" value={senha} onChange={(e) => { setSenha(e.target.value)}} placeholder='senha'  /> <br />
-                <Button width='215px' height='70px' type='submit'>Entrar</Button> <br />
-                <Link style={{color: "#007094", fontWeight: 'bold', fontSize:'24px', position: 'absolute', transform: 'translate(0%, 850%)'}} to={'/cadastro'} >Cadastre-se</Link>
+                <Input style={{marginBottom:'-36px'}} width='86%' height='8%' type="text" value={email} onChange={(e) => { setEmail(e.target.value)}} placeholder='email' /> <br />
+                <Input width='86%' height='8%' type="text" value={senha} onChange={(e) => { setSenha(e.target.value)}} placeholder='senha'  /> <br />
+                <Button width='48%' height='13%' type='submit'>Entrar</Button> <br />
+                <Link style={{color: "#007094", fontWeight: 'bold', fontSize:'150%', position: 'absolute', bottom: '24%'}} to={'/cadastro'} >Cadastre-se</Link>
             </Form>
         </Wrapper>
         <br />
