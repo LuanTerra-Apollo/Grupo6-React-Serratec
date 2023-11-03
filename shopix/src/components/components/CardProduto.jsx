@@ -48,8 +48,8 @@ const CardProdutoStyled = styled.div`
 
     img {
       height: 4%;
-      position: absolute;
-      transform: translate(1170%, -870%)
+      width: 5%;
+      transform: translate(1800%, -400%);
     }
 `
 
