@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
+import Navibar from "../../components/components/navibar/navibar";
 
 const CartContainer = styled.div`
     margin: 20px;
@@ -145,6 +146,9 @@ const Produto = () => {
       };
 
     return (
+
+        <>
+         <Navibar/>
         <BodyCarrinho>
         <CartContainer> 
             {/* <Produto2>  */}
@@ -169,6 +173,7 @@ const Produto = () => {
                 </ListaProdutos>
         </CartContainer>
         </BodyCarrinho>
+        </>
     )
 
 }
