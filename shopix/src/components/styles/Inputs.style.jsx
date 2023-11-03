@@ -14,9 +14,19 @@ export const InputBarraPesquisa = styled.input`
 `
 
 export const Input = styled.input`
+    padding-left: 5px;
     width: ${(prop) => prop.width};
     height: ${(prop) => prop.height};
-
+    font-family: 'Inter';
+    font-size: 24px;
+    font-weight: bold;
     border-radius: 15px;
     background: ${({theme}) => theme.colors.inputGray};
+
+    &::placeholder{
+        color: black;
+        font-size: 24px;
+        font-family: 'Inter';
+        font-weight: bold;
+    }
 `
