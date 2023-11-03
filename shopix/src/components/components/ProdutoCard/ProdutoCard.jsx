@@ -5,15 +5,17 @@ const DivCard = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    width: 348px;
-    height: 388px;
+    width: 21.75rem;
+    height: 24.25rem;
     background-color: red;
+
+    justify-self: center;
 `
 const DivImg = styled.div`
     
     object-fit: contain;
     width: auto;
-    height: 223px;
+    height: 13.938rem;
 
     img {
         height: 100%;
@@ -26,18 +28,17 @@ const DivInfo = styled.div`
     justify-content: space-around;
 
     #preco {
-        font-size: 36px;
+        font-size: 2.25rem;
     }
 
     #nome {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 `
 
 
 const ProdutoCard = () => {
   return (
-
     <DivCard>
         <DivImg>
             <img src="https://images.kabum.com.br/produtos/fotos/sync_mirakl/313525/Cadeira-Gamer-Prizi-At-120-Kg-Com-Almofadas-Roxa-PZ1006E_1682518132_gg.jpg" alt="" />
