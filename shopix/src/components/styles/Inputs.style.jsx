@@ -24,7 +24,7 @@ export const Input = styled.input`
     background: ${({theme}) => theme.colors.inputGray};
 
     &::placeholder{
-        color: black;
+        color: #323232cc;
         font-size: 24px;
         font-family: 'Inter';
         font-weight: bold;

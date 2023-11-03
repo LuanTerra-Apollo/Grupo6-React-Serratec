@@ -3,7 +3,7 @@ export const theme = {
         geralPurple: "#471796",
         wrapperGray: "#B8B8B8",
         cardProdutoGray: "#A7A7A7",
-        inputGray: "#989797",
+        inputGray: "#aeadad",
         geralWhite: "#D9D9D9",
         buttonBlue: "#1691B8",
         linkBlue: "#007094",
