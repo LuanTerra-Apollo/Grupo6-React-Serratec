@@ -76,7 +76,8 @@ const GreenButton = styled.button`
 const Produto = () => {
     const { id } = useParams()
 
-    const { carrinho, setCarrinho, handleAddCarrinho, quantidadeCompra, setQuantidadeCompra } = useContext(CarrinhoContext);
+    const navigate = useNavigate()
+    const { carrinho, setCarrinho, quantidadeCompra, setQuantidadeCompra, vlTotal, setVlTotal} = useContext(CarrinhoContext);
     const [produto, setProduto] = useState(null);
     const [quantidade, setQuantidade] = useState("")
     // const [quantidadeCompra, setQuantidadeCompra] = useState("")
@@ -144,6 +145,40 @@ const Produto = () => {
         setQuantidadeCompra(e.target.value);
       };
 
+      const handleAddCarrinho = (produto) => {
+
+        console.log(produto)
+        if (carrinho.some((pr) => pr.produto.id === produto.id)) {
+            alert("produto já adicionado no carrinho")
+        }else{
+            if(quantidadeCompra > produto.quantidade){
+                alert("Estoque insuficiente")
+            }else{   
+                setVlTotal(vlTotal + produto.preco * quantidadeCompra)
+                setCarrinho([...carrinho, {produto, quantidadeCompra, vlTotalPr : produto.preco * quantidadeCompra }])
+                
+                // const teste2 = api.get(`/carrinho`).data
+                
+                // teste2.map((user) => {
+                //     if(user.idUser === 1){
+                //         api.patch([...itens , {itens:produto, vlTotalPr : produto.preco * quantidadeCompra, quantidadeCompra }])
+                //     }else{
+                //         api.post('/carrinho', {idUser: 1, vlTotal, itens:produto, vlTotalPr : produto.preco * quantidadeCompra, quantidadeCompra })
+                //     }
+                // })
+
+                handleExibirCarrinho()
+            }
+        }
+        console.log(vlTotal)
+        console.log(carrinho)
+    }
+
+          //testes
+    const handleExibirCarrinho = () => {
+        navigate('/carrinho')
+    }
+
     return (
         <BodyCarrinho>
         <CartContainer> 
@@ -158,11 +193,13 @@ const Produto = () => {
                         <h2 style={{marginBottom: '20px', marginTop: '6px'}}>R$ {preco}</h2>
                         <p>{descricao}</p>
                     </div>
+
                 {/* </Produto2> */}
+
                     <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                        <p>Quantidade: </p> 
-                        <input type="number" onChange={handleQuantidadeChange}/> ({quantidade}) disponivel
+                            <p>Quantidade: </p> 
+                            <input type="number" min="0" onChange={handleQuantidadeChange}/> ({quantidade}) disponivel
                         </div>
                         <GreenButton onClick={() => {inserir(produto)}}>ADICIONAR AO CARRINHO</GreenButton>
                     </div>

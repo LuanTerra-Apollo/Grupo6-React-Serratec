@@ -8,18 +8,18 @@ import Produtos from './pages/Produtos/Produtos.jsx' ;
 import Produto from './pages/Produto/Produto.jsx';
 import Login from './pages/Login/Login.jsx';
 import Cadastro from './pages/Cadastro/Cadastro.jsx';
-import Carrinho from './pages/Carrinho/Carrinho.jsx';
 import Pedido from './pages/Pedidos/Pedidos.jsx';
 import { LoginProvider } from './context/LoginContext.jsx';
 import { ProdutosProvider } from './context/ProdutosContext.jsx';
 import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx';
 import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
+import Carrinho from './pages/Carrinho/Carrinho.jsx'
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ProdutosProvider><Produtos /></ProdutosProvider>,
+    element: <Produtos />
   },
   {
     path: "/login",
@@ -35,19 +35,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/produto/:id",
-    element: <CarrinhoProvider><Produto /></CarrinhoProvider>
+    element: <Produto />
   },
   {
     path: "/carrinho",
-    element: <CarrinhoProvider><Carrinho /></CarrinhoProvider>
+    element: <Carrinho />
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <LoginProvider>
-        <GlobalStyle />
-        <RouterProvider router={router} />
+      <ProdutosProvider>
+        <CarrinhoProvider>
+          <GlobalStyle />
+          <RouterProvider router={router} />
+          </CarrinhoProvider>
+       </ProdutosProvider>
     </LoginProvider>
   </React.StrictMode>
 )
