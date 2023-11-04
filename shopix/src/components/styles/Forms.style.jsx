@@ -20,8 +20,8 @@ export const FormLogin = styled.form`
     }
 
     .Cadastre-se {
-        position: absolute;
-        transform: translate(0%, 870%);
+        /* position: absolute;
+        transform: translate(0%, 870%); */
         color: #007094;
         font-weight: bold;
         font-size: 150%;
@@ -36,8 +36,8 @@ export const FormLogin = styled.form`
         min-height: 400px;
 
         .Cadastre-se {
-        position: absolute;
-        transform: translate(0%, 650%)
+        /* position: absolute;
+        transform: translate(0%, 650%) */
         }
 
         .InputLogin {
@@ -61,8 +61,8 @@ export const FormLogin = styled.form`
 
         .Cadastre-se {
             font-size: 16px;
-            position: absolute;
-            transform: translate(0%, 740%)
+            /* position: absolute;
+            transform: translate(0%, 740%) */
         }
 
         .InputLogin {

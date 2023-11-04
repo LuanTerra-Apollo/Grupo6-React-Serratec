@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState, } from 'react'
 import { api } from '../../api/api'
 import { Input } from '../../components/styles/Inputs.style'
@@ -9,6 +9,7 @@ import { Button } from "../../components/styles/Buttons.style"
 const Login = () => {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
+    const navigate = useNavigate()
 
     const handleLimpar = () => {
         setEmail(''),
@@ -21,6 +22,7 @@ const Login = () => {
         console.log(response.data)
         if(response.data.length == 1) {
             alert("Usuário logado com sucesso!")
+            navigate('/')
         } else {
             alert("Usuário ou senha incorretos")
         }
@@ -32,8 +34,8 @@ const Login = () => {
         <Wrapper>
             <FormLogin width='25%' height='50%' className='formLogin' onSubmit={handleLogin}>
                 <h1>Login</h1>
-                <Input className="InputLogin" width='86%' height='8%' type="text" value={email} onChange={(e) => { setEmail(e.target.value)}} placeholder='email' /> <br />
-                <Input width='86%' height='8%' type="text" value={senha} onChange={(e) => { setSenha(e.target.value)}} placeholder='senha'  /> <br />
+                <Input className="InputLogin" width='86%' height='8%' type="text" value={email} onChange={(e) => { setEmail(e.target.value)}} placeholder='email' required='required' /> <br />
+                <Input width='86%' height='8%' type="text" value={senha} onChange={(e) => { setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
                 <Button className="BotaoLogin" width='48%' height='13%' type='submit'>Entrar</Button> <br />
                 <Link className="Cadastre-se" to={'/cadastro'} >Cadastre-se</Link>
             </FormLogin>

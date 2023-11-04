@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     element: <Cadastro />
   },
   {
-    path: "/pedido",
+    path: "/pedidos",
     element: <Pedido />
   },
   {
