@@ -13,11 +13,14 @@ import Pedido from './pages/Pedidos/Pedidos.jsx';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './components/styles/Theme.style.jsx';
 import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx';
+import { LoginProvider } from './context/LoginContext.jsx';
+import { ProdutosProvider } from './context/ProdutosContext.jsx';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Produtos />,
+    element: <ProdutosProvider><Produtos /></ProdutosProvider>,
   },
   {
     path: "/login",
@@ -44,8 +47,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <GlobalStyle/>
-      <RouterProvider router={router} />
+      <LoginProvider>
+        <GlobalStyle/>
+        <RouterProvider router={router} />
+      </LoginProvider>
     </ThemeProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
