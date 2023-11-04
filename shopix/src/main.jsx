@@ -15,6 +15,9 @@ import { theme } from './components/styles/Theme.style.jsx';
 import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx';
 import { LoginProvider } from './context/LoginContext.jsx';
 import { ProdutosProvider } from './context/ProdutosContext.jsx';
+import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx'
+import { ThemeProvider } from 'styled-components';
+import { theme } from './components/styles/Theme.style.jsx';
 
 
 const router = createBrowserRouter([
@@ -46,11 +49,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
       <LoginProvider>
-        <GlobalStyle/>
-        <RouterProvider router={router} />
+          <ThemeProvider theme={theme}>
+            <GlobalStyle/>
+            <RouterProvider router={router} />
+          </ThemeProvider>
       </LoginProvider>
-    </ThemeProvider>
   </React.StrictMode>
 )
