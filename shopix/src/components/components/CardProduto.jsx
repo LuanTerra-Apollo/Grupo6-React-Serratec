@@ -23,7 +23,7 @@ const CardProdutoStyled = styled.div`
     .divProduto {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
       border-radius: 10px;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       padding-left: 8px;
@@ -33,31 +33,49 @@ const CardProdutoStyled = styled.div`
       background-color: #A7A7A7;
 
       .divProdutoFavorito {
-        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        padding: 30px;
 
         img {
           height: 35px;
           width: 35px;
-          transform: translate(970%, -400%);
+          margin-left: 107px;
           -webkit-filter: drop-shadow(5px 5px 5px #222222cf);
           filter: drop-shadow(2px 3px 5px #222222cf);
         }
-
+        p {
+          margin-top: 4px;
+        }
         
       }
 
-      .botao {
-        margin-left: 50%;
-        transform: translate(-50%, 15%);
-        border: 0px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      .divValorDescricao {
+        margin-bottom: 300px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        h1 {
+          margin-bottom: 40px;
+        }
       }
 
-      .quantidade {
-        text-align: center;
-        font-size: 18px;
-        transform: translate(-18%, 180%)
-      }
+      .divQuantidadeBotao {
+        .quantidade {
+          text-align: left;
+          font-size: 18px;
+          margin-left: 30px;
+          transform: translate(-0%, -290%);
+        }
+        .botao {
+          margin-left: 50%;
+          transform: translate(-50%, -50%);
+          height: 75px;
+          width: 400px;
+          border: 0px;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+      }     
     }
 
     input {
@@ -73,6 +91,7 @@ const CardProduto = () => {
           <div className='divProdutoFavorito'>
             <h1>Nome Produto</h1>
             <img src="https://i.imgur.com/mKjFPY5.png" alt="" />
+            <p>(30)</p>
           </div>
           <div className='divValorDescricao'>
             <h1>$$,$$</h1>
