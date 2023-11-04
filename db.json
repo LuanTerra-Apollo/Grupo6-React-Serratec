@@ -5,6 +5,7 @@
       "nome": "Raphael da Rocha Pinto Barboza",
       "email": "Raphael da Rocha Pinto",
       "senha": "123456"
+<<<<<<< HEAD
     },
     {
       "id": 2,
@@ -31,6 +32,8 @@
       "email": "jao@gmail",
       "senha": "123456",
       "id": 6
+=======
+>>>>>>> e90455bae97f25cd87a9f54f792feff4b2a6fe2a
     }
   ],
   "produtos": [
@@ -44,6 +47,7 @@
       "favoritos": 30
     },
     {
+<<<<<<< HEAD
       "nome": "Mouse com fio Logitech",
       "preco": 29.99,
       "quantidade": 37,
@@ -159,6 +163,15 @@
       "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
       "favoritos": 30,
       "id": 14
+=======
+      "nome": "Teclado Gamer",
+      "preco": 89.99,
+      "quantidade": 5,
+      "descricao": "Teclado com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play, o melhor para games em 2023",
+      "imgurl": "https://www.portaldosjornalistas.com.br/wp-content/uploads/2020/01/Teclado.jpg",
+      "favoritos": 30,
+      "id": 2
+>>>>>>> e90455bae97f25cd87a9f54f792feff4b2a6fe2a
     }
   ],
   "pedidos": [

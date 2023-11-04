@@ -15,9 +15,8 @@ import { theme } from './components/styles/Theme.style.jsx';
 import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx';
 import { LoginProvider } from './context/LoginContext.jsx';
 import { ProdutosProvider } from './context/ProdutosContext.jsx';
-import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx'
-import { ThemeProvider } from 'styled-components';
-import { theme } from './components/styles/Theme.style.jsx';
+import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -38,12 +37,12 @@ const router = createBrowserRouter([
     element: <Pedido />
   },
   {
-    path: "/produto",
-    element: <Produto />
+    path: "/produto/:id",
+    element: <CarrinhoProvider><Produto /></CarrinhoProvider>
   },
   {
     path: "/carrinho",
-    element: <Carrinho />
+    element: <CarrinhoProvider><Carrinho /></CarrinhoProvider>
   },
 ]);
 

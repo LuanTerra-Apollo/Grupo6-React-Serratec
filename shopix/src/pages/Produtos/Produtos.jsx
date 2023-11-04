@@ -51,7 +51,6 @@ const Produtos = () => {
             </Display>                  
         </Wrapper>
     )
-
 }
 
 export default Produtos
