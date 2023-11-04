@@ -78,12 +78,14 @@ const Produto = () => {
 
     const handleQuantidadeChange = (e) => {
         //const qtd = e.target.value;
+        e.preventDefault()
         setQuantidadeCompra(e.target.value);
       };
 
     return (
         <Wrapper>
-            <CardProduto img={img} nome={nome} preco={preco} descricao={descricao} quantidade={quantidade} produto={produto} inserir={inserir()} handleQuantidadeChange={handleQuantidadeChange()} />
+            {quantidadeCompra}
+            <CardProduto img={img} nome={nome} preco={preco} descricao={descricao} quantidade={quantidade} produto={produto} inserir={inserir} handleQuantidadeChange={handleQuantidadeChange} /> 
         </Wrapper>
     )
 }

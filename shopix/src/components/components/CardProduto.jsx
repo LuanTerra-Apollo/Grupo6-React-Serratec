@@ -98,7 +98,7 @@ const CardProduto = (props) => {
             <p>{props.descricao}</p>
           </div>
           <div className='divQuantidadeBotao'>
-            <p className='quantidade'>Quantidade: <input type="number" onChange={props.handleQuantidadeChange()} /> unidade(s)</p> 
+            <p className='quantidade'>Quantidade: <input type="number" onChange ={props.handleQuantidadeChange}  /> unidade(s)</p> 
             <Button className='botao' height='10%' width='80%' onClick={() => {props.inserir(props.produto)}}>Adicionar ao Carrinho</Button>
           </div>
         </div>
@@ -107,3 +107,5 @@ const CardProduto = (props) => {
 }
 
 export default CardProduto
+
+// onChange={() => {props.handleQuantidadeChange()}}
