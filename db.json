@@ -19,6 +19,18 @@
     {
       "params": {},
       "id": 4
+    },
+    {
+      "nome": "manoel",
+      "email": "manel@gmail",
+      "senha": "123456",
+      "id": 5
+    },
+    {
+      "nome": "joaozin",
+      "email": "jao@gmail",
+      "senha": "123456",
+      "id": 6
     }
   ],
   "produtos": [
