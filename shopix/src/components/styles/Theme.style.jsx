@@ -1,5 +1,6 @@
 export const theme = {
     colors: {
-       primary: "red" 
+       primary: "red",
+       wrapperGray: "#EBEBEB" 
     }
 }

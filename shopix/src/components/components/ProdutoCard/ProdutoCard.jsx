@@ -4,51 +4,88 @@ import styled from "styled-components";
 const DivCard = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    width: 21.75rem;
+    width: 18rem;
     height: 24.25rem;
-    background-color: red;
+    box-shadow: none;
+    border-radius: 1.2rem;
 
-    justify-self: center;
+    &:hover {
+        box-shadow: 0px 10px 10px rgba(0,0,0, .2);
+    }    
 `
 const DivImg = styled.div`
     
-    object-fit: contain;
-    width: auto;
-    height: 13.938rem;
-
+    width: 100%;
+    
+    height: 16rem;
+    //max-height: 16rem;
+    background-color: #fff;
+    
+    background-position: center;
+    border-top-right-radius: 1.2rem;
+    border-top-left-radius: 1.2rem;
+    
     img {
+        border-top-right-radius: 1.2rem;
+        border-top-left-radius: 1.2rem;
+        
+        object-fit: contain;
+
         height: 100%;
         width: 100%;
+
+        min-height: 100%;
+        min-width: 100%;
+
+        max-width: 100%;
+        max-height: 100%;
     }
 `
 const DivInfo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem;
 
+    border-bottom-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+    
+    background-color: #fff;
+    
     #preco {
         font-size: 2.25rem;
+        color: black;
+        align-self: flex-start;
     }
-
+    
+    #parcela {
+        color: green;
+        margin-left: 0.5rem;
+    }
+    
     #nome {
-        font-size: 1.5rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 `
 
 
-const ProdutoCard = () => {
+const ProdutoCard = ({ nome, preco, imgurl }) => {
   return (
     <DivCard>
         <DivImg>
-            <img src="https://images.kabum.com.br/produtos/fotos/sync_mirakl/313525/Cadeira-Gamer-Prizi-At-120-Kg-Com-Almofadas-Roxa-PZ1006E_1682518132_gg.jpg" alt="" />
+            <img src={imgurl} alt="" />
         </DivImg>
         <DivInfo>
-            <p id="preco">preco</p>
-            <p id="nome">nome</p>
+            <p id="preco">R${preco}</p>
+            <p id="parcela">em 3x R$ {((preco + 100) / 3).toFixed(2)} sem juros</p>
+            <p id="nome">{nome}</p>
         </DivInfo>
     </DivCard>
-  );
+  )
 }
 
 export default ProdutoCard;
