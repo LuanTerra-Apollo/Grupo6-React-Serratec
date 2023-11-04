@@ -17,8 +17,6 @@ import { LoginProvider } from './context/LoginContext.jsx';
 import { ProdutosProvider } from './context/ProdutosContext.jsx';
 import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",

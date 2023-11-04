@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
+import Navibar from "../../components/components/navibar/navibar";
 
 
 

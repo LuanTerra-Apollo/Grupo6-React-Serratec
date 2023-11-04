@@ -2,14 +2,20 @@ import styled from 'styled-components'
 
 export const InputBarraPesquisa = styled.input`
     width: 570px;
-    height: 41px;
+    height: 35px;
+    
 
     border-radius: 15px;
     border: 1px solid #000;
     background-color: ${({theme}) => theme.colors.geralWhite};
 
     &:hover {
-        background-color: pink;
+        background-color: white;
+    }
+
+    &::placeholder{
+        font-size: large;
+        padding: 10px;
     }
 `
 
