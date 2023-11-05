@@ -4,7 +4,9 @@ import boneco from '../../../img/boneco.png'
 import styled from 'styled-components';
 import carrinho from '../../../img/carrinho.png'
 import { InputBarraPesquisa } from '../../styles/Inputs.style';
-import { useEffect, useState } from 'react';
+
+import { useContext } from 'react';
+import { LoginContext } from '../../../context/LoginContext';
 
 
 const Navi = styled.nav`
@@ -102,7 +104,6 @@ const DireitaNav = styled.div`
     }
 `
 
-
 const Navibar = () => {
     const [isLoginCadastroPages, SetIsLoginCadastroPages] = useState(false);
 
@@ -110,7 +111,6 @@ const Navibar = () => {
         const currentUrl = window.location.pathname;
         SetIsLoginCadastroPages(currentUrl === '/login' || currentUrl === '/cadastro')
     }, [])
-
 
     return (
         <Navi >

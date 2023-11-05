@@ -1,11 +1,9 @@
 import CardProduto from "../../components/components/CardProduto"
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { styled } from "styled-components";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
-import Navibar from "../../components/components/navibar/navibar";
 
 
 
@@ -84,6 +82,7 @@ const Produto = () => {
 
     return (
         <Wrapper>
+            <Link to={'/'}>sdfsdf</Link>
             {quantidadeCompra}
             <CardProduto img={img} nome={nome} preco={preco} descricao={descricao} quantidade={quantidade} produto={produto} inserir={inserir} handleQuantidadeChange={handleQuantidadeChange} /> 
         </Wrapper>
