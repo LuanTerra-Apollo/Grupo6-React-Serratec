@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import carrinho from '../../../img/carrinho.png'
 import { InputBarraPesquisa } from '../../styles/Inputs.style';
 
-import { useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { LoginContext } from '../../../context/LoginContext';
 
 
