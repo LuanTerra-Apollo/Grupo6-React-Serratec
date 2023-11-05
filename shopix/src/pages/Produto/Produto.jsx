@@ -77,137 +77,82 @@ const Produto = () => {
     const { id } = useParams()
 
     const navigate = useNavigate()
-    const { carrinho, setCarrinho, quantidadeCompra, setQuantidadeCompra, vlTotal, setVlTotal} = useContext(CarrinhoContext);
-    const [produto, setProduto] = useState(null);
-    const [quantidade, setQuantidade] = useState("")
-    // const [quantidadeCompra, setQuantidadeCompra] = useState("")
+    const { carrinho, setCarrinho, quantidadeCompra, setQuantidadeCompra, qtdTotal, setQtdTotal,
+            vlTotal, setVlTotal, produto, setProduto, vlTotalPr, setVlTotalPr} = useContext(CarrinhoContext);
+    const [quantidade, setQuantidade] = useState(0)
 
-
-    //testes
-    const [nome, setNome] = useState("")
-    const [descricao, setDescricao] = useState("")
-    const [img, setImg] = useState("")
-    const [preco, setPreco] = useState("")
-
-    //const frete = 0
-    //const vlTotalCompra = preco * quantidade;
-    //const vlTotal = vlTotalCompra + frete;
+    
+    const buscarProduto = async () => {
+        const response = await api.get(`/produtos/${id}`)
+        setProduto(response.data); 
+    };
 
     useEffect(() => {
-        const buscarProdutos = async () => {
-            
-            try {
-            const response = await api.get(`/produtos/${id}`);
-                setProduto(response.data);
-
-                //testes
-                setNome(response.data.nome);
-                setDescricao(response.data.descricao)
-                setImg(response.data.imgurl)
-                setPreco(response.data.preco)
-                setQuantidade(response.data.quantidade)
-            } catch (error) {
-                console.error("Erro ao buscar produtos:", error);
-            }
-        };
-
-        buscarProdutos();
+        buscarProduto()
     }, []);
 
-    // const handleAddCarrinho = (e) => {
-    //     e.preventDefault()
-    //     console.log(produto)
-    //     console.log(quantidadeCompra)
-    //     if (carrinho.some((pr) => pr.id === produto.id)) {
-    //         alert("produto já adicionado no carrinho")
-    //     }else{
-    //         if(quantidadeCompra > quantidade){
-    //             alert("Estoque insuficiente")
-    //         }else{
-    //             setCarrinho([...carrinho, produto])
-    //         }
-    //     }
-    //     console.log(carrinho)
-    // }
-
     //teste
-    const inserir = (produto) => {
-        if(quantidadeCompra == '' || quantidadeCompra === 'e'){
+    const inserir = () => {
+        if(quantidadeCompra.qtdCompra == '' || quantidadeCompra.qtdCompra === 'e'){
             alert("Você está brincando, certo? Você precisa comprar pelo menos um produto!")
         }else{
-
             handleAddCarrinho(produto)
         }
     }
 
     const handleQuantidadeChange = (e) => {
-        //const qtd = e.target.value;
         setQuantidadeCompra(e.target.value);
       };
 
-      const handleAddCarrinho = (produto) => {
+    const handleAddCarrinho = () => {
 
-        console.log(produto)
-        if (carrinho.some((pr) => pr.produto.id === produto.id)) {
-            alert("produto já adicionado no carrinho")
+        if(quantidadeCompra == '' || quantidadeCompra === 'e'){
+            alert("Você está brincando, certo? Você precisa comprar pelo menos um produto!")
         }else{
-            if(quantidadeCompra > produto.quantidade){
-                alert("Estoque insuficiente")
-            }else{   
-                setVlTotal(vlTotal + produto.preco * quantidadeCompra)
-                setCarrinho([...carrinho, {produto, quantidadeCompra, vlTotalPr : produto.preco * quantidadeCompra }])
-                
-                // const teste2 = api.get(`/carrinho`).data
-                
-                // teste2.map((user) => {
-                //     if(user.idUser === 1){
-                //         api.patch([...itens , {itens:produto, vlTotalPr : produto.preco * quantidadeCompra, quantidadeCompra }])
-                //     }else{
-                //         api.post('/carrinho', {idUser: 1, vlTotal, itens:produto, vlTotalPr : produto.preco * quantidadeCompra, quantidadeCompra })
-                //     }
-                // })
-
-                handleExibirCarrinho()
+            if (carrinho.some((pr) => pr.produto.id === produto.id)) {
+            alert("produto já adicionado no carrinho")
+            }else{
+                if(quantidadeCompra > produto.quantidade){
+                    alert("Estoque insuficiente")
+                }else{   
+                    //setQuantidadeCompra([...quantidadeCompra, {id: produto.id, qtdCompra: quandidadeCompra}])
+                    // setQtdTotal(qtdTotal + quantidadeCompra)
+                    setQtdTotal(parseInt(qtdTotal) + parseInt(quantidadeCompra));
+                    setVlTotalPr(produto.preco * quantidadeCompra)
+                    setVlTotal(vlTotal + produto.preco * quantidadeCompra)
+                    setCarrinho([...carrinho, {produto, quantidadeCompra, vlTotalPr: produto.preco * quantidadeCompra}])
+                    
+                    navigate('/carrinho')
+                }
             }
         }
-        console.log(vlTotal)
-        console.log(carrinho)
-    }
-
-          //testes
-    const handleExibirCarrinho = () => {
-        navigate('/carrinho')
     }
 
     return (
         <BodyCarrinho>
-        <CartContainer> 
-            {/* <Produto2>  */}
-                <ProdutoImg>
-                    <img src={img} alt="" />
+            <CartContainer> 
+                <ProdutoImg>       
+                    <img src={produto.imgurl} alt="" />
                 </ProdutoImg>
-
+  
                 <ListaProdutos>
                     <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                        <h2 style={{marginBottom: '20px', marginTop: '6px'}}>{nome}</h2>
-                        <h2 style={{marginBottom: '20px', marginTop: '6px'}}>R$ {preco}</h2>
-                        <p>{descricao}</p>
+                        <h2 style={{marginBottom: '20px', marginTop: '6px'}}>{produto.nome}</h2>
+                        <h2 style={{marginBottom: '20px', marginTop: '6px'}}>R$ {produto.preco}</h2>
+                        <p>{produto.descricao}</p>
                     </div>
-
-                {/* </Produto2> */}
 
                     <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                             <p>Quantidade: </p> 
                             <input type="number" min="0" onChange={handleQuantidadeChange}/> ({quantidade}) disponivel
                         </div>
-                        <GreenButton onClick={() => {inserir(produto)}}>ADICIONAR AO CARRINHO</GreenButton>
+                        <GreenButton onClick={handleAddCarrinho}>ADICIONAR AO CARRINHO</GreenButton>
                     </div>
-                </ListaProdutos>
-        </CartContainer>
+                </ListaProdutos> 
+            </CartContainer>
         </BodyCarrinho>
     )
-
 }
 
 export default Produto

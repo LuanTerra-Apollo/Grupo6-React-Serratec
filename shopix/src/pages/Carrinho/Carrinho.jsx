@@ -69,6 +69,52 @@ const Infos = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    .modal-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal {
+        background: #1eff008f;
+        border: 1px solid #ccc;
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: -4px 4px 16px rgba(53, 53, 53, 0.76);
+        position: relative;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        /* text-shadow: 0.5px 0.5px 1px black; */
+
+        img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0px 0px 15px rgb(255, 255, 255);
+        }
+
+    
+    }
+
+    .close-button {
+        position: absolute;
+        font-size: 24px;
+        top: 0px;
+        right: 5px;
+        cursor: pointer;
+    }
 `;
 
 const Infos2 = styled.div`
@@ -80,8 +126,8 @@ const Infos2 = styled.div`
 const ListaProdutos = styled.div`
     margin-left: 5px;
     align-items: center;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     width: 72%;
     align-items: start;
 `;
@@ -208,108 +254,136 @@ const Titulo = styled.div`
 const Carrinho = () => {
     
     const navigate = useNavigate()
-    const { carrinho, setCarrinho, prCarrinho, vlTotalPr, vlTotal, qtdPr} = useContext(CarrinhoContext);
-    const [nome, setNome] = useState("")
-    const [descricao, setDescricao] = useState("")
-    const [img, setImg] = useState("")
-    const [preco, setPreco] = useState("")
-    const [quantidade, setQuantidade] = useState("")
-    //const [vlTotal, setVlTotal] = useState(0)
+    const { carrinho, setCarrinho, vlTotalPr, vlTotal, setVlTotal, qtdTotal, setQtdTotal,
+            qtdPr, quantidadeCompra, setQuantidadeCompra, produto, setProduto} = useContext(CarrinhoContext);
 
-    const frete = 0
-    const vlTotalCompra = preco * quantidade;
-    //const vlTotal = vlTotalCompra + frete;
-
-    // useEffect(() => {
-    //     const buscarProdutos = async () => {
-    //         try {
-    //             const response = await api.get(`/produtos/1`);
-    //             setNome(response.data.nome);
-    //             setDescricao(response.data.descricao)
-    //             setImg(response.data.imgurl)
-    //             setPreco(response.data.preco)
-    //             setQuantidade(response.data.quantidade)
-    //         } catch (error) {
-    //             console.error("Erro ao buscar produtos:", error);
-    //         }
-    //     };
-        
-    //     buscarProdutos();
-    // }, []);
     
     const comprar = (e) => {
         e.preventDefault()
-        handleExibirProdutoParaTeste()
 
-        //--------------------------ATUALIZAR ESTOQUE FUNCIONANDO
-        // try{
-        //     carrinho.map((pr) => (
-        //         api.patch(`/produtos/${pr.produto.id}`, {quantidade: pr.produto.quantidade - pr.quantidadeCompra})
-        //     ))
-        // } catch(e){
-        //     alert("Deu tudo errado")
-        // }
+        if(carrinho.length > 0){
+            
+            openModal()
+            //--------------------------ATUALIZAR ESTOQUE FUNCIONANDO
+            // try{
+            //     carrinho.map((pr) => (
+            //         api.patch(`/produtos/${pr.produto.id}`, {quantidade: pr.produto.quantidade - pr.quantidadeCompra})
+            //     ))
+            // } catch(e){
+            //     alert("Deu tudo errado")
+            // }
+        }else{
+            alert("carrinho vazio")
+        }
+
     }
-
-
 
 
 
     function diminuirQtd(pr) {
-        //e.preventDefault()
-        pr.quantidadeCompra = pr.quantidadeCompra - 1
-        console.log(pr.quantidade)
+        if(pr.quantidadeCompra > 1){
+            const carrinhoAtualizado = carrinho.map((item) => {
+                if (item.produto.id === pr.produto.id) {
+                    setVlTotal(vlTotal - pr.produto.preco)
+                    setQtdTotal(qtdTotal - 1)
+                    return {
+                        ...item,
+                        quantidadeCompra: pr.quantidadeCompra - 1,
+                        vlTotalPr: item.produto.preco * (pr.quantidadeCompra - 1),
+                    };
+                }
+                return item;
+            });
+        setCarrinho(carrinhoAtualizado);
+        }
     }
+
 
     function aumentarQtd(pr) {
-        //e.preventDefault()
-        pr.quantidadeCompra = pr.quantidadeCompra + 1
-        console.log(pr.quantidade)
+        console.log(pr.quantidadeCompra)
+        console.log(pr.produto.quantidade)
+        if(pr.quantidadeCompra < pr.produto.quantidade){
+            const carrinhoAtualizado = carrinho.map((item) => {
+                if (item.produto.id === pr.produto.id) {
+                    setVlTotal(parseFloat(vlTotal) + parseFloat(pr.produto.preco))
+                    setQtdTotal(parseInt(qtdTotal) + 1)
+                    return {
+                        ...item,
+                        quantidadeCompra: (parseInt(pr.quantidadeCompra) + 1),
+                        vlTotalPr: item.produto.preco * (parseInt(pr.quantidadeCompra) + 1),
+                    };
+                }
+                return item;
+            });
+            setCarrinho(carrinhoAtualizado);
+        }
     }
 
-    const handleExibirProdutoParaTeste = () => {
-        navigate('/produto/2')
+    const removerProduto = (pr) => {
+        const carrinhoAtualizado = carrinho.filter((item) => item.produto.id !== pr.produto.id);
+        setCarrinho(carrinhoAtualizado);
+        setQtdTotal(qtdTotal - pr.quantidadeCompra)
+        setVlTotal(parseFloat(vlTotal) - parseFloat(pr.vlTotalPr))
+        //setQtdTotal(parseInt(qtdTotal) + 1)
     }
+
+    const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const testar = () => {
+    navigate('/produto/2')
+  }
 
     return (
     <BodyCarrinho>
         <ListaProdutos>
+        {/* <Titulo>
+            <h4>{carrinho[0].produto.nome}</h4>
+                        <img src='https://cdn-icons-png.flaticon.com/512/484/484662.png' alt="Descrição da imagem" onClick={() => {handleExibirProdutoParaTeste()}}/>
+                    </Titulo> */}
+            {/* {handleExibirProdutoParaTeste} */}
             {carrinho.map((pr, index) => (
-                <>
+                <div key={index}>
                     <Titulo>
                         <h4>{pr.produto.nome}</h4>
-                        {/* <RemoverButton onClick={() => {diminuirQtd(pr)}}>Remover</RemoverButton> */}
-                        <img src='https://cdn-icons-png.flaticon.com/512/484/484662.png' alt="Descrição da imagem" onClick={() => {diminuirQtd(pr)}}/>
+                        <img src='https://cdn-icons-png.flaticon.com/512/484/484662.png' alt="Descrição da imagem" onClick={() => {removerProduto(pr)}}/>
                     </Titulo>
-                <CartContainer key={index}>
+  
+                    <CartContainer>
                     <Produto>
                     <ProdutoImg>
                         <img src={pr.produto.imgurl} alt="" />
                     </ProdutoImg>
                     <div style={{width: '60%', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                        {/* <h4 style={{marginBottom: '20px', marginTop: '6px'}}>{pr.produto.nome}</h4> */}
+                        
                         <p>{pr.produto.descricao}</p>
                         <h3>R$ {pr.produto.preco}</h3>
                     </div>
                     </Produto>
+                    
                     <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: '20%', alignItems: "end"}}>
 
-                    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                        {/* <h4>Quantidade: <QtdButton onClick={() => {diminuirQtd(pr)}}>-</QtdButton>  */}
-                        
-                        {/* <QtdButton onClick={() => {aumentarQtd(pr)}}>+</QtdButton></h4> */}
-                        <div class="quantidade-container">
-                            <button class="botao-diminuir">-</button>
-                            <div class="quantidade">{pr.quantidadeCompra} </div>
-                            <button class="botao-aumentar">+</button>
+                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+
+                            <div class="quantidade-container">
+                                <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
+                                <div class="quantidade">{pr.quantidadeCompra} </div>
+                                <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
+                            </div>
                         </div>
-                    </div>
                         
                         <h3>R$ {pr.vlTotalPr.toFixed(2)}</h3>
                   
                     </div>
                 </CartContainer>
-                </>
+                </div>
             ))}
         </ListaProdutos>
         
@@ -320,7 +394,7 @@ const Carrinho = () => {
             <Infos2>
                 <div style={{textAlign: 'left', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                     <div>
-                        <p style={{marginBottom: '15px'}}>Produtos ({qtdPr})</p>
+                        <p style={{marginBottom: '15px'}}>Produtos ({qtdTotal})</p>
                         <p>frete</p>
                     </div>
                 </div>
@@ -339,7 +413,28 @@ const Carrinho = () => {
                 <h4>R$ {vlTotal.toFixed(2)}</h4>
             </div>
             <hr />
-            <GreenButton onClick={comprar}>COMPRAR</GreenButton>    
+            <GreenButton onClick={comprar}>COMPRAR</GreenButton> 
+               {/*  */}
+                <div>
+                    <button onClick={testar}>for teste</button>
+                    {showModal && (
+                        <div className="modal-background">
+                        <div className="modal">
+                            <span className="close-button" onClick={closeModal}>
+                            &times;
+                            </span>
+                            <h2>Compra Efetuada com Sucesso</h2>
+                            <br />
+                            <div style={{width: '60px', height: '60px', margin: 'auto'}}>
+                                <img src="https://cdn-icons-png.flaticon.com/512/6815/6815043.png" alt="" />
+                            </div>
+                            <br />
+                            <p>Agradecemos por sua compra! Sua transação foi concluída com êxito. Esperamos que desfrute do seu novo item e estamos à disposição para qualquer assistência adicional.</p>
+                        </div>
+                        </div>
+                    )}
+                </div>
+    {/*  */}
             </div>
         </Infos>
   
