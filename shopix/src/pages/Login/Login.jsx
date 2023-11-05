@@ -1,27 +1,35 @@
 import { Link, useNavigate } from "react-router-dom"
-import { useState, } from 'react'
+import { useContext, useState, } from 'react'
 import { api } from '../../api/api'
 import { Input } from '../../components/styles/Inputs.style'
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { FormLogin } from "../../components/styles/Forms.style"
 import { Button } from "../../components/styles/Buttons.style"
+import Navibar from "../../components/components/navibar/Navibar"
+import { LoginContext } from "../../context/LoginContext"
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const navigate = useNavigate()
+    const {login, setLogin, setUser, user} = useContext(LoginContext)
 
     const handleLimpar = () => {
         setEmail(''),
         setSenha('')
     }
 
-    const handleLogin = async (e) => {
-        e.preventDefault()
+    const handleLogin = async (email, senha) => {
         const response = await api.get('/users', {params: {email, senha}})
+        console.log(email)
+        console.log(senha)
         console.log(response.data)
         if(response.data.length == 1) {
             alert("Usuário logado com sucesso!")
+            localStorage.setItem('user_id', JSON.stringify({ id: response.data[0].id }))
+            setLogin(true)
+            setUser({ id: response.data[0].id, nome: response.data[0].nome, email: response.data[0].email, senha: response.data[0].senha})
+            console.log(user)
             navigate('/')
         } else {
             alert("Usuário ou senha incorretos")
@@ -32,13 +40,8 @@ const Login = () => {
     return (
         <>
         <Wrapper>
-            <FormLogin width='25%' height='50%' className='formLogin' onSubmit={handleLogin}>
-                <h1>Login</h1>
-                <Input className="InputLogin" width='86%' height='8%' type="text" value={email} onChange={(e) => { setEmail(e.target.value)}} placeholder='email' required='required' /> <br />
-                <Input width='86%' height='8%' type="text" value={senha} onChange={(e) => { setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
-                <Button className="BotaoLogin" width='48%' height='13%' type='submit'>Entrar</Button> <br />
-                <Link className="Cadastre-se" to={'/cadastro'} >Cadastre-se</Link>
-            </FormLogin>
+            <Navibar/>
+            <FormLogin handleLogin={handleLogin} email={email} setEmail={setEmail} senha={senha} setSenha={setSenha} />
         </Wrapper>
         <br />
         </>

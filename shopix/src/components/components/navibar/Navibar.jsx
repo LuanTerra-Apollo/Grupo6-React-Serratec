@@ -4,6 +4,7 @@ import boneco from '../../../img/boneco.png'
 import styled from 'styled-components';
 import carrinho from '../../../img/carrinho.png'
 import { InputBarraPesquisa } from '../../styles/Inputs.style';
+import { useEffect, useState } from 'react';
 
 
 const Navi = styled.nav`
@@ -103,13 +104,26 @@ const DireitaNav = styled.div`
 
 
 const Navibar = () => {
+    const [isLoginCadastroPages, SetIsLoginCadastroPages] = useState(false);
+
+    useEffect(() => {
+        const currentUrl = window.location.pathname;
+        SetIsLoginCadastroPages(currentUrl === '/login' || currentUrl === '/cadastro')
+    }, [])
+
+
     return (
         <Navi >
             <Marca>
                 <Link className='Marca' to ='/'><img src={logo} /></Link>
             </Marca>
 
-            <div>
+            {isLoginCadastroPages ? (
+                <>
+                </>
+            ) : (
+                <>
+                <div>
                 <InputBarraPesquisa className='Pesquisa' type="text" placeholder='pesquisar' />
             </div>
 
@@ -118,14 +132,17 @@ const Navibar = () => {
                     <img src={boneco} alt="" />
                 </User>
 
-
+                
                 <Link className='EntrarRegistrar' to='/login'>Entre/Registrar</Link>
-
-
+                
+        
                 <Car className='Car'>
                     <Link to='/carrinho'>  <img src={carrinho} alt="" /></Link>
                 </Car>
             </DireitaNav>
+            </>
+            )}
+            
         </Navi>
     )
 

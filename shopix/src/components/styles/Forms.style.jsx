@@ -1,6 +1,19 @@
 import styled from 'styled-components'
+import { Input } from './Inputs.style'
+import { Link } from 'react-router-dom'
+import { Button } from './Buttons.style'
+import { useState } from 'react'
 
-export const FormLogin = styled.form`
+const LoginContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+
+const FormLoginStyled = styled.form`
     width: ${(prop) => prop.width};
     height: ${(prop) => prop.height};
     min-width: 480px;
@@ -79,6 +92,30 @@ export const FormLogin = styled.form`
     }
 
 `
+
+export const FormLogin = (props) => {
+    const [email, setEmail] = useState(props.email)
+    const [senha, setSenha] = useState(props.senha)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        // Passa o e-mail e a senha para a página de login
+        props.handleLogin(email, senha);
+      };
+    
+    return (
+        <LoginContainer>
+            <FormLoginStyled width='25%' height='50%' className='formLogin' onSubmit={handleSubmit}>
+                <h1>Login</h1>
+                <Input className="InputLogin" width='86%' height='8%' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}} placeholder='email' required='required' /> <br />
+                <Input width='86%' height='8%' type="text" value={senha} onChange={(e) => {setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
+                <Button className="BotaoLogin" width='48%' height='13%' type='submit'>Entrar</Button> <br />
+                <Link className="Cadastre-se" to={'/cadastro'} >Cadastre-se</Link>
+            </FormLoginStyled>
+        </LoginContainer>
+    )
+}
 
 export const Form = styled.form`
     width: ${(prop) => prop.width};
