@@ -11,7 +11,38 @@ const DivCard = styled.div`
 
     &:hover {
         box-shadow: 0px 10px 10px rgba(0,0,0, .2);
-    }    
+        cursor: pointer;
+
+        transition: 0.7s;
+    }
+
+    @media (max-width: 1000px) {
+
+        width: 12rem;
+        height: 18.25rem;
+
+        div:first-child {
+           width: 12rem;
+           height: 12rem;
+        }
+
+        div:nth-child(2) {
+            
+            #preco {
+                font-size: 1.5rem;
+            }
+
+            #parcela {
+                font-size: 0.75rem;
+            }
+
+            #nome {
+                font-size: 1rem;
+            }
+        }
+    }
+
+
 `
 const DivImg = styled.div`
     
@@ -63,12 +94,15 @@ const DivInfo = styled.div`
     #parcela {
         color: green;
         margin-left: 0.5rem;
+        font-size: 1rem;
     }
     
     #nome {
+        font-size: 1.4rem;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        color: black;
     }
 `
 
