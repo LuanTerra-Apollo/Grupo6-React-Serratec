@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { useContext, useState, } from 'react'
+import { useContext, useEffect, useState, } from 'react'
 import { api } from '../../api/api'
 import { Input } from '../../components/styles/Inputs.style'
 import { Wrapper } from "../../components/styles/Wrapper.style"
@@ -11,8 +11,16 @@ import { LoginContext } from "../../context/LoginContext"
 const Login = () => {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
+    const { setUser, user } = useContext(LoginContext)
     const navigate = useNavigate()
-    const {login, setLogin, setUser, user} = useContext(LoginContext)
+
+    useEffect(() => {
+
+        if(localStorage.user_id) {
+            navigate('/')
+        }
+
+    }, [])
 
     const handleLimpar = () => {
         setEmail(''),
@@ -21,15 +29,11 @@ const Login = () => {
 
     const handleLogin = async (email, senha) => {
         const response = await api.get('/users', {params: {email, senha}})
-        console.log(email)
-        console.log(senha)
-        console.log(response.data)
         if(response.data.length == 1) {
             alert("Usuário logado com sucesso!")
             localStorage.setItem('user_id', JSON.stringify({ id: response.data[0].id }))
-            setLogin(true)
             setUser({ id: response.data[0].id, nome: response.data[0].nome, email: response.data[0].email, senha: response.data[0].senha})
-            console.log(user)
+            
             navigate('/')
         } else {
             alert("Usuário ou senha incorretos")

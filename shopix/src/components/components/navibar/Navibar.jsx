@@ -8,6 +8,7 @@ import { api } from '../../../api/api'
 import { useState, useEffect, useContext } from 'react';
 import { LoginContext } from '../../../context/LoginContext';
 import { ProdutosContext } from '../../../context/ProdutosContext'
+import logoutLogo from '../../../img/saida.png'
 
 const Navi = styled.nav`
     display: flex;
@@ -68,9 +69,9 @@ const Marca = styled.div`
 
 `
 const Car = styled.div`
-    width: 30px;
+    width: auto;
     height: 30px;
-    margin: 20px;
+    
 
     &:hover{
         -webkit-filter: drop-shadow(5px 5px 5px #df6fda);
@@ -81,15 +82,14 @@ const Car = styled.div`
 const User = styled.div`
     width: 30px;
     height: 30px;
-    margin-right:10px;
-
 
 `
 const DireitaNav = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 200px;
     align-items: center;
-    padding-right: 65px;
+    height: 50px;
 
 .EntrarRegistrar{
         color:white;
@@ -104,20 +104,85 @@ const DireitaNav = styled.div`
     }
 `
 
+const NomeUsuario = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    p {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+`
+
+const DeslogarDiv = styled.div`
+    align-items: center;
+    width: 30px;
+    height: 30px;
+
+    img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+    }
+`
+
+const LoginDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+`
+
 const Navibar = () => {
     const [isLoginCadastroPages, SetIsLoginCadastroPages] = useState(false);
     const [ inputPesquisa, setInputPesquisa ] = useState('')
-    const { produtos, setProdutos } = useContext(ProdutosContext);
+    const { setProdutos } = useContext(ProdutosContext);
+    const [ userLogin, setUserLogin ] = useState({})
 
     useEffect(() => {
         const currentUrl = window.location.pathname;
         SetIsLoginCadastroPages(currentUrl === '/login' || currentUrl === '/cadastro')
+
+        if(localStorage.user_id) {
+            handleCarregarUsuario(JSON.parse(localStorage.getItem('user_id')).id) 
+        }
+
+
     }, [])
+
+    useEffect(() => {
+        if (inputPesquisa.length == 0) {
+            handleCarregarProdutos()
+        }
+    }, [inputPesquisa])
 
     const handleChangePesquisa = (e) => {
 
         setInputPesquisa(e.target.value)
     }
+
+    const handleCarregarUsuario = async (id) => {
+        const response = await api.get(`/users/${id}`)
+
+        if (response.status == 200) {
+            setUserLogin(response.data)
+        }
+    }
+
+    const handleCarregarProdutos = async () => {
+        
+        const response = await api.get('/produtos')
+
+        setProdutos(response.data)
+    }
+
 
     const handlePesquisar = async (e) => {
         e.preventDefault()
@@ -133,7 +198,10 @@ const Navibar = () => {
         }
     }
 
+    const handleDeslogar = () => {
 
+        localStorage.removeItem('user_id')
+    }
 
 
     return (
@@ -153,24 +221,42 @@ const Navibar = () => {
                 </form>
 
             <DireitaNav className='DireitaNav'>
-                <User className='User'>
-                    <img src={boneco} alt="" />
-                </User>
-
-                
-                <Link className='EntrarRegistrar' to='/login'>Entre/Registrar</Link>
-                
-        
                 <Car className='Car'>
                     <Link to='/carrinho'>  <img src={carrinho} alt="" /></Link>
                 </Car>
+
+                    
+
+                    {(Object.keys(userLogin).length === 0) ? (
+                        <>
+                            <User className='User'>
+                                <img src={boneco} alt="perfil" />
+                            </User>
+
+                            <Link className='EntrarRegistrar' to='/login'>Entre/Registrar</Link>
+                        </>
+                        ) : (
+                        <>  
+                            <Link to={'/pedidos'}>
+                                <User className='User'>
+                                    <img src={boneco} alt="perfil" />
+                                </User>
+                            </Link>
+                            <Link to={'/login'} onClick={handleDeslogar}>
+                                <DeslogarDiv>
+                                    <img src={logoutLogo} alt="Logout" />
+                                </DeslogarDiv>
+                            </Link>
+                        </>
+                    )}
+                
             </DireitaNav>
             </>
             )}
             
         </Navi>
     )
-
+    
 }
 
 export default Navibar

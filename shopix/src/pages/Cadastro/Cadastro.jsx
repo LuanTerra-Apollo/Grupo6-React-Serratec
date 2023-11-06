@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {Form} from "../../components/styles/Forms.style"
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { Input, H1 } from "../../components/styles/Inputs.style"
 import { Button } from "../../components/styles/Buttons.style"
 import {api} from "../../api/api"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 
@@ -13,6 +13,15 @@ const Cadastro = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
+    const navigate = useNavigate()
+
+    useEffect(() => {
+
+      if(localStorage.user_id) {
+        navigate('/')
+      }
+
+    }, [])
 
     const handleCadastro = async (e) => {
         e.preventDefault();

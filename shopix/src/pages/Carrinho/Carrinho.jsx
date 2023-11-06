@@ -257,9 +257,19 @@ const Carrinho = () => {
     
     const navigate = useNavigate()
     const { carrinho, setCarrinho, vlTotalPr, vlTotal, setVlTotal, qtdTotal, setQtdTotal,
-            qtdPr, quantidadeCompra, setQuantidadeCompra, produto, setProduto} = useContext(CarrinhoContext);
+            qtdPr, quantidadeCompra, setQuantidadeCompra, produto, setProduto} = useContext(CarrinhoContext)
 
-    
+    useEffect(() => {
+
+        if(!localStorage.user_id) {
+            navigate('/login')
+        }
+
+    },[])
+
+
+
+
     const comprar = (e) => {
         e.preventDefault()
 

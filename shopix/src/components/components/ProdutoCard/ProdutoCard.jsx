@@ -49,7 +49,7 @@ const DivImg = styled.div`
     width: 100%;
     
     height: 16rem;
-    //max-height: 16rem;
+    min-height: 16rem;
     background-color: #fff;
     
     background-position: center;
