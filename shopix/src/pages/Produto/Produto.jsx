@@ -6,6 +6,7 @@ import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
 import styled from "styled-components";
 import Navibar from "../../components/components/navibar/Navibar";
+import Footer from "../../components/components/footer/Footer"
 
 
 
@@ -57,8 +58,8 @@ const BodyCarrinho = styled.div`
     background: #B8B8B8;
     display: flex;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 `;
 
 const GreenButton = styled.button`
@@ -139,33 +140,37 @@ const Produto = () => {
             {quantidadeCompra}
             <CardProduto produto={produto} handleAddCarrinho={handleAddCarrinho} handleQuantidadeChange={handleQuantidadeChange} /> 
         </Wrapper>
-    */  <Wrapper>
+    */  
+        <Wrapper>
 
-        <Navibar />
-        <BodyCarrinho>
-            <CartContainer> 
-                <ProdutoImg>       
-                    <img src={produto.imgurl} alt="" />
-                </ProdutoImg>
-  
-                <ListaProdutos>
-                    <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                        <h2 style={{marginBottom: '20px', marginTop: '6px'}}>{produto.nome}</h2>
-                        <h2 style={{marginBottom: '20px', marginTop: '6px'}}>R$ {produto.preco}</h2>
-                        <p>{produto.descricao}</p>
-                    </div>
-
-                    <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                        <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                            <p>Quantidade: </p> 
-                            <input type="number" min="0" onChange={handleQuantidadeChange}/> ({quantidade}) disponivel
+            <Navibar />
+            <BodyCarrinho>
+                <CartContainer> 
+                    <ProdutoImg>       
+                        <img src={produto.imgurl} alt="" />
+                    </ProdutoImg>
+    
+                    <ListaProdutos>
+                        <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                            <h2 style={{marginBottom: '20px', marginTop: '6px'}}>{produto.nome}</h2>
+                            <h2 style={{marginBottom: '20px', marginTop: '6px'}}>R$ {produto.preco}</h2>
+                            <p>{produto.descricao}</p>
                         </div>
-                        <GreenButton onClick={handleAddCarrinho}>ADICIONAR AO CARRINHO</GreenButton>
-                    </div>
-                </ListaProdutos> 
-            </CartContainer>
-        </BodyCarrinho>
-    </Wrapper>
+
+                        <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+                                <p>Quantidade: </p> 
+                                <input type="number" min="0" onChange={handleQuantidadeChange}/> ({quantidade}) disponivel
+                            </div>
+                            <GreenButton onClick={handleAddCarrinho}>ADICIONAR AO CARRINHO</GreenButton>
+                        </div>
+                    </ListaProdutos> 
+                </CartContainer>
+            </BodyCarrinho>
+
+            <Footer />
+        
+        </Wrapper>
     )
 }
 

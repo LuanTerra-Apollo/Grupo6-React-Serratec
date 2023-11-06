@@ -6,6 +6,7 @@ const FooterBody = styled.div`
     width: 100%;
     height: 15rem;
     background: linear-gradient(180deg, rgba(255,255,255,1) 80%, rgba(100,41,139,1) 97%);
+    bottom: 0px;
     
     display: grid;
     grid-template-rows: 1fr 2.3fr;
