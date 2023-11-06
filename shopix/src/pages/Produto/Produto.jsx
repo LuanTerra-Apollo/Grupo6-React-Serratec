@@ -110,7 +110,7 @@ const Produto = () => {
 
     const handleAddCarrinho = () => {
 
-        if(quantidadeCompra == '' || quantidadeCompra === 'e'){
+        if(quantidadeCompra == 0 || quantidadeCompra === 'e'){
             alert("Você está brincando, certo? Você precisa comprar pelo menos um produto!")
         }else{
             if (carrinho.some((pr) => pr.produto.id === produto.id)) {

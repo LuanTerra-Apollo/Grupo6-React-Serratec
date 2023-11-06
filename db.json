@@ -35,7 +35,7 @@
   ],
   "produtos": [
     {
-      "id": 1,
+      "id": 17,
       "nome": "Mouse com fio Logitech",
       "preco": 29.99,
       "quantidade": 37,
@@ -44,121 +44,139 @@
       "favoritos": 30
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 2
+      "nome": "Kit Mousepad + Apoio Ergonômico Punho de Teclado Home Office",
+      "preco": 58,
+      "quantidade": 32,
+      "descricao": "Cadeira legal que não vale o que custa",
+      "imgurl": "https://http2.mlstatic.com/D_NQ_NP_934546-MLB72198017168_102023-O.webp",
+      "favoritos": 250,
+      "id": 18
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 3
+        "id": 3,
+        "nome": "Fone de Ouvido Bluetooth",
+        "preco": 49.99,
+        "quantidade": 22,
+        "descricao": "Fone de ouvido sem fio com alta qualidade de som e conexão Bluetooth",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_840376-MLA69998145691_062023-O.webp",
+        "favoritos": 18
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 4
+        "id": 4,
+        "nome": "Monitor 27 polegadas",
+        "preco": 199.99,
+        "quantidade": 10,
+        "descricao": "Monitor de 27 polegadas com resolução Full HD e cores vibrantes",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_728888-MLU72700302191_112023-O.webp",
+        "favoritos": 15
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 5
+        "id": 5,
+        "nome": "Câmera DSLR Profissional",
+        "preco": 699.99,
+        "quantidade": 5,
+        "descricao": "Câmera DSLR de alto desempenho com lente intercambiável e recursos avançados",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_700551-MLA48551412195_122021-O.webp",
+        "favoritos": 12
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 6
+        "id": 6,
+        "nome": "Smartphone Android",
+        "preco": 3349.99,
+        "quantidade": 15,
+        "descricao": "Smartphone Android com tela de 6 polegadas e câmera de alta resolução",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_795980-MLA53989138383_022023-O.webp",
+        "favoritos": 25
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 7
+        "id": 7,
+        "nome": "Impressora Multifuncional",
+        "preco": 4870,
+        "quantidade": 8,
+        "descricao": "Impressora multifuncional com scanner e conectividade sem fio",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_838196-MLA40933371824_022020-O.webp",
+        "favoritos": 10
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 8
+        "id": 8,
+        "nome": "Roteador Wi-Fi de Alta Velocidade",
+        "preco": 179.99,
+        "quantidade": 12,
+        "descricao": "Roteador Wi-Fi de alta velocidade para uma conexão estável e rápida",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_986827-MLB50272786705_062022-W.webp",
+        "favoritos": 14
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 9
+        "id": 9,
+        "nome": "Máquina de Café Automática",
+        "preco": 129.99,
+        "quantidade": 6,
+        "descricao": "Máquina de café automática com moedor de grãos e espumador de leite",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_939057-MLU72571026284_112023-O.webp",
+        "favoritos": 8
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 10
+        "id": 10,
+        "nome": "Headset para Jogos",
+        "preco": 159.99,
+        "quantidade": 20,
+        "descricao": "Headset com microfone para jogos e áudio imersivo",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_868743-MLU70723903299_072023-O.webp",
+        "favoritos": 22
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 11
+        "id": 11,
+        "nome": "Tablet Android",
+        "preco": 1679.99,
+        "quantidade": 7,
+        "descricao": "Tablet Android com tela de 10 polegadas e desempenho rápido",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_670685-MLU72560145921_102023-O.webp",
+        "favoritos": 13
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 12
+        "id": 12,
+        "nome": "Caixa de Som Bluetooth",
+        "preco": 639.99,
+        "quantidade": 14,
+        "descricao": "Caixa de som Bluetooth portátil com alta qualidade de áudio",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_838706-MLA50238533007_062022-O.webp",
+        "favoritos": 19
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 13
+        "id": 13,
+        "nome": "Mochila para Notebook",
+        "preco": 180.99,
+        "quantidade": 25,
+        "descricao": "Mochila resistente para transporte de notebooks e acessórios",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_682165-MLU72566177428_112023-O.webp",
+        "favoritos": 10
     },
     {
-      "nome": "Mouse com fio Logitech",
-      "preco": 29.99,
-      "quantidade": 37,
-      "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
-      "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30,
-      "id": 14
+        "id": 14,
+        "nome": "Mouse sem Fio",
+        "preco": 67.99,
+        "quantidade": 18,
+        "descricao": "Mouse sem fio ergonômico com conectividade Bluetooth",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_951477-MLU72478760266_102023-O.webp",
+        "favoritos": 21
+    },
+    {
+        "id": 15,
+        "nome": "Caixa de Ferramentas",
+        "preco": 449.99,
+        "quantidade": 9,
+        "descricao": "Caixa de ferramentas com múltiplos compartimentos para armazenamento organizado",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_987349-MLB32654318655_102019-O.webp",
+        "favoritos": 7
+    },
+    {
+        "id": 16,
+        "nome": "Máquina de Lavar Roupas",
+        "preco": 1959,
+        "quantidade": 3,
+        "descricao": "Máquina de lavar roupas com capacidade para 10 kg de roupa",
+        "imgurl": "https://http2.mlstatic.com/D_NQ_NP_807488-MLA48818518149_012022-O.webp",
+        "favoritos": 5
     }
   ],
   "pedidos": [

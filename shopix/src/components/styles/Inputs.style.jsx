@@ -36,7 +36,3 @@ export const Input = styled.input`
         font-weight: bold;
     }
 `
-export const H1 = styled.h1`
-    width: ${(prop) => prop.width};
-    height: ${(prop) => prop.height};
-`
