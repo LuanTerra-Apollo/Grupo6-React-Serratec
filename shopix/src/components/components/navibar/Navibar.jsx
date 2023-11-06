@@ -1,4 +1,4 @@
-import logo from '../../../img/shopix.png'
+import logo from '../../../img/SHOPIX2.png'
 import { Link } from "react-router-dom";
 import boneco from '../../../img/boneco.png'
 import styled from 'styled-components';
@@ -58,11 +58,13 @@ const Marca = styled.div`
     height: 45px;
 
     .Marca{
+
+        filter: invert(100%);
+        margin-left: 20px;
         
         &:hover{
-            -webkit-filter: drop-shadow(5px 5px 5px #df6fda);
-             filter: drop-shadow(6px 4px 4px #df6fda);
-        
+            /* -webkit-filter: drop-shadow(5px 5px 5px #df6fda); */
+            /* filter: drop-shadow(6px 4px 4px #df6fda); */
         }
     }
     
