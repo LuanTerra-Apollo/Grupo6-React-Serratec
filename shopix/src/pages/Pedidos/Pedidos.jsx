@@ -70,8 +70,7 @@ const Pedidos = () => {
         <Wrapper>
             <Navibar/>
                 {pedidos.map((elemento, idx) => <div key={idx}>{elemento.nome}</div>)}
-
-                {/*<ListaPedidos pedidos={pedidos} />*/}
+                <ListaPedidos pedidos={pedidos} />
             <Footer/>            
         </Wrapper>
     )
