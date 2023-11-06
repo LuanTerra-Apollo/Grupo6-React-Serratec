@@ -49,13 +49,23 @@ const Pedidos = () => {
 
     const handleCarregarProduto = (produtos, item) => {
         
-        const produto = produtos.filter(produto => {
-            if (produto.id === item.id) {
-                return produto
+        let produtoEncontrado = {}
+
+        produtos.forEach(produto => {
+            if (produto.id === item.idProduto) {
+                const itemAtualizado = {
+                    nome: produto.nome,
+                    imgurl: produto.imgurl,
+                    quantidade: item.quantidade
+                }
+
+                console.log(itemAtualizado)
+
+                produtoEncontrado = itemAtualizado
             }
         })
 
-        return produto
+        return produtoEncontrado
     }
     
     return (

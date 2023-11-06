@@ -231,31 +231,31 @@ const ListaPedidos = ({pedidos}) => {
     return (
         <> 
             <ContainerPedido>
-                {pedidos.map((pedidos) => {
-                    <DescricaoPedido>
+                {pedidos.map((pedido, idx) => {
+                    <DescricaoPedido key={idx}>
                         <div className='PrimeiraLinha'>
                             <p className='StatusPedido'>Pedido Realizado</p>
                             <p className='Total'>Total</p>
-                            <p className='CodigoPedido'>Pedido {pedidos.id}</p>
+                            <p className='CodigoPedido'>Pedido #{pedido.id}</p>
                         </div>
                         <div className='SegundaLinha'>
-                            <p className='DataPedido'>dd/MM/YYYY</p>
-                            <p className='ValorTotal'>R$ {pedidos.nValorTotal}</p>
+                            <p className='DataPedido'>{pedido.dataPedido}</p>
+                            <p className='ValorTotal'>R$ {pedido.valorTotal}</p>
                         </div>
                     </DescricaoPedido> 
-                    /*
-                    {produtosPedido.map((produtosPedido) => {
-                        <CardProdutoPedido>
+                    {pedidos.itens.map((item, idx) => {
+                        <CardProdutoPedido key={idx}>
                             <div className='divImagem'>
-                                <img src={produtosPedido.produto.imgurl} alt="" />
+                                <img src={item.imgurl} alt="" />
                             </div>
                             <div className='CardProduto'>
-                                <h3>{produtosPedido.produto.nome}:</h3>
+                                <h3>{item.nome}:</h3>
+                                <h4>{item.quantidade}</h4>
                                 <Button className='BotaoProduto'> comprar novamente </Button>
                             </div>
-                            <div className='divFavorito'><button><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div>
+                            {/* <div className='divFavorito'><button><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div> */}
                         </CardProdutoPedido>
-                    })}*/
+                    })}
                 })}
             </ContainerPedido>
         </>
