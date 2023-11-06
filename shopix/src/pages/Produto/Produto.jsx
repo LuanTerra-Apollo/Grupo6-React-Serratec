@@ -96,7 +96,7 @@ const Produto = () => {
 
     //teste
     const inserir = () => {
-        if(quantidadeCompra.qtdCompra == '' || quantidadeCompra.qtdCompra === 'e'){
+        if(quantidadeCompra.qtdCompra == 0 || quantidadeCompra.qtdCompra === 'e'){
             alert("Você está brincando, certo? Você precisa comprar pelo menos um produto!")
         }else{
             handleAddCarrinho(produto)
