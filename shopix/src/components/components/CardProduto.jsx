@@ -83,23 +83,23 @@ const CardProdutoStyled = styled.div`
     }
 `
 
-const CardProduto = () => {
+const CardProduto = ({ produto, handleQuantidadeChange, handleAddCarrinho }) => {
   return (
     <CardProdutoStyled height='84%' width='72%'>
-        <div className='divImagem'></div>
+        <div className='divImagem'><img src={produto.imgurl} alt={produto.nome} /></div>
         <div className='divProduto'>
           <div className='divProdutoFavorito'>
-            <h1>Nome Produto</h1>
-            <img src="https://i.imgur.com/mKjFPY5.png" alt="" />
+            <h1>{produto.nome}</h1>
+            <img src="https://i.imgur.com/mKjFPY5.png" alt="Favorito" />
             <p>(30)</p>
           </div>
           <div className='divValorDescricao'>
-            <h1>$$,$$</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem alias id, minus veniam quia ratione error magnam magni tempore, optio adipisci, autem numquam quas ipsam voluptas sed. Dolores, excepturi inventore?</p>
+            <h1>{produto.preco}</h1>
+            <p>{produto.descricao}</p>
           </div>
           <div className='divQuantidadeBotao'>
-            <p className='quantidade'>Quantidade: <input type="number" /> unidade(s)</p> 
-            <Button className='botao' height='10%' width='80%'>Adicionar ao Carrinho</Button>
+            <p className='quantidade'>Quantidade: <input type="number" onChange ={handleQuantidadeChange}  /> unidade(s)</p> 
+            <Button className='botao' height='10%' width='80%' onClick={handleAddCarrinho}>Adicionar ao Carrinho</Button>
           </div>
         </div>
     </CardProdutoStyled>
@@ -107,3 +107,5 @@ const CardProduto = () => {
 }
 
 export default CardProduto
+
+// onChange={() => {props.handleQuantidadeChange()}}

@@ -8,16 +8,19 @@ import Produtos from './pages/Produtos/Produtos.jsx' ;
 import Produto from './pages/Produto/Produto.jsx';
 import Login from './pages/Login/Login.jsx';
 import Cadastro from './pages/Cadastro/Cadastro.jsx';
-import Carrinho from './pages/Carrinho/Carrinho.jsx';
 import Pedido from './pages/Pedidos/Pedidos.jsx';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './components/styles/Theme.style.jsx';
 import { GlobalStyle } from './components/styles/GlobalStyle.style.jsx';
+import { LoginProvider } from './context/LoginContext.jsx';
+import { ProdutosProvider } from './context/ProdutosContext.jsx';
+import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
+import Carrinho from './pages/Carrinho/Carrinho.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Produtos />,
+    element: <Produtos />
   },
   {
     path: "/login",
@@ -28,11 +31,11 @@ const router = createBrowserRouter([
     element: <Cadastro />
   },
   {
-    path: "/pedido",
+    path: "/pedidos",
     element: <Pedido />
   },
   {
-    path: "/produto",
+    path: "/produto/:id",
     element: <Produto />
   },
   {
@@ -43,9 +46,15 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle/>
-      <RouterProvider router={router} />
-    </ThemeProvider>
-  </React.StrictMode>,
+    <LoginProvider>
+      <ProdutosProvider>
+        <CarrinhoProvider>
+          <ThemeProvider theme ={theme}>
+            <GlobalStyle />
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </CarrinhoProvider>
+      </ProdutosProvider>
+    </LoginProvider>
+  </React.StrictMode>
 )
