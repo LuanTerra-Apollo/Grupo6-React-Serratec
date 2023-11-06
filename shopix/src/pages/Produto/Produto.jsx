@@ -176,15 +176,6 @@ const Produto = () => {
         buscarProduto()
     }, []);
 
-    //teste
-    const inserir = () => {
-        if(quantidadeCompra.qtdCompra == 0 || quantidadeCompra.qtdCompra === 'e'){
-            alert("Você está brincando, certo? Você precisa comprar pelo menos um produto!")
-        }else{
-            handleAddCarrinho(produto)
-        }
-    }
-
     const handleQuantidadeChange = (e) => {
         if(quantidadeCompra <= produto.quantidade){
             setQuantidadeCompra(e.target.value);
@@ -192,7 +183,7 @@ const Produto = () => {
       };
 
     const handleAddCarrinho = () => {
-
+        if (localStorage.getItem('user_id') !== null && localStorage.getItem('user_id') !== undefined) {
         if(quantidadeCompra == 0 || quantidadeCompra === 'e'){
             alert("Você está brincando, certo? Você precisa comprar pelo menos um produto!")
         }else{
@@ -212,6 +203,9 @@ const Produto = () => {
                     navigate('/carrinho')
                 }
             }
+        }
+        }else{
+            alert("Por favor, faça login para continuar com a compra.")
         }
     }
 
