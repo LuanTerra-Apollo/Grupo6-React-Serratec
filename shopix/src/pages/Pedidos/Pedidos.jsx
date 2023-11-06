@@ -1,3 +1,5 @@
+
+import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import ListaPedidos from "../../components/components/ListaPedidos"
 import Footer from "../../components/components/footer/Footer"
@@ -11,15 +13,16 @@ const Pedidos = () => {
     const userId = JSON.parse(localStorage.getItem('user_id')).id;
 
     useEffect(() => {
+        if(!localStorage.user_id) {
+            navigate('/login')
+        }
         handleCarregarPedidos()
-        //handleCarregarProdutosPedido()
     }, [])
 
     const handleCarregarPedidos = async () => {
         const responsePedidos = await api.get('/pedidos')
         const responseProdutos = await api.get('/produtos')
             
-
         const pedidosDoUsuario = responsePedidos.data.filter((pedido) => {
             if (pedido.idUser === userId){
                 return pedido
@@ -44,7 +47,6 @@ const Pedidos = () => {
 
     }
 
- 
     const handleCarregarProduto = (produtos, item) => {
         
         const produto = produtos.filter(produto => {
@@ -55,17 +57,7 @@ const Pedidos = () => {
 
         return produto
     }
-
-
-
     
-    const handleCarregarProdutosPedido = async () => {
-        const response = await api.get('/produtos')
-        
-        setProdutos(response.data)
-    }
-    
-
     return (
         <Wrapper>
             <Navibar/>
