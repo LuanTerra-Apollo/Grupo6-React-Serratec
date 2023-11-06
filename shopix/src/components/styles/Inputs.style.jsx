@@ -23,19 +23,22 @@ export const InputBarraPesquisa = styled.input`
 `
 
 export const Input = styled.input`
-    padding-left: 5px;
+    padding-left: 10px;
     width: ${(prop) => prop.width};
     height: ${(prop) => prop.height};
     font-family: 'Inter';
     font-size: 24px;
-    font-weight: bold;
+    /* font-weight: bold; */
     border-radius: 15px;
-    background: ${({theme}) => theme.colors.inputGray};
+    /* background: ${({theme}) => theme.colors.inputGray}; */
+    background: #EBEBEB;
+    outline: none;
+    border: none;
 
     &::placeholder{
         color: #323232cc;
-        font-size: 24px;
+        font-size: 20px;
         font-family: 'Inter';
-        font-weight: bold;
+        /* font-weight: bold; */
     }
 `

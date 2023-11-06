@@ -6,42 +6,44 @@ import { useState } from 'react'
 
 const LoginContainer = styled.div`
 
-    height: 45rem;
+    min-height: 45rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #EBEBEB;
 `
 
 const FormLoginStyled = styled.form`
     width: ${(prop) => prop.width};
     height: ${(prop) => prop.height};
-    min-width: 480px;
-    min-height: 560px;
-    background-color: ${({theme}) => theme.colors.geralWhite};
+    min-height: 25rem;
+    max-height: 25rem;
+    background-color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px rgb(97, 96, 96);
 
     h1 {
         font-size: 60px;
-        margin-top: 24px;
-        margin-bottom: 60px;
+        text-shadow: -4px 3px 4px #8d8d8d;;
+        /* margin-top: 24px;
+        margin-bottom: 60px; */
     }
 
     .Cadastre-se {
         /* position: absolute;
         transform: translate(0%, 870%); */
         color: #007094;
-        font-weight: bold;
-        font-size: 150%;
+        /* font-weight: bold; */
+        font-size: 20px;
     }
 
     .InputLogin {
-        margin-bottom: -36px
+        /* margin-bottom: -36px */
     }
     
     @media (max-width: 1280px) {
@@ -105,12 +107,23 @@ export const FormLogin = (props) => {
     
     return (
         <LoginContainer>
-            <FormLoginStyled width='25%' height='50%' className='formLogin' onSubmit={handleSubmit}>
-                <h1>Login</h1>
-                <Input className="InputLogin" width='86%' height='8%' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}} placeholder='email' required='required' /> <br />
-                <Input width='86%' height='8%' type="text" value={senha} onChange={(e) => {setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
-                <Button className="BotaoLogin" width='48%' height='13%' type='submit'>Entrar</Button> <br />
-                <Link className="Cadastre-se" to={'/cadastro'} >Cadastre-se</Link>
+            <FormLoginStyled width='55%' height='50%' className='formLogin' onSubmit={handleSubmit}>
+                <div style={{width: "100%", height: "100%"}}>
+                    <img style={{ width: "100%", height: "100%", padding: "20px 0 20px 20px"}} src="https://educationtribe.in/wp-content/uploads/2020/11/Digital-Marketing.png" alt="" />
+                </div>
+                <div style={{width: "65%"}}>
+                    <div style={{width: "100%", marginBottom: "20px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                    <h1 style={{margin: "40px 0 40px 0"}}>Login</h1>
+                        <Input className="InputLogin" width='90%' height='8%' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}} placeholder='email' required='required' /> <br />
+                        <Input width='90%' height='8%' type="text" value={senha} onChange={(e) => {setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
+                    </div>
+
+                    <div style={{width: "100%", marginBottom: "20px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                        <Button className="BotaoLogin" width='90%' height='13%' type='submit'>Entrar</Button> <br />
+                        <p>Não possui uma conta?  <Link className="Cadastre-se" to={'/cadastro'} >Cadastre-se</Link></p>
+                    </div>
+                </div>
+                
             </FormLoginStyled>
         </LoginContainer>
     )

@@ -44,7 +44,7 @@ const Login = () => {
     return (
         <Wrapper>
             <Navibar/>
-            <FormLogin handleLogin={handleLogin} email={email} setEmail={setEmail} senha={senha} setSenha={setSenha} />
+                <FormLogin handleLogin={handleLogin} email={email} setEmail={setEmail} senha={senha} setSenha={setSenha} />
             <Footer />
         </Wrapper>
     )
