@@ -114,7 +114,7 @@ export const FormLogin = (props) => {
                     <div style={{width: "100%", marginBottom: "20px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <h1 style={{margin: "40px 0 40px 0"}}>Login</h1>
                         <Input className="InputLogin" width='90%' height='8%' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}} placeholder='email' required='required' /> <br />
-                        <Input width='90%' height='8%' type="text" value={senha} onChange={(e) => {setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
+                        <Input width='90%' height='8%' type="password" value={senha} onChange={(e) => {setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
                     </div>
 
                     <div style={{width: "100%", marginBottom: "20px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>

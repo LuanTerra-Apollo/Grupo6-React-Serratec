@@ -163,7 +163,7 @@ const BodyCarrinho = styled.div`
     display: flex;
     justify-content: space-between;
     background: #EBEBEB;
-    min-height: 40rem;
+    min-height: 100vh;
     /* width: 100vw; */
     /* height: 100vh; */
     /* background: url('https://c4.wallpaperflare.com/wallpaper/244/150/511/simple-background-texture-wallpaper-preview.jpg'); */
@@ -323,6 +323,7 @@ const Carrinho = () => {
         }))
 
         const pedido = {
+            dataPedido: new Date().toLocaleDateString(),
             valorTotal: vlTotal,
             idUser: userId,
             itens: pedidoItens,
@@ -344,6 +345,7 @@ const Carrinho = () => {
                 }
                 return item;
             });
+            console.log(new Date().toLocaleDateString())
         setCarrinho(carrinhoAtualizado);
         }
     }
@@ -404,16 +406,26 @@ const Carrinho = () => {
     }
   }
 
+  const limparCarrinho = () => {
+    setCarrinho([])
+    setQtdTotal(0)
+    setVlTotal(0)
+  }
+
+  const btnLimparCarrinho = () => {
+
+    if(carrinho.length != 0){
+        return (
+        <GreenButton style={{width: "60%", margin: "0 auto", display: "block"}} onClick={limparCarrinho}>LIMPAR CARRINHO</GreenButton>
+        )
+    }
+  }
+
     return (
     <Wrapper>
     <Navibar/>
     <BodyCarrinho>
         <ListaProdutos>
-        {/* <Titulo>
-            <h4>{carrinho[0].produto.nome}</h4>
-            <img src='https://cdn-icons-png.flaticon.com/512/484/484662.png' alt="Descrição da imagem" onClick={() => {handleExibirProdutoParaTeste()}}/>
-        </Titulo> */}
-            {/* {handleExibirProdutoParaTeste} */}
             {carrinhoVazio()}
             {carrinho.map((pr, index) => (
                 <div key={index}>
@@ -451,6 +463,8 @@ const Carrinho = () => {
                 </CartContainer>
                 </div>
             ))}
+
+            {btnLimparCarrinho()}
         </ListaProdutos>
         
         
@@ -482,7 +496,6 @@ const Carrinho = () => {
             <GreenButton onClick={comprar}>COMPRAR</GreenButton> 
                {/*  */}
                 <div>
-                    <button onClick={testar}>for teste</button>
                     {showModal && (
                         <div className="modal-background">
                         <div className="modal">

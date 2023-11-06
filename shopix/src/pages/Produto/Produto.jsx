@@ -242,7 +242,7 @@ const Produto = () => {
                         <div style={{width: '100%', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                             <h1 id="nome" >{produto.nome}</h1>
                             <h2 style={{marginTop: '6px'}}>R$ {produto.preco}</h2>
-                            <p style={{color: 'green', marginBottom: '16px'}}>em ate 3x R$ {parseFloat(produto.preco/3).toFixed(2) } sem juros</p>
+                            <p style={{color: 'green', marginBottom: '16px'}}>em ate 3x R$ {parseFloat(produto.preco/3).toFixed(3) } sem juros</p>
                             {/* <Descricao > */}
                                 {/* <Contador /> */}
                                 <h4 >Descrição do produto</h4>
