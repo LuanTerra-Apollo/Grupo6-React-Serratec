@@ -3,7 +3,7 @@ import { useContext, useState, } from 'react'
 import { api } from '../../api/api'
 import { Input } from '../../components/styles/Inputs.style'
 import { Wrapper } from "../../components/styles/Wrapper.style"
-import { FormLogin } from "../../components/styles/Forms.style"
+import { FormLogin } from "../../components/styles/Login.style"
 import { Button } from "../../components/styles/Buttons.style"
 import Navibar from "../../components/components/navibar/Navibar"
 import { LoginContext } from "../../context/LoginContext"

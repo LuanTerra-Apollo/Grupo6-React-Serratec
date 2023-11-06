@@ -98,11 +98,10 @@ export const FormLogin = (props) => {
     const [senha, setSenha] = useState(props.senha)
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-    
-        // Passa o e-mail e a senha para a página de login
-        props.handleLogin(email, senha);
-      };
+        e.preventDefault()
+
+        props.handleLogin(email, senha)
+      }
     
     return (
         <LoginContainer>
@@ -116,17 +115,3 @@ export const FormLogin = (props) => {
         </LoginContainer>
     )
 }
-
-export const Form = styled.form`
-    width: ${(prop) => prop.width};
-    height: ${(prop) => prop.height};
-    min-width: 480px;
-    min-height: 560px;
-    background-color: ${({theme}) => theme.colors.geralWhite};
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 8px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-`
