@@ -227,7 +227,7 @@ const CardProdutoPedido = styled.div`
     }
 `
 
-const ListaPedidos = ({pedidos, produtosPedido}) => {
+const ListaPedidos = ({pedidos}) => {
     return (
         <> 
             <ContainerPedido>
@@ -243,6 +243,7 @@ const ListaPedidos = ({pedidos, produtosPedido}) => {
                             <p className='ValorTotal'>R$ {pedidos.nValorTotal}</p>
                         </div>
                     </DescricaoPedido> 
+                    /*
                     {produtosPedido.map((produtosPedido) => {
                         <CardProdutoPedido>
                             <div className='divImagem'>
@@ -254,7 +255,7 @@ const ListaPedidos = ({pedidos, produtosPedido}) => {
                             </div>
                             <div className='divFavorito'><button><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div>
                         </CardProdutoPedido>
-                    })}
+                    })}*/
                 })}
             </ContainerPedido>
         </>

@@ -7,52 +7,71 @@ import { api } from "../../api/api"
 
 const Pedidos = () => {
     const [pedidos, setPedidos] = useState([])
-    const [produtosPedido, setProdutosPedido] = useState([])
 
     const userId = JSON.parse(localStorage.getItem('user_id')).id;
 
     useEffect(() => {
         handleCarregarPedidos()
-        handleCarregarProdutosPedido()
+        //handleCarregarProdutosPedido()
     }, [])
 
     const handleCarregarPedidos = async () => {
-        const response = await api.get('/pedidos')
+        const responsePedidos = await api.get('/pedidos')
+        const responseProdutos = await api.get('/produtos')
+            
 
-        
-        const pedidosDoUsuario = response.data.map((pedido) => {
+        const pedidosDoUsuario = responsePedidos.data.filter((pedido) => {
             if (pedido.idUser === userId){
                 return pedido
             }
         })
 
-        console.log(pedidosDoUsuario)
+        const pedidosAtualizados = pedidosDoUsuario.map((pedido) => {
 
-        setPedidos(pedidosDoUsuario)
+            const itensAtualizados = pedido.itens.map((item) => {
+                const response = handleCarregarProduto(responseProdutos.data, item)
+                
+                return response
 
-        console.log(pedidos)
+            })
+
+            pedido.itens = itensAtualizados
+
+            return pedido
+        })
+        
+        setPedidos(pedidosAtualizados)
+
     }
 
-    const handleCarregarProdutosPedido = async () => {
-        const response = await api.get('/produtos')
-
-        const produtosDoPedido = response.data.map((produto) => {
-            if (pedidos.forEach(({item}) => item.idProduto == produto.id)) {
+ 
+    const handleCarregarProduto = (produtos, item) => {
+        
+        const produto = produtos.filter(produto => {
+            if (produto.id === item.id) {
                 return produto
             }
         })
 
-        console.log(produtosDoPedido)
-        
-        setProdutosPedido(produtosDoPedido)
-
-        console.log(produtosPedido)
+        return produto
     }
+
+
+
+    
+    const handleCarregarProdutosPedido = async () => {
+        const response = await api.get('/produtos')
+        
+        setProdutos(response.data)
+    }
+    
 
     return (
         <Wrapper>
             <Navibar/>
-                <ListaPedidos pedidos={pedidos} produtosPedido={produtosPedido} />
+                {pedidos.map((elemento, idx) => <div key={idx}>{elemento.nome}</div>)}
+
+                {/*<ListaPedidos pedidos={pedidos} />*/}
             <Footer/>            
         </Wrapper>
     )
