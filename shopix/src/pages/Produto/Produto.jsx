@@ -6,15 +6,16 @@ import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
 import styled from "styled-components";
 import Navibar from "../../components/components/navibar/Navibar";
-import Footer from "../../components/components/footer/Footer"
+import Footer from "../../components/components/footer/Footer";
+// import Contador from "../../components/components/contador/Contador";
 
 
 
 const CartContainer = styled.div`
     margin: 20px;
     padding: 10px;
-    height: 95%;
-    width: 90%;
+    height: 30rem;
+    width: 60%;
     background-color: #ffffff;
     box-shadow: 2px 2px 8px #8f8f8f;
     border-radius: 6px;
@@ -22,27 +23,88 @@ const CartContainer = styled.div`
     justify-content: space-between;
 `;
 
-const ListaProdutos = styled.div`
+const InfoProduto = styled.div`
     padding: 20px;
-    margin: 15px;
-    box-shadow: 2px 2px 15px #7c7c7c;
-    background-color: red;
-    width: 25%;
+    /* margin: 15px; */
+    border-radius: 4px;
+    /* box-shadow: 2px 2px 15px #7c7c7c; */
+    /* background-color: #EBEBEB; */
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: start;
 
     input{
-        width: 50px;
-        height: 20px;
+        width: 59px;
+        height: 35px;
+        font-size: 30px;
+        border-radius: 4px;
+        border: 1px solid black;
+        padding-left: 8px;
+        margin: 0 15px 0 10px;
+   
     }
+
+    #nome {
+    /* background-color: #64298b; */
+    /* color: white; */
+    margin-bottom: 20px;
+    margin-top: 6px;
+    /* border: none; */
+    /* padding: 10px 20px; */
+    /* border-radius: 5px; */
+    /* cursor: pointer;  */
+    /* font-size: 24px; */
+    /* box-shadow: -1px 1px 3px black; */
+    width: 100%;
+    }
+
+    .quantidade-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+.botao-diminuir,
+.botao-aumentar {
+  width: 35px;
+  height: 35px;
+  font-size: 28px;
+  cursor: pointer;
+  background-color: #64298b;
+  border: none;
+  color: white;
+}
+
+.botao-diminuir{
+    border-radius: 4px 0 0 4px;
+}
+
+.botao-aumentar{
+    border-radius: 0 4px 4px 0;
+}
+
+.botao-diminuir:hover,
+.botao-aumentar:hover{
+    background-color: #9e42db;
+}
+
+
+.quantidade {
+  font-size: 18px;
+  margin: 0 10px;
+}
 `;
 
 const ProdutoImg = styled.div`
     padding: 20px;
     margin: 15px;
-    box-shadow: 2px 2px 15px #7c7c7c;
+    border-radius: 15px;
+    background-color: white;
+    /* box-shadow: -1px 1px 5px #64298b99; */
     width: 55%;
     min-height: 0;
 
@@ -55,27 +117,40 @@ const ProdutoImg = styled.div`
 
 const BodyCarrinho = styled.div`
     padding: 25px;
-    background: #B8B8B8;
+    background: #EBEBEB;
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    align-items: center;
+    /* width: 100vw; */
+    min-height: 40rem;
+    margin-bottom: 150px;
 `;
 
 const GreenButton = styled.button`
-  background-color: #4CAF50;
+  background-color: #64298b;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer; 
   font-size: 16px;
-  margin-top: 25px;
+  box-shadow: -1px 1px 3px black;
+  margin-top: 15px;
+  width: 100%;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #9e42db;
+    box-shadow: none;
   }
-`
+`;
+
+const Descricao = styled.div`
+    /* background: #ffffff; */
+    /* box-shadow: 0px 0px 5px #c2c2c2; */
+    border-radius: 3px;
+    height: 12rem;
+    padding: 10px 5px;
+`;
 
 const Produto = () => {
     const { id } = useParams()
@@ -88,7 +163,8 @@ const Produto = () => {
     
     const buscarProduto = async () => {
         const response = await api.get(`/produtos/${id}`)
-        setProduto(response.data); 
+        setProduto(response.data);
+        setQuantidadeCompra(1)
     };
 
     useEffect(() => {
@@ -105,12 +181,14 @@ const Produto = () => {
     }
 
     const handleQuantidadeChange = (e) => {
-        setQuantidadeCompra(e.target.value);
+        if(quantidadeCompra <= produto.quantidade){
+            setQuantidadeCompra(e.target.value);
+        }
       };
 
     const handleAddCarrinho = () => {
 
-        if(quantidadeCompra == '' || quantidadeCompra === 'e'){
+        if(quantidadeCompra == 0 || quantidadeCompra === 'e'){
             alert("Você está brincando, certo? Você precisa comprar pelo menos um produto!")
         }else{
             if (carrinho.some((pr) => pr.produto.id === produto.id)) {
@@ -132,6 +210,16 @@ const Produto = () => {
         }
     }
 
+    useEffect(() => {
+        if(quantidadeCompra > produto.quantidade){
+            setQuantidadeCompra(produto.quantidade)
+        }
+        if(quantidadeCompra < 1){
+            setQuantidadeCompra(1)
+        }
+    }, [quantidadeCompra])
+
+
     return (
 
     /*
@@ -144,31 +232,43 @@ const Produto = () => {
         <Wrapper>
 
             <Navibar />
+            {/* {quantidadeCompra} */}
             <BodyCarrinho>
                 <CartContainer> 
                     <ProdutoImg>       
                         <img src={produto.imgurl} alt="" />
                     </ProdutoImg>
     
-                    <ListaProdutos>
-                        <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                            <h2 style={{marginBottom: '20px', marginTop: '6px'}}>{produto.nome}</h2>
-                            <h2 style={{marginBottom: '20px', marginTop: '6px'}}>R$ {produto.preco}</h2>
-                            <p>{produto.descricao}</p>
+                    <InfoProduto>
+                        <div style={{width: '100%', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                            <h1 id="nome" >{produto.nome}</h1>
+                            <h2 style={{marginTop: '6px'}}>R$ {produto.preco}</h2>
+                            <p style={{color: 'green', marginBottom: '16px'}}>em ate 3x R$ {parseFloat(produto.preco/3).toFixed(2) } sem juros</p>
+                            {/* <Descricao > */}
+                                {/* <Contador /> */}
+                                <h4 >Descrição do produto</h4>
+                                <p style={{marginTop: '5px'}}>{produto.descricao}</p>
+                            {/* </Descricao> */}
                         </div>
-
-                        <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                                <p>Quantidade: </p> 
-                                <input type="number" min="0" onChange={handleQuantidadeChange}/> ({quantidade}) disponivel
+                        <div style={{width: '100%', display: "flex", flexDirection: "column", justifyContent: "space-between", margin: "auto auto 0"}}>
+                            <div style={{display: "flex", width: '100%', alignItems: "center"}}>
+                                {/* <div class="quantidade-container">
+                                    <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
+                                    <div class="quantidade">{quantidadeCompra} </div>
+                                    <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
+                                </div> */}
+                                <p style={{fontSize: "20px"}}>Quantidade: </p>
+                                <input type="number" min="1" value={quantidadeCompra} onChange={handleQuantidadeChange}/>
                             </div>
                             <GreenButton onClick={handleAddCarrinho}>ADICIONAR AO CARRINHO</GreenButton>
+                                <p style={{color: 'green', textAlign: "center", marginTop: '5px', fontSize: '14px'}}> Apenas {produto.quantidade} em estoque </p>
                         </div>
-                    </ListaProdutos> 
+
+                    </InfoProduto> 
                 </CartContainer>
             </BodyCarrinho>
-
             <Footer />
+
         
         </Wrapper>
     )

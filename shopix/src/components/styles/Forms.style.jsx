@@ -5,8 +5,8 @@ import { Button } from './Buttons.style'
 import { useState } from 'react'
 
 const LoginContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
+
+    height: 45rem;
     display: flex;
     justify-content: center;
     align-items: center;

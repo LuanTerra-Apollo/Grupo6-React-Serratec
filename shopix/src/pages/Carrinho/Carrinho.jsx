@@ -163,6 +163,7 @@ const BodyCarrinho = styled.div`
     display: flex;
     justify-content: space-between;
     background: #EBEBEB;
+    min-height: 40rem;
     /* width: 100vw; */
     /* height: 100vh; */
     /* background: url('https://c4.wallpaperflare.com/wallpaper/244/150/511/simple-background-texture-wallpaper-preview.jpg'); */
