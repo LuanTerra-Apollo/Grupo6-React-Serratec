@@ -227,29 +227,36 @@ const CardProdutoPedido = styled.div`
     }
 `
 
-const ListaPedidos = (props) => {
+const ListaPedidos = ({pedidos}) => {
     return (
-        <>
+        <> 
             <ContainerPedido>
-                <DescricaoPedido>
-                    <div className='PrimeiraLinha'>
-                        <p className='StatusPedido'>Pedido Realizado</p>
-                        <p className='Total'>Total</p>
-                        <p className='CodigoPedido'>Pedido #224</p>
-                    </div>
-                    <div className='SegundaLinha'>
-                        <p className='DataPedido'>dd/MM/YYYY</p>
-                        <p className='ValorTotal'>R$ $$,$$</p>
-                    </div>
-                </DescricaoPedido>
-                <CardProdutoPedido>
-                    <div className='divImagem'></div>
-                    <div className='CardProduto'>
-                        <h3>Nome Produto:</h3>
-                        <Button className='BotaoProduto'> comprar novamente </Button>
-                    </div>
-                    <div className='divFavorito'><button><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div>
-                </CardProdutoPedido>
+                {pedidos.map((pedidos) => {
+                    <DescricaoPedido>
+                        <div className='PrimeiraLinha'>
+                            <p className='StatusPedido'>Pedido Realizado</p>
+                            <p className='Total'>Total</p>
+                            <p className='CodigoPedido'>Pedido {pedidos.id}</p>
+                        </div>
+                        <div className='SegundaLinha'>
+                            <p className='DataPedido'>dd/MM/YYYY</p>
+                            <p className='ValorTotal'>R$ {pedidos.nValorTotal}</p>
+                        </div>
+                    </DescricaoPedido> 
+                    /*
+                    {produtosPedido.map((produtosPedido) => {
+                        <CardProdutoPedido>
+                            <div className='divImagem'>
+                                <img src={produtosPedido.produto.imgurl} alt="" />
+                            </div>
+                            <div className='CardProduto'>
+                                <h3>{produtosPedido.produto.nome}:</h3>
+                                <Button className='BotaoProduto'> comprar novamente </Button>
+                            </div>
+                            <div className='divFavorito'><button><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div>
+                        </CardProdutoPedido>
+                    })}*/
+                })}
             </ContainerPedido>
         </>
     )
