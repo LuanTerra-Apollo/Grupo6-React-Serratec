@@ -4,10 +4,10 @@ import boneco from '../../../img/boneco.png'
 import styled from 'styled-components';
 import carrinho from '../../../img/carrinho.png'
 import { InputBarraPesquisa } from '../../styles/Inputs.style';
-
-import { useState, useEffect } from 'react';
+import { api } from '../../../api/api'
+import { useState, useEffect, useContext } from 'react';
 import { LoginContext } from '../../../context/LoginContext';
-
+import { ProdutosContext } from '../../../context/ProdutosContext'
 
 const Navi = styled.nav`
     display: flex;
@@ -106,11 +106,35 @@ const DireitaNav = styled.div`
 
 const Navibar = () => {
     const [isLoginCadastroPages, SetIsLoginCadastroPages] = useState(false);
+    const [ inputPesquisa, setInputPesquisa ] = useState('')
+    const { produtos, setProdutos } = useContext(ProdutosContext);
 
     useEffect(() => {
         const currentUrl = window.location.pathname;
         SetIsLoginCadastroPages(currentUrl === '/login' || currentUrl === '/cadastro')
     }, [])
+
+    const handleChangePesquisa = (e) => {
+
+        setInputPesquisa(e.target.value)
+    }
+
+    const handlePesquisar = async (e) => {
+        e.preventDefault()
+        
+        const response = await api.get('/produtos', {params: {
+            nome_like: inputPesquisa
+        }})
+
+        if (response.data.length < 1) {
+            alert('Nenhum produto foi econtrado!')
+        } else {
+            setProdutos(response.data)
+        }
+    }
+
+
+
 
     return (
         <Navi >
@@ -123,9 +147,10 @@ const Navibar = () => {
                 </>
             ) : (
                 <>
-                <div>
-                <InputBarraPesquisa className='Pesquisa' type="text" placeholder='pesquisar' />
-            </div>
+                <form action="" onSubmit={handlePesquisar}>
+                    <InputBarraPesquisa className='Pesquisa' type="search" placeholder='pesquisar' value={inputPesquisa} onChange={handleChangePesquisa}/> 
+
+                </form>
 
             <DireitaNav className='DireitaNav'>
                 <User className='User'>

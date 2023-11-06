@@ -13,6 +13,8 @@ const Display = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-row-gap: 42px;
+    min-height: 52.6rem;
+
     place-items: center;
     align-items: center;
     margin-top: 2.625rem;
@@ -43,21 +45,30 @@ const Produtos = () => {
         handleCarregarProdutos()
     },[])
 
+    useEffect(() => {
+        imprimirProdutos()
+    }, [produtos])
+
     const handleCarregarProdutos = async () => {
         const response = await api.get('/produtos')
         
         setProdutos(response.data)
     }
 
+    const imprimirProdutos = () => {
+        
+        return produtos.map(({ id, nome, preco, imgurl}, idx) => (
+            <Link key={idx} to={`/produto/${id}`}>
+                <ProdutoCard key={idx} nome={nome} preco={preco} imgurl={imgurl}/>
+            </Link>
+        ))
+    }
+
     return (
         <Wrapper>
             <Navibar />
             <Display>
-                {produtos.map(({ id, nome, preco, imgurl}, idx) => (
-                    <Link key={idx} to={`/produto/${id}`}>
-                        <ProdutoCard key={idx} nome={nome} preco={preco} imgurl={imgurl}/>
-                    </Link>
-                ))}
+                {imprimirProdutos()}
             </Display>
             <Footer/>
         </Wrapper>
