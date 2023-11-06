@@ -1,24 +1,32 @@
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 import ListaPedidos from "../../components/components/ListaPedidos"
+import Footer from "../../components/components/footer/Footer"
+import Navibar from "../../components/components/navibar/Navibar"
 import { Wrapper } from "../../components/styles/Wrapper.style"
-import { useEffect } from "react"
-
+import { api } from "../../api/api"
 
 const Pedidos = () => {
-    const navigate = useNavigate()
+    const [pedidos, setPedidos] = useState({})
+
+    const userId = JSON.parse(localStorage.getItem('user_id')).id;
 
     useEffect(() => {
+        handleCarregarPedidos()
+    }, [])
 
-        if(!localStorage.user_id) {
-            navigate('/login')
-        }
-    },[])
+    const handleCarregarPedidos = async () => {
+        const response = api.get('/pedidos', {params: {idUser: userId}})
 
+    setPedidos(response.data)
+    }
 
+    console.log(pedidos)
 
     return (
         <Wrapper>
-            <ListaPedidos />            
+            <Navibar/>
+                <ListaPedidos pedidos={pedidos} />
+            <Footer/>            
         </Wrapper>
     )
 }

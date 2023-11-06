@@ -39,7 +39,6 @@ const Login = () => {
         } else {
             alert("Usuário ou senha incorretos")
         }
-        handleLimpar()
     }
 
     return (

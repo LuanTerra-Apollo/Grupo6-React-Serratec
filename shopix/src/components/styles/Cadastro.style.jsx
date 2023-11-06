@@ -41,6 +41,7 @@ const FormCadastroStyled = styled.form`
         .InputsCadastro {
             height: 13%;
             width: 75%;
+            font-size: 24px;
             border: 0px;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         }
@@ -79,6 +80,15 @@ export const FormCadastro = (props) => {
         e.preventDefault()
 
         props.handleCadastro(nome, email, senha, confirmarSenha)
+
+        handleLimpar()
+    }
+
+    const handleLimpar = () => {
+        setNome(''),
+        setEmail(''),
+        setSenha(''),
+        setConfirmarSenha('')
     }
 
     return (
