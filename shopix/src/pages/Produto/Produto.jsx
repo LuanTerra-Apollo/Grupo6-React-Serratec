@@ -161,13 +161,18 @@ const Produto = () => {
     const [quantidade, setQuantidade] = useState(0)
 
     
-    const buscarProduto = async () => {
-        const response = await api.get(`/produtos/${id}`)
-        setProduto(response.data);
-        setQuantidadeCompra(1)
-    };
+    
 
     useEffect(() => {
+
+        const buscarProduto = async () => {
+            const response = await api.get(`/produtos/${id}`)
+            console.log(response.data)
+            setProduto(response.data);
+            setQuantidadeCompra(1)
+            
+        };
+        
         buscarProduto()
     }, []);
 
