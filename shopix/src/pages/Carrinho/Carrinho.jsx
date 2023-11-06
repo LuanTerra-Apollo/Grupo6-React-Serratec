@@ -5,7 +5,8 @@ import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import Navibar from "../../components/components/navibar/Navibar.jsx"
-// import { background} from "../../img/background.jpg"
+import Footer from "../../components/components/footer/Footer";
+import carrinhoVazioLogo from "../../img/carrinhoVazio.png"
 
 const CartContainer = styled.div`
     padding: 12px;
@@ -32,7 +33,7 @@ const CartContainer = styled.div`
   height: 30px;
   font-size: 24px;
   cursor: pointer;
-  background-color: #945eeb;
+  background-color: #64298b;
   border: none;
   color: white;
 }
@@ -47,7 +48,7 @@ const CartContainer = styled.div`
 
 .botao-diminuir:hover,
 .botao-aumentar:hover{
-    background-color: #6219d8;
+    background-color: #9e42db;
 }
 
 
@@ -61,7 +62,7 @@ const Infos = styled.div`
     font-size: 18px;
     width: 20rem;
     min-width: 25%;
-    height: 60%;
+    height: 430px;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 2px 2px 8px #8f8f8f;
@@ -162,8 +163,8 @@ const BodyCarrinho = styled.div`
     display: flex;
     justify-content: space-between;
     background: #EBEBEB;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw; */
+    /* height: 100vh; */
     /* background: url('https://c4.wallpaperflare.com/wallpaper/244/150/511/simple-background-texture-wallpaper-preview.jpg'); */
     background-size: cover;
     background-position: center center;
@@ -171,7 +172,7 @@ const BodyCarrinho = styled.div`
 `;
 
 const GreenButton = styled.button`
-  background-color: #945eeb;
+  background-color: #64298b;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -183,7 +184,7 @@ const GreenButton = styled.button`
   width: 100%;
 
   &:hover {
-    background-color: #6219d8;
+    background-color: #9e42db;
     box-shadow: none;
   }
 `;
@@ -231,7 +232,7 @@ const Titulo = styled.div`
     padding: 12px;
     height: 40px;
     width: 100%;
-    background-color: #945eebc5;
+    background-color: #64298b;
     color: white;
     border-radius:  6px 6px 0 0;
     display: flex;
@@ -251,6 +252,24 @@ const Titulo = styled.div`
     }
 `;
 
+const CarrinhoVazio = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+
+    div{
+        width: 60px;
+        height: 60px;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+`
+
 
 
 const Carrinho = () => {
@@ -266,21 +285,37 @@ const Carrinho = () => {
         if(carrinho.length > 0){
             
             openModal()
+            registrarPedido()
             //--------------------------ATUALIZAR ESTOQUE FUNCIONANDO
-            // try{
-            //     carrinho.map((pr) => (
-            //         api.patch(`/produtos/${pr.produto.id}`, {quantidade: pr.produto.quantidade - pr.quantidadeCompra})
-            //     ))
-            // } catch(e){
-            //     alert("Deu tudo errado")
-            // }
+            
+            carrinho.map(async (pr) => (
+              await  api.patch(`/produtos/${pr.produto.id}`, {quantidade: pr.produto.quantidade - pr.quantidadeCompra})
+            ))
+
+            setCarrinho([])
+            setQtdTotal(0)
+            setVlTotal(0)
+
         }else{
             alert("carrinho vazio")
         }
 
     }
 
+    const registrarPedido = () => {
 
+        const pedidoItens = carrinho.map((pd) => ({
+            idProduto: pd.produto.id,
+            quantidade: pd.quantidadeCompra,
+        }))
+
+        const pedido = {
+            valorTotal: vlTotal,
+            idUser: 1,
+            itens: pedidoItens,
+        }
+        api.post('/pedidos', pedido)
+    }
 
     function diminuirQtd(pr) {
         if(pr.quantidadeCompra > 1){
@@ -343,6 +378,19 @@ const Carrinho = () => {
     navigate('/produto/2')
   }
 
+  const carrinhoVazio = () => {
+    if(carrinho.length === 0){
+        return (
+            <CarrinhoVazio>
+                <div>
+                    <img src={carrinhoVazioLogo} alt="" />
+                </div>
+                <p>Carrinho vazio</p>
+            </CarrinhoVazio>
+        )
+    }
+  }
+
     return (
     <Wrapper>
     <Navibar/>
@@ -353,6 +401,7 @@ const Carrinho = () => {
             <img src='https://cdn-icons-png.flaticon.com/512/484/484662.png' alt="Descrição da imagem" onClick={() => {handleExibirProdutoParaTeste()}}/>
         </Titulo> */}
             {/* {handleExibirProdutoParaTeste} */}
+            {carrinhoVazio()}
             {carrinho.map((pr, index) => (
                 <div key={index}>
                     <Titulo>
@@ -443,6 +492,7 @@ const Carrinho = () => {
         </Infos>
   
     </BodyCarrinho>
+    <Footer />
     </Wrapper>
     )
 

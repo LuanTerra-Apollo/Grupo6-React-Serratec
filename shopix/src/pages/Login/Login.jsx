@@ -7,6 +7,7 @@ import { FormLogin } from "../../components/styles/Forms.style"
 import { Button } from "../../components/styles/Buttons.style"
 import Navibar from "../../components/components/navibar/Navibar"
 import { LoginContext } from "../../context/LoginContext"
+import Footer from "../../components/components/footer/Footer"
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -38,13 +39,11 @@ const Login = () => {
     }
 
     return (
-        <>
         <Wrapper>
             <Navibar/>
             <FormLogin handleLogin={handleLogin} email={email} setEmail={setEmail} senha={senha} setSenha={setSenha} />
+            <Footer />
         </Wrapper>
-        <br />
-        </>
     )
 }
 
