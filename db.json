@@ -31,6 +31,12 @@
       "email": "jao@gmail",
       "senha": "123456",
       "id": 6
+    },
+    {
+      "nome": "manoel",
+      "email": "gege@gmail",
+      "senha": "123456",
+      "id": 7
     }
   ],
   "produtos": [

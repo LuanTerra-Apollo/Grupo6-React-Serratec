@@ -14,28 +14,55 @@ const Cadastro = () => {
     const [senha, setSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
 
+    const verificaEmail = async (email) => {
+      try {
+        const response = await api.get('/users', { params: { email } });
+  
+        if (response.data.length > 0) {
+          alert('Este email já está cadastrado. Por favor, escolha outro.');
+          return false;
+        } else {
+          return true;
+        }
+      } catch (error) {
+        console.error('Erro ao verificar o email:', error);
+        alert('Erro ao verificar o email.');
+        return false;
+      }
+    }
+  
     const handleCadastro = async (e) => {
-        e.preventDefault();
-    
-        if (senha !== confirmarSenha) {
-          alert('As senhas não coincidem');
-          return;
-        }
-    
-        try {
-          await api.post('/users', {
-            nome,
-            email,
-            senha,
-          });
-    
-          alert('Cadastro realizado com sucesso!');
-       
-        } catch (error) {   
-          console.error('Erro ao cadastrar:', error);
-          alert('Erro ao cadastrar');
-        }
-      };
+      e.preventDefault();
+
+      if(!nome || !email || !senha || !confirmarSenha){
+        alert("Preencha todos os campos");
+        return
+      }
+  
+      if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem');
+        return;
+      }
+  
+      const emailDisponivel = await verificaEmail(email);
+  
+      if (!emailDisponivel) {
+        return;
+      }
+  
+      try {
+        await api.post('/users', {
+          nome,
+          email,
+          senha,
+        });
+  
+        alert('Cadastro realizado com sucesso!');
+      } catch (error) {
+        console.error('Erro ao cadastrar:', error);
+        alert('Erro ao cadastrar');
+      }
+    };
 
     return (
         <>
