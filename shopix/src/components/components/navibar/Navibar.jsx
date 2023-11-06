@@ -169,10 +169,16 @@ const Navibar = () => {
     }
 
     const handleCarregarUsuario = async (id) => {
-        const response = await api.get(`/users/${id}`)
+        try {
+            const response = await api.get(`/users/${id}`)
+            
+            if (response.status === 200) {
+                setUserLogin(response.data)
+            }
 
-        if (response.status == 200) {
-            setUserLogin(response.data)
+        } catch (error) {
+            localStorage.removeItem('user_id')
+            console.clear()
         }
     }
 
@@ -221,16 +227,14 @@ const Navibar = () => {
                 </form>
 
             <DireitaNav className='DireitaNav'>
-                <Car className='Car'>
-                    <Link to='/carrinho'>  <img src={carrinho} alt="" /></Link>
+                <Car title={'Carrinho'} className='Car'>
+                    <Link to='/carrinho'>  <img src={carrinho} alt="Carrinho" /></Link>
                 </Car>
-
-                    
 
                     {(Object.keys(userLogin).length === 0) ? (
                         <>
-                            <User className='User'>
-                                <img src={boneco} alt="perfil" />
+                            <User title='Perfil' className='User'>
+                                <img src={boneco} alt="Perfil" />
                             </User>
 
                             <Link className='EntrarRegistrar' to='/login'>Entre/Registrar</Link>
@@ -238,13 +242,13 @@ const Navibar = () => {
                         ) : (
                         <>  
                             <Link to={'/pedidos'}>
-                                <User className='User'>
-                                    <img src={boneco} alt="perfil" />
+                                <User title='Perfil' className='User'>
+                                    <img src={boneco} alt="Perfil" />
                                 </User>
                             </Link>
                             <Link to={'/login'} onClick={handleDeslogar}>
-                                <DeslogarDiv>
-                                    <img src={logoutLogo} alt="Logout" />
+                                <DeslogarDiv title='Sair do Site'>
+                                    <img src={logoutLogo} alt="Sair do site" />
                                 </DeslogarDiv>
                             </Link>
                         </>
