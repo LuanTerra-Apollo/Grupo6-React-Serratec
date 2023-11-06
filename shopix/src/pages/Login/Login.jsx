@@ -12,7 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const navigate = useNavigate()
-    const {login, setLogin, setUser, user} = useContext(LoginContext)
+    const {setUser, user} = useContext(LoginContext)
 
     const handleLimpar = () => {
         setEmail(''),
@@ -27,14 +27,12 @@ const Login = () => {
         if(response.data.length == 1) {
             alert("Usuário logado com sucesso!")
             localStorage.setItem('user_id', JSON.stringify({ id: response.data[0].id }))
-            setLogin(true)
             setUser({ id: response.data[0].id, nome: response.data[0].nome, email: response.data[0].email, senha: response.data[0].senha})
             console.log(user)
             navigate('/')
         } else {
             alert("Usuário ou senha incorretos")
         }
-        handleLimpar()
     }
 
     return (

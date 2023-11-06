@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FormCadastro } from "../../components/styles/Cadastro.style"
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { Input} from "../../components/styles/Inputs.style"
@@ -11,38 +11,51 @@ import Navibar from "../../components/components/navibar/Navibar"
 
 
 const Cadastro = () => {
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [confirmarSenha, setConfirmarSenha] = useState('');
+    const navigate = useNavigate()
 
-    const handleCadastro = async (nome, email, senha, confirmarSenha) => {
-    
-        if (senha !== confirmarSenha) {
-          alert('As senhas não coincidem');
-          return
-        }
-    
+    const handleCadastro = async (nomeCadastrar, emailCadastrar, senhaCadastrar, confirmarSenha) => {
+
+      const response = await api.get('/users')
+      
+
+      if (senhaCadastrar !== confirmarSenha) {
+        alert('As senhas não coincidem')
+        return
+      }
+
+      const emailEncontrado = response.data.filter(({email}) => {
+        return email === emailCadastrar
+      })
+
+      if(emailEncontrado.length == 0) {
+        console.log(response.data)
+        console.log(emailEncontrado)
         try {
           await api.post('/users', {
-            nome,
-            email,
-            senha,
+            nome: nomeCadastrar,
+            email: emailCadastrar,
+            senha: senhaCadastrar,
           });
     
           alert('Cadastro realizado com sucesso!');
-       
+          navigate("/login")
+        
         } catch (error) {   
           console.error('Erro ao cadastrar:', error);
           alert('Erro ao cadastrar');
         }
+      } else {
+        alert('Email já cadastrado')
       }
+    }
+
+      
 
     return (
         <>
           <Wrapper>
             <Navibar />
-              <FormCadastro handleCadastro={handleCadastro} nome={nome} email={email} senha={senha} confirmarSenha={confirmarSenha} /> 
+              <FormCadastro handleCadastro={handleCadastro}/> 
             <Footer />
           </Wrapper>
         </>
