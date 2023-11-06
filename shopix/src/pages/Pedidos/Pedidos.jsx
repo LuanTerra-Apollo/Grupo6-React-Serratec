@@ -15,12 +15,17 @@ const Pedidos = () => {
     }, [])
 
     const handleCarregarPedidos = async () => {
-        const response = api.get('/pedidos', {params: {idUser: userId}})
+        const response = await api.get('/pedidos')
 
-    setPedidos(response.data)
+        const pedidosDoUsuario = []
+        response.data.forEach((pedido) => {
+            if (pedido.idUser === userId){
+                pedidosDoUsuario.push(pedido)
+            }
+        })
+
+    setPedidos(pedidosDoUsuario)
     }
-
-    console.log(pedidos)
 
     return (
         <Wrapper>

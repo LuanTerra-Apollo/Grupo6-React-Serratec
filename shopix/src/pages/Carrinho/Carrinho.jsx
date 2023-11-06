@@ -315,6 +315,8 @@ const Carrinho = () => {
 
     const registrarPedido = () => {
 
+        const userId = JSON.parse(localStorage.getItem('user_id')).id;
+
         const pedidoItens = carrinho.map((pd) => ({
             idProduto: pd.produto.id,
             quantidade: pd.quantidadeCompra,
@@ -322,7 +324,7 @@ const Carrinho = () => {
 
         const pedido = {
             valorTotal: vlTotal,
-            idUser: 1,
+            idUser: userId,
             itens: pedidoItens,
         }
         api.post('/pedidos', pedido)

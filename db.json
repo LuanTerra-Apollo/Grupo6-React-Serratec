@@ -61,6 +61,12 @@
       "email": "teste3@gmail.com",
       "senha": "123456789",
       "id": 11
+    },
+    {
+      "nome": "admin",
+      "email": "admin",
+      "senha": "123",
+      "id": 12
     }
   ],
   "produtos": [
@@ -86,7 +92,7 @@
       "id": 3,
       "nome": "Fone de Ouvido Bluetooth",
       "preco": 49.99,
-      "quantidade": 22,
+      "quantidade": 20,
       "descricao": "Fone de ouvido sem fio com alta qualidade de som e conexão Bluetooth",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_840376-MLA69998145691_062023-O.webp",
       "favoritos": 18
@@ -220,6 +226,17 @@
           "quantidade": 10
         }
       ]
+    },
+    {
+      "valorTotal": 49.99,
+      "idUser": 12,
+      "itens": [
+        {
+          "idProduto": 3,
+          "quantidade": 1
+        }
+      ],
+      "id": 2
     }
   ]
 }

@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const LoginContainer = styled.div`
 
-    min-height: 45rem;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,8 +17,8 @@ const LoginContainer = styled.div`
 const FormLoginStyled = styled.form`
     width: ${(prop) => prop.width};
     height: ${(prop) => prop.height};
-    min-height: 25rem;
-    max-height: 25rem;
+    min-height: 30rem;
+    max-height: 30rem;
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -34,26 +34,27 @@ const FormLoginStyled = styled.form`
         margin-bottom: 60px; */
     }
 
-    .Cadastre-se {
-        /* position: absolute;
-        transform: translate(0%, 870%); */
-        color: #007094;
-        /* font-weight: bold; */
-        font-size: 20px;
+    .divImagem {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        .ImagemLogin {
+            width: 80%;
+            height: 100%;
+            padding: 20px 0px 20px 0px; 
+        }
     }
 
-    .InputLogin {
-        /* margin-bottom: -36px */
+    .Cadastre-se {
+        color: #007094;
+        font-size: 20px;
     }
     
     @media (max-width: 1280px) {
         min-width: 360px;
         min-height: 400px;
-
-        .Cadastre-se {
-        /* position: absolute;
-        transform: translate(0%, 650%) */
-        }
 
         .InputLogin {
             margin-bottom: -16px
@@ -76,8 +77,6 @@ const FormLoginStyled = styled.form`
 
         .Cadastre-se {
             font-size: 16px;
-            /* position: absolute;
-            transform: translate(0%, 740%) */
         }
 
         .InputLogin {
@@ -108,8 +107,8 @@ export const FormLogin = (props) => {
     return (
         <LoginContainer>
             <FormLoginStyled width='55%' height='50%' className='formLogin' onSubmit={handleSubmit}>
-                <div style={{width: "100%", height: "100%"}}>
-                    <img style={{ width: "100%", height: "100%", padding: "20px 0 20px 20px"}} src="https://educationtribe.in/wp-content/uploads/2020/11/Digital-Marketing.png" alt="" />
+                <div className='divImagem'>
+                    <img className='ImagemLogin'src="https://educationtribe.in/wp-content/uploads/2020/11/Digital-Marketing.png" alt="" />
                 </div>
                 <div style={{width: "65%"}}>
                     <div style={{width: "100%", marginBottom: "20px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>

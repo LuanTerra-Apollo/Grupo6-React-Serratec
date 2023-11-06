@@ -11,6 +11,7 @@ const FormContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #EBEBEB;
 `
 
 const FormCadastroStyled = styled.form`
@@ -18,17 +19,18 @@ const FormCadastroStyled = styled.form`
     height: 75%;
     min-width: 480px;
     min-height: 560px;
-    background-color: ${({theme}) => theme.colors.geralWhite};
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-radius: 8px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px rgb(97, 96, 96);
 
     h1 {
         font-size: 60px;
         margin-top: 60px;
+        text-shadow: -4px 3px 4px #8d8d8d;;
     }
 
     .DivInputs {
@@ -51,7 +53,6 @@ const FormCadastroStyled = styled.form`
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 10%;
         width: 100%;
 
         .BotaoCadastrar {
