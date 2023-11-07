@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '../styles/Buttons.style'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ContainerPedidos = styled.div`
     width: 100%;
@@ -62,74 +62,6 @@ const DescricaoPedido = styled.div`
                 width: 15%;
             }   
         }
-
-    /* @media (max-width: 1280px) {
-        .PrimeiraLinha {
-        display: flex;
-        margin-bottom: 12px;
-        font-weight: bold;
-
-            .StatusPedido {
-                width: 20%;
-            }
-
-            .Total {
-                margin-left: 60px;
-            }
-
-            .CodigoPedido {
-                margin-left: 70%;
-                
-            }
-        }
-        
-        .SegundaLinha {
-        display: flex;
-
-            .DataPedido {
-                width: 20%;
-            }
-
-            .ValorTotal {
-                margin-left: 0px;
-            }   
-        }
-    }
-
-    @media (max-width: 854px) {
-        font-size: 16px;
-
-        .PrimeiraLinha {
-            display: flex;
-            margin-bottom: 12px;
-            font-weight: bold;
-
-            .StatusPedido {
-                width: 25%;
-            }
-
-            .Total {
-                margin-left: 0px;
-            }
-
-            .CodigoPedido {
-                margin-left: 80%;
-            }
-        }
-        
-        .SegundaLinha {
-            display: flex;
-
-            .DataPedido {
-                width: 25%;
-            }
-
-            .ValorTotal {
-                margin-left: 0px;
-            }   
-        }
-    } */
-
 `
 const ProdutoImg = styled.div`
     padding: 6px;
@@ -220,66 +152,14 @@ const CardProdutoPedido = styled.div`
             filter: drop-shadow(2px 3px 5px #222222cf);
         }
     }
-
-    /* @media (max-width: 1280px) {
-        .divImagem {
-        width: 12%;
-        }
-
-        .CardProduto {
-            width: 22%;
-            margin-bottom: 4%;
-            
-            .BotaoProduto {
-                font-size: 20px;
-                height: 28px;
-            }
-
-        }
-
-        .divFavorito {
-            margin-left: 60%;
-
-            img {
-                width: 35px;
-            }
-        }
-    }
-
-    @media (max-width: 854px) {
-        .divImagem {
-            width: 20%;
-            height: 100%;
-        }
-
-        .CardProduto {
-            width: 35%;
-            font-size: 14px;
-            margin-bottom: 3%;
-            
-            .BotaoProduto {
-                margin-top: 10px;
-                width: 100%;
-                font-size: 16px;
-                height: 24px;
-            }
-
-        }
-
-        .divFavorito {
-            margin-left: 60%;
-            margin-right: 5px;
-            img {
-                width: 25px;
-                cursor: pointer;
-                -webkit-filter: drop-shadow(5px 5px 5px #222222cf);
-                filter: drop-shadow(2px 3px 5px #222222cf);
-            }
-        }
-    } */
 `
 
 const ListaPedidos = ({pedidos}) => {
+    const navigate = useNavigate()
+
+    const comprarNovamente = (item) => {
+        navigate(`/produto/${item.id}`)
+    }
 
     return (
         <> 
@@ -308,7 +188,7 @@ const ListaPedidos = ({pedidos}) => {
                                         <h4>Quantidade comprada: {item.quantidade}</h4>
                                     </div>
                                 </div>
-                                <Button className='BotaoProduto'> comprar novamente </Button>
+                                <Button className='BotaoProduto' onClick={() =>{comprarNovamente(item)}}> comprar novamente </Button>
                             </CardProdutoPedido>
                         ))}
                     </div>

@@ -38,7 +38,7 @@ const FormCadastroStyled = styled.form`
         width: 65%;
         margin-right: 20px;
         display: flex;
-        padding: 60px 0 60px 0;
+        padding: 62px 0 62px 0;
         flex-direction: column;
         justify-content: space-around;
         align-items: none;

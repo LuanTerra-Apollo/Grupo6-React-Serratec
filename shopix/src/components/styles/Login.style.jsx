@@ -36,7 +36,7 @@ const FormLoginStyled = styled.form`
         width: 65%;
         margin-right: 20px;
         display: flex;
-        padding: 46px 0 46px 0;
+        padding: 44px 0 44px 0;
         flex-direction: column;
         justify-content: space-around;
         align-items: none;
@@ -122,7 +122,7 @@ export const FormLogin = (props) => {
     }
     
     return (
-        <LoginContainer>
+        <LoginContainer> 
             <FormLoginStyled width='55%' height='50%' className='formLogin' onSubmit={handleSubmit}>
 
                 <div className='divImagem'>
