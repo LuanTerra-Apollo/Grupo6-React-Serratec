@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Input } from "./Inputs.style";
 import { Button } from "./Buttons.style";
 import { Link } from "react-router-dom";
+import imgCadastro from "./../../img/login4.jpg"
 
 const FormContainer = styled.div`
     height: 100vh;
@@ -14,51 +15,64 @@ const FormContainer = styled.div`
 `
 
 const FormCadastroStyled = styled.form`
+    width: 55%; 
+    height: 50%;
     min-height: 30rem;
     max-height: 30rem;
+    max-width: 70%;
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgb(97, 96, 96);
-    background-color: white;
 
     h1 {
         font-size: 60px;
-        margin-top: 60px;
-        text-shadow: -4px 3px 4px #8d8d8d;;
+        /* margin-top: 60px; */
+        text-shadow: -4px 3px 2px #8d8d8d;;
+    }
+
+    .formCadastro{
+        width: 65%;
+        margin-right: 20px;
+        display: flex;
+        padding: 62px 0 62px 0;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: none;
     }
 
     .DivInputs {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+        /* justify-content: space-between; */
+        /* align-items: center; */
         width: 100%;
-        height: 45%;
+        height: 100%;
         
         .InputsCadastro {
-            height: 13%;
+            /* height: 13%; */
             width: 90%;
             font-size: 24px;
-            border: 0px;
+            /* border: 0px; */
             margin: 5px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
         }
     }
 
     .divImagem {
         width: 100%;
         height: 100%;
-        display: flex;
-        justify-content: center;
+        /* display: flex; */
+        /* justify-content: center; */
         
 
         .ImagemLogin {
-            width: 80%;
+            width: 100%;
             height: 100%;
-            padding: 20px 0px 20px 0px;
+            padding: 8px;
         }
     }
 
@@ -112,11 +126,11 @@ export const FormCadastro = (props) => {
         <FormContainer>
             <FormCadastroStyled onSubmit={handleSubmit}>
                 <div className='divImagem'>
-                    <img className='ImagemLogin'src="https://educationtribe.in/wp-content/uploads/2020/11/Digital-Marketing.png" alt="" style={{objectFit: "contain"}}/>
+                    <img className='ImagemLogin'src={imgCadastro} alt="" style={{objectFit: "cover"}}/>
                 </div>
 
-                <div style={{width: "65%", marginRight: "20px"}}>
-                    <h1 style={{margin: "0px 0 30px 0", textAlign: "center", fontSize: "45px"}}>Cadastro</h1>
+                <div className="formCadastro">
+                    <h1 style={{margin: "0px 0 30px 0", textAlign: "center", fontSize: "55px"}}>Cadastrar</h1>
                     <div className="DivInputs" style={{width: "100%", marginBottom: "20px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                         <Input className='InputsCadastro' value={nome} onChange={(e) => { setNome(e.target.value) }} type="text"  placeholder='nome' required='required'/>
                         <Input className='InputsCadastro' value={email} onChange={(e) => { setEmail(e.target.value) }} type="text"  placeholder='email' required='required' />

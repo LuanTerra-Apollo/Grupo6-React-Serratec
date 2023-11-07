@@ -55,7 +55,7 @@
       "id": 1,
       "nome": "Mouse com fio Logitech",
       "preco": 29.99,
-      "quantidade": 37,
+      "quantidade": 35,
       "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
       "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
       "favoritos": 30
@@ -64,7 +64,7 @@
       "id": 2,
       "nome": "Kit Mousepad + Apoio Ergonômico Punho de Teclado Home Office",
       "preco": 58,
-      "quantidade": 30,
+      "quantidade": 28,
       "descricao": "Cadeira legal que não vale o que custa",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_934546-MLB72198017168_102023-O.webp",
       "favoritos": 250
@@ -73,7 +73,7 @@
       "id": 3,
       "nome": "Fone de Ouvido Bluetooth",
       "preco": 49.99,
-      "quantidade": 19,
+      "quantidade": 17,
       "descricao": "Fone de ouvido sem fio com alta qualidade de som e conexão Bluetooth",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_840376-MLA69998145691_062023-O.webp",
       "favoritos": 18
@@ -82,7 +82,7 @@
       "id": 4,
       "nome": "Monitor 27 polegadas",
       "preco": 199.99,
-      "quantidade": 8,
+      "quantidade": 7,
       "descricao": "Monitor de 27 polegadas com resolução Full HD e cores vibrantes",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_728888-MLU72700302191_112023-O.webp",
       "favoritos": 15
@@ -224,6 +224,70 @@
         }
       ],
       "id": 2
+    },
+    {
+      "dataPedido": "07/11/2023",
+      "valorTotal": 87.99,
+      "idUser": 4,
+      "itens": [
+        {
+          "idProduto": 1,
+          "quantidade": 1
+        },
+        {
+          "idProduto": 2,
+          "quantidade": 1
+        }
+      ],
+      "id": 3
+    },
+    {
+      "dataPedido": "07/11/2023",
+      "valorTotal": 107.99000000000001,
+      "idUser": 4,
+      "itens": [
+        {
+          "idProduto": 2,
+          "quantidade": 1
+        },
+        {
+          "idProduto": 3,
+          "quantidade": 1
+        }
+      ],
+      "id": 4
+    },
+    {
+      "dataPedido": "07/11/2023",
+      "valorTotal": 107.99000000000001,
+      "idUser": 4,
+      "itens": [
+        {
+          "idProduto": 2,
+          "quantidade": 1
+        },
+        {
+          "idProduto": 3,
+          "quantidade": 1
+        }
+      ],
+      "id": 5
+    },
+    {
+      "dataPedido": "07/11/2023",
+      "valorTotal": 229.98000000000002,
+      "idUser": 4,
+      "itens": [
+        {
+          "idProduto": 1,
+          "quantidade": 1
+        },
+        {
+          "idProduto": 4,
+          "quantidade": 1
+        }
+      ],
+      "id": 6
     }
   ]
 }
