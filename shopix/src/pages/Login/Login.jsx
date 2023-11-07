@@ -1,10 +1,8 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState, } from 'react'
 import { api } from '../../api/api'
-import { Input } from '../../components/styles/Inputs.style'
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { FormLogin } from "../../components/styles/Login.style"
-import { Button } from "../../components/styles/Buttons.style"
 import Navibar from "../../components/components/navibar/Navibar"
 import { LoginContext } from "../../context/LoginContext"
 import Footer from "../../components/components/footer/Footer"
@@ -16,17 +14,11 @@ const Login = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-
         if(localStorage.user_id) {
             navigate('/')
         }
 
     }, [])
-
-    const handleLimpar = () => {
-        setEmail(''),
-        setSenha('')
-    }
 
     const handleLogin = async (email, senha) => {
         const response = await api.get('/users', {params: {email, senha}})
@@ -41,6 +33,7 @@ const Login = () => {
         }
     }
 
+   
     return (
         <Wrapper>
             <Navibar/>

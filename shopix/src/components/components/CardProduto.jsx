@@ -47,7 +47,6 @@ const CardProdutoStyled = styled.div`
         p {
           margin-top: 4px;
         }
-        
       }
 
       .divValorDescricao {
@@ -85,24 +84,28 @@ const CardProdutoStyled = styled.div`
 
 const CardProduto = ({ produto, handleQuantidadeChange, handleAddCarrinho }) => {
   return (
-    <CardProdutoStyled height='84%' width='72%'>
+      <CardProdutoStyled height='84%' width='72%'>
         <div className='divImagem'><img src={produto.imgurl} alt={produto.nome} /></div>
         <div className='divProduto'>
+          
           <div className='divProdutoFavorito'>
             <h1>{produto.nome}</h1>
             <img src="https://i.imgur.com/mKjFPY5.png" alt="Favorito" />
             <p>(30)</p>
           </div>
+
           <div className='divValorDescricao'>
             <h1>{produto.preco}</h1>
             <p>{produto.descricao}</p>
           </div>
+
           <div className='divQuantidadeBotao'>
             <p className='quantidade'>Quantidade: <input type="number" onChange ={handleQuantidadeChange}  /> unidade(s)</p> 
             <Button className='botao' height='10%' width='80%' onClick={handleAddCarrinho}>Adicionar ao Carrinho</Button>
           </div>
+
         </div>
-    </CardProdutoStyled>
+      </CardProdutoStyled>
   )
 }
 

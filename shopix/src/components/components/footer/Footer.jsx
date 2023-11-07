@@ -12,12 +12,10 @@ const FooterBody = styled.div`
     display: grid;
     grid-template-rows: 1fr 2.3fr;
 
-
     @media (max-width: 410px) {
         grid-template-rows: 1fr 0fr;
     }
 `
-
 const DivTitulo = styled.div`
     display: flex;
     justify-content: center;
@@ -29,7 +27,6 @@ const DivTitulo = styled.div`
         font-size: 3rem;
     }
 `
-
 const DivInfo = styled.div`
     display: flex;
     flex-direction: row;
@@ -38,7 +35,6 @@ const DivInfo = styled.div`
     @media (max-width: 410px) {
         display: none;
     }
-
 `
 
 const DivInfoPessoal = styled.div`
@@ -69,8 +65,6 @@ const DivInfoPessoal = styled.div`
         }
     }
 
-
-
     @media (max-width: 1300px) {
         
         #tituloPessoa {
@@ -79,7 +73,6 @@ const DivInfoPessoal = styled.div`
         }
 
         #redesocial {
-
             p {
                 font-size: 1rem;
             }
@@ -111,9 +104,6 @@ const DivInfoPessoal = styled.div`
         }
     }
 `
-
-
-
 
 const Footer = () => {
     
@@ -213,12 +203,9 @@ const Footer = () => {
                         </div>
                     </Link >
                 </DivInfoPessoal>
-                
             </DivInfo>
-
         </FooterBody>
     )
-
 }
 
 export default Footer

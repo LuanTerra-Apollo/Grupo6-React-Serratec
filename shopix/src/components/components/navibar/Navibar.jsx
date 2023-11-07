@@ -6,7 +6,6 @@ import carrinho from '../../../img/carrinho.png'
 import { InputBarraPesquisa } from '../../styles/Inputs.style';
 import { api } from '../../../api/api'
 import { useState, useEffect, useContext } from 'react';
-import { LoginContext } from '../../../context/LoginContext';
 import { ProdutosContext } from '../../../context/ProdutosContext'
 import logoutLogo from '../../../img/saida.png'
 
@@ -46,40 +45,26 @@ const Navi = styled.nav`
             width: 25px;
             height: 25px;
         }
-    }
-        
-    
+    } 
 `
 
-
 const Marca = styled.div`
-  
     width: 200px;
     height: 45px;
 
     .Marca{
-
         filter: invert(100%);
         margin-left: 20px;
-        
-        &:hover{
-            /* -webkit-filter: drop-shadow(5px 5px 5px #df6fda); */
-            /* filter: drop-shadow(6px 4px 4px #df6fda); */
-        }
-    }
-    
-
+    } 
 `
 const Car = styled.div`
     width: auto;
     height: 30px;
     
-
     &:hover{
         -webkit-filter: drop-shadow(5px 5px 5px #df6fda);
         filter: drop-shadow(6px 4px 4px #df6fda);
     }
- 
 `
 const User = styled.div`
     width: 30px;
@@ -161,14 +146,13 @@ const Navibar = () => {
     }
 
     const handleCarregarProdutos = async () => {
-        
         const response = await api.get('/produtos')
 
         const produtosComEstoque = response.data.filter((produto) => produto.quantidade > 0)
 
         setProdutos(produtosComEstoque)
-    }
 
+    }
 
     const handlePesquisar = async (e) => {
         e.preventDefault()
@@ -207,7 +191,6 @@ const Navibar = () => {
                 <>
                 <form action="" onSubmit={handlePesquisar}>
                     <InputBarraPesquisa className='Pesquisa' type="search" placeholder='pesquisar' value={inputPesquisa} onChange={handleChangePesquisa}/> 
-
                 </form>
 
             <DireitaNav className='DireitaNav'>
@@ -238,14 +221,11 @@ const Navibar = () => {
                             </Link>
                         </>
                     )}
-                
             </DireitaNav>
             </>
             )}
-            
         </Navi>
     )
-    
 }
 
 export default Navibar

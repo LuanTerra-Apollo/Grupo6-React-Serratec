@@ -13,7 +13,6 @@ const CartContainer = styled.div`
     height: 130px;
     width: 100%;
     background-color: #ffffff;
-    /* box-shadow: -0.5px 0.5px 13px #945eeb7d; */
     box-shadow: 2px 2px 8px #8f8f8f;
     border-radius: 0 0 6px 6px;
     display: flex;
@@ -97,7 +96,6 @@ const Infos = styled.div`
         max-width: 400px;
         width: 100%;
         text-align: center;
-        /* text-shadow: 0.5px 0.5px 1px black; */
 
         img{
             width: 100%;
@@ -107,8 +105,6 @@ const Infos = styled.div`
             border: 2px solid white;
             box-shadow: 0px 0px 15px rgb(255, 255, 255);
         }
-
-    
     }
 
     .close-button {
@@ -129,8 +125,6 @@ const Infos2 = styled.div`
 const ListaProdutos = styled.div`
     margin-left: 5px;
     align-items: center;
-    /* display: flex; */
-    /* flex-direction: column; */
     width: 72%;
     align-items: start;
 `;
@@ -139,18 +133,11 @@ const Produto = styled.div`
     display: flex;
 `;
 
-const Img = styled.img`
-    width: 100%;
-    height: 100%;
-`;
-
 const ProdutoImg = styled.div`
     padding: 6px;
     margin-right: 15px;
     min-width: 150px;
     max-width: 150px;
-    /* box-shadow: 2px 2px 15px #7c7c7c; */
-    /* border: 1px solid black; */
     img{
         object-fit: contain;
         width: 100%;
@@ -164,15 +151,11 @@ const BodyCarrinho = styled.div`
     justify-content: space-between;
     background: #EBEBEB;
     min-height: 100vh;
-    /* width: 100vw; */
-    /* height: 100vh; */
-    /* background: url('https://c4.wallpaperflare.com/wallpaper/244/150/511/simple-background-texture-wallpaper-preview.jpg'); */
     background-size: cover;
     background-position: center center;
-    /* filter: grayscale(100%); */
 `;
 
-const GreenButton = styled.button`
+const Button = styled.button`
   background-color: #64298b;
   color: white;
   border: none;
@@ -188,45 +171,6 @@ const GreenButton = styled.button`
     background-color: #9e42db;
     box-shadow: none;
   }
-`;
-
-const QtdButton = styled.button`
-    /* padding: 5px; */
-    width: 20px;
-
-    height: 20px;
-    margin: 0 8px 0 8px;
-    font-size: 20px;
-    background: #945eeb;
-    color: white;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    box-shadow: -1px 1px 3px black;
-
-    &:hover{
-        background: #6219d8;
-        box-shadow: none;
-        /* font-size: 12px; */
-    }
-`;
-
-const RemoverButton = styled.button`
-    width: 73px;
-    height: 25px;
-    margin: 2px;
-    background: #945eeb;
-    color: white;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    box-shadow: -1px 1px 3px black;
-
-    &:hover{
-        background: #6219d8;
-        box-shadow: none;
-        font-size: 13px;
-    }
 `;
 
 const Titulo = styled.div`
@@ -276,28 +220,22 @@ const CarrinhoVazio = styled.div`
 const Carrinho = () => {
     
     const navigate = useNavigate()
-    const { carrinho, setCarrinho, vlTotalPr, vlTotal, setVlTotal, qtdTotal, setQtdTotal,
-            qtdPr, quantidadeCompra, setQuantidadeCompra, produto, setProduto} = useContext(CarrinhoContext)
+    const [showModal, setShowModal] = useState(false);
+    const { carrinho, setCarrinho, vlTotal, setVlTotal, qtdTotal, setQtdTotal} = useContext(CarrinhoContext)
 
     useEffect(() => {
-
         if(!localStorage.user_id) {
             navigate('/login')
         }
 
     },[])
 
-
-
-
     const comprar = (e) => {
         e.preventDefault()
 
-        if(carrinho.length > 0){
-            
+        if(carrinho.length > 0){ 
             openModal()
             registrarPedido()
-            //--------------------------ATUALIZAR ESTOQUE FUNCIONANDO
             
             carrinho.map(async (pr) => (
               await  api.patch(`/produtos/${pr.produto.id}`, {quantidade: pr.produto.quantidade - pr.quantidadeCompra})
@@ -309,7 +247,6 @@ const Carrinho = () => {
         }else{
             alert("carrinho vazio")
         }
-
     }
 
     const registrarPedido = () => {
@@ -344,15 +281,11 @@ const Carrinho = () => {
                 }
                 return item;
             });
-            console.log(new Date().toLocaleDateString())
         setCarrinho(carrinhoAtualizado);
         }
     }
 
-
     function aumentarQtd(pr) {
-        console.log(pr.quantidadeCompra)
-        console.log(pr.produto.quantidade)
         if(pr.quantidadeCompra < pr.produto.quantidade){
             const carrinhoAtualizado = carrinho.map((item) => {
                 if (item.produto.id === pr.produto.id) {
@@ -375,150 +308,137 @@ const Carrinho = () => {
         setCarrinho(carrinhoAtualizado);
         setQtdTotal(qtdTotal - pr.quantidadeCompra)
         setVlTotal(parseFloat(vlTotal) - parseFloat(pr.vlTotalPr))
-        //setQtdTotal(parseInt(qtdTotal) + 1)
     }
 
-    const [showModal, setShowModal] = useState(false);
+    const openModal = () => {
+        setShowModal(true);
+    };
 
-  const openModal = () => {
-    setShowModal(true);
-  };
+    const closeModal = () => {
+        setShowModal(false);
+    };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
-  const testar = () => {
-    navigate('/produto/2')
-  }
-
-  const carrinhoVazio = () => {
-    if(carrinho.length === 0){
-        return (
-            <CarrinhoVazio>
-                <div>
-                    <img src={carrinhoVazioLogo} alt="" />
-                </div>
-                <p>Carrinho vazio</p>
-            </CarrinhoVazio>
-        )
+    const carrinhoVazio = () => {
+        if(carrinho.length === 0){
+            return (
+                <CarrinhoVazio>
+                    <div>
+                        <img src={carrinhoVazioLogo} alt="" />
+                    </div>
+                    <p>Carrinho vazio</p>
+                </CarrinhoVazio>
+            )
+        }
     }
-  }
 
-  const limparCarrinho = () => {
-    setCarrinho([])
-    setQtdTotal(0)
-    setVlTotal(0)
-  }
-
-  const btnLimparCarrinho = () => {
-
-    if(carrinho.length != 0){
-        return (
-        <GreenButton style={{width: "60%", margin: "0 auto", display: "block"}} onClick={limparCarrinho}>LIMPAR CARRINHO</GreenButton>
-        )
+    const limparCarrinho = () => {
+        setCarrinho([])
+        setQtdTotal(0)
+        setVlTotal(0)
     }
-  }
+
+    const btnLimparCarrinho = () => {
+        if(carrinho.length != 0){
+            return (
+            <Button style={{width: "60%", margin: "0 auto", display: "block"}} onClick={limparCarrinho}>LIMPAR CARRINHO</Button>
+            )
+        }
+    }
 
     return (
-    <Wrapper>
-    <Navibar/>
-    <BodyCarrinho>
-        <ListaProdutos>
-            {carrinhoVazio()}
-            {carrinho.map((pr, index) => (
-                <div key={index}>
-                    <Titulo>
-                        <h4>{pr.produto.nome}</h4>
-                        <img src='https://cdn-icons-png.flaticon.com/512/484/484662.png' alt="Descrição da imagem" onClick={() => {removerProduto(pr)}}/>
-                    </Titulo>
-  
-                    <CartContainer>
-                    <Produto>
-                    <ProdutoImg>
-                        <img src={pr.produto.imgurl} alt="" />
-                    </ProdutoImg>
-                    <div style={{width: '60%', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                        
-                        <p>{pr.produto.descricao}</p>
-                        <h3>R$ {pr.produto.preco}</h3>
-                    </div>
-                    </Produto>
-                    
-                    <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: '20%', alignItems: "end"}}>
+        <Wrapper>
+            <Navibar/>
+            <BodyCarrinho>
+                <ListaProdutos>
+                    {carrinhoVazio()}
+                    {carrinho.map((pr, index) => (
+                        <div key={index}>
+                            <Titulo>
+                                <h4>{pr.produto.nome}</h4>
+                                <img src='https://cdn-icons-png.flaticon.com/512/484/484662.png' alt="Descrição da imagem" onClick={() => {removerProduto(pr)}}/>
+                            </Titulo>
+        
+                            <CartContainer>
+                                <Produto>
+                                    <ProdutoImg>
+                                        <img src={pr.produto.imgurl} alt="" />
+                                    </ProdutoImg>
 
-                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-
-                            <div class="quantidade-container">
-                                <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
-                                <div class="quantidade">{pr.quantidadeCompra} </div>
-                                <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
-                            </div>
+                                    <div style={{width: '60%', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                                        <p>{pr.produto.descricao}</p>
+                                        <h3>R$ {pr.produto.preco}</h3>
+                                    </div>
+                                </Produto>
+                            
+                                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: '20%', alignItems: "end"}}>
+                                    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                                        <div class="quantidade-container">
+                                            <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
+                                            <div class="quantidade">{pr.quantidadeCompra} </div>
+                                            <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
+                                        </div>
+                                    </div>
+                                    <h3>R$ {pr.vlTotalPr.toFixed(2)}</h3>
+                                </div>
+                            </CartContainer>
                         </div>
-                        
-                        <h3>R$ {pr.vlTotalPr.toFixed(2)}</h3>
-                  
-                    </div>
-                </CartContainer>
-                </div>
-            ))}
+                    ))}
 
-            {btnLimparCarrinho()}
-        </ListaProdutos>
+                    {btnLimparCarrinho()}
+                </ListaProdutos>
         
         
-        <Infos>
-            <div>
-            <h3 style={{marginBottom: '29px'}}>Resumo da Compra:</h3>
-            <Infos2>
-                <div style={{textAlign: 'left', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                <Infos>
                     <div>
-                        <p style={{marginBottom: '15px'}}>Produtos ({qtdTotal})</p>
-                        <p>frete</p>
-                    </div>
-                </div>
-
-                <div>
-                    <div style={{textAlign: 'left', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                        <h5 style={{marginBottom: '15px'}}>R$ {vlTotal.toFixed(2)}</h5>
-                        <h5 style={{color: "green"}}>GRATIS</h5>
-                    </div>
-                </div>
-            </Infos2>
-            </div>
-            <div>
-            <div style={{display: "flex", justifyContent: "space-between"}}>
-                <h5>TOTAL: </h5>
-                <h4>R$ {vlTotal.toFixed(2)}</h4>
-            </div>
-            <hr />
-            <GreenButton onClick={comprar}>COMPRAR</GreenButton> 
-               {/*  */}
-                <div>
-                    {showModal && (
-                        <div className="modal-background">
-                        <div className="modal">
-                            <span className="close-button" onClick={closeModal}>
-                            &times;
-                            </span>
-                            <h2>Compra Efetuada com Sucesso</h2>
-                            <br />
-                            <div style={{width: '60px', height: '60px', margin: 'auto'}}>
-                                <img src="https://cdn-icons-png.flaticon.com/512/6815/6815043.png" alt="" />
+                        <h3 style={{marginBottom: '29px'}}>Resumo da Compra:</h3>
+                        <Infos2>
+                            <div style={{textAlign: 'left', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                                <div>
+                                    <p style={{marginBottom: '15px'}}>Produtos ({qtdTotal})</p>
+                                    <p>frete</p>
+                                </div>
                             </div>
-                            <br />
-                            <p>Agradecemos por sua compra! Sua transação foi concluída com êxito. Esperamos que desfrute do seu novo item e estamos à disposição para qualquer assistência adicional.</p>
+
+                            <div>
+                                <div style={{textAlign: 'left', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                                    <h5 style={{marginBottom: '15px'}}>R$ {vlTotal.toFixed(2)}</h5>
+                                    <h5 style={{color: "green"}}>GRATIS</h5>
+                                </div>
+                            </div>
+                        </Infos2>
+                    </div>
+                    <div>
+                        <div style={{display: "flex", justifyContent: "space-between"}}>
+                            <h5>TOTAL: </h5>
+                            <h4>R$ {vlTotal.toFixed(2)}</h4>
                         </div>
+                        <hr />
+                        <Button onClick={comprar}>COMPRAR</Button>
+
+                        <div>
+                            {showModal && (
+                                <div className="modal-background">
+                                    <div className="modal">
+                                        <span className="close-button" onClick={closeModal}>
+                                        &times;
+                                        </span>
+                                        <h2>Compra Efetuada com Sucesso</h2>
+                                        <br />
+                                        <div style={{width: '60px', height: '60px', margin: 'auto'}}>
+                                            <img src="https://cdn-icons-png.flaticon.com/512/6815/6815043.png" alt="" />
+                                        </div>
+                                        <br />
+                                        <p>Agradecemos por sua compra! Sua transação foi concluída com êxito. Esperamos que desfrute do seu novo item e estamos à disposição para qualquer assistência adicional.</p>
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                    )}
-                </div>
-    {/*  */}
-            </div>
-        </Infos>
+                    </div>
+                </Infos>
   
-    </BodyCarrinho>
-    <Footer />
-    </Wrapper>
+            </BodyCarrinho>
+            <Footer />
+        </Wrapper>
     )
 
 }

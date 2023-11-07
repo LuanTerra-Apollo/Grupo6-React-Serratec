@@ -274,42 +274,40 @@ const CardProdutoPedido = styled.div`
 `
 
 const ListaPedidos = ({pedidos}) => {
-    
-    console.log(pedidos)
+
     return (
         <> 
             <ContainerPedidos>
-            {pedidos.map((pedido, idx) => (
-                <div className='ContainerPedido' key={idx}>
-                    <DescricaoPedido>
-                        <div className='PrimeiraLinha'>
-                            <p className='StatusPedido'>Pedido Realizado</p>
-                            <p className='Total'>Total</p>
-                            <p className='CodigoPedido'>Pedido #{pedido.id}</p>
-                        </div>
-                        <div className='SegundaLinha'>
-                            <p className='DataPedido'>{pedido.dataPedido}</p>
-                            <p className='ValorTotal'>R$ {parseFloat(pedido.valorTotal).toFixed(2)}</p>
-                        </div>
-                    </DescricaoPedido> 
-                    {pedido.itens.map((item, produtoidx) => (
-                        <CardProdutoPedido key={produtoidx}>
-                            <div className='CardProduto'>
-                                <img src={item.imgurl} alt="" />
-                                <div className='CardTexto'>
-                                    <h3>{item.nome}:</h3>
-                                    <h4>Quantidade comprada: {item.quantidade}</h4>
+                {pedidos.map((pedido, idx) => (
+                    <div className='ContainerPedido' key={idx}>
+                        <DescricaoPedido>
+                            <div className='PrimeiraLinha'>
+                                <p className='StatusPedido'>Pedido Realizado</p>
+                                <p className='Total'>Total</p>
+                                <p className='CodigoPedido'>Pedido #{pedido.id}</p>
+                            </div>
+                            <div className='SegundaLinha'>
+                                <p className='DataPedido'>{pedido.dataPedido}</p>
+                                <p className='ValorTotal'>R$ {parseFloat(pedido.valorTotal).toFixed(2)}</p>
+                            </div>
+                        </DescricaoPedido> 
+                        {pedido.itens.map((item, produtoidx) => (
+                            <CardProdutoPedido key={produtoidx}>
+                                <div className='CardProduto'>
+                                    <img src={item.imgurl} alt="" />
+                                    <div className='CardTexto'>
+                                        <h3>{item.nome}:</h3>
+                                        <h4>Quantidade comprada: {item.quantidade}</h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='DivBotao'>
-                                <Link to={`/produto/${item.id}`}><Button className='BotaoProduto'> comprar novamente </Button></Link>
-                            </div>
-                            {/* <div className='divFavorito'><button><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div> */}
-                        </CardProdutoPedido>
-                    ))}
-                </div>
-        ))}
-
+                                
+                                <div className='DivBotao'>
+                                    <Link to={`/produto/${item.id}`}><Button className='BotaoProduto'> comprar novamente </Button></Link>
+                                </div>
+                            </CardProdutoPedido>
+                        ))}
+                    </div>
+                ))}
             </ContainerPedidos>
         </>
     )

@@ -56,11 +56,10 @@ const Produtos = () => {
     return (
         <Wrapper>
             <Navibar />
-                    <img src={bannerSite} alt="" style={{ minWidth: "100%", height: "260px", margin: "3px 0 3px 0"}}/>
-                    {/* <img src={stSite} alt="" style={{ maxWidth: "60%", height: "80px", margin: "auto"}}/> */}
-                    <div style={{textAlign: "center", background: "#64298b", padding: "6px", borderBottom: "2px solid white", color: "white"}}>
-                    <h2>Lançamentos</h2>
-                    </div>
+            <img src={bannerSite} alt="" style={{ minWidth: "100%", height: "260px", margin: "3px 0 3px 0"}}/>
+            <div style={{textAlign: "center", background: "#64298b", padding: "6px", borderBottom: "2px solid white", color: "white"}}>
+                <h2>Lançamentos</h2>
+            </div>
             <Display>
                 {imprimirProdutos()}
             </Display>
