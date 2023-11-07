@@ -45,8 +45,10 @@ const Produtos = () => {
     }, [produtos])
 
     const imprimirProdutos = () => {
+
+        const produtosComQuantidade = produtos.filter(produto => produto.quantidade > 0)
         
-        return produtos.map(({ id, nome, preco, imgurl}, idx) => (
+        return produtosComQuantidade.map(({ id, nome, preco, imgurl}, idx) => (
             <Link key={idx} to={`/produto/${id}`}>
                 <ProdutoCard key={idx} nome={nome} preco={preco} imgurl={imgurl}/>
             </Link>
