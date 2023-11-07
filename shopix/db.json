@@ -51,6 +51,24 @@
       "email": "fabiana@gmail.com",
       "senha": "123",
       "favoritos": []
+    },
+    {
+      "nome": "teste",
+      "email": "teste@gmail.com",
+      "senha": "123",
+      "favoritos": [],
+      "id": 8
+    },
+    {
+      "nome": "lucas",
+      "email": "botafogo@gmail.com",
+      "senha": "123",
+      "favoritos": [
+        15,
+        7,
+        1
+      ],
+      "id": 9
     }
   ],
   "produtos": [
@@ -58,28 +76,28 @@
       "id": 1,
       "nome": "Mouse com fio Logitech",
       "preco": 29.99,
-      "quantidade": 33,
+      "quantidade": 31,
       "descricao": "Mouse com fio USB Logitech M90 com Design Ambidestro e Facilidade Plug and Play",
       "imgurl": "https://m.media-amazon.com/images/I/617w9nbQooL.__AC_SX300_SY300_QL70_ML2_.jpg",
-      "favoritos": 30
+      "favoritos": 31
     },
     {
       "id": 2,
       "nome": "Kit Mousepad + Apoio Ergonômico Punho de Teclado Home Office",
       "preco": 58,
-      "quantidade": 28,
+      "quantidade": 27,
       "descricao": "O melhor kit que você pode ter hoje",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_934546-MLB72198017168_102023-O.webp",
-      "favoritos": 251
+      "favoritos": 259
     },
     {
       "id": 3,
       "nome": "Fone de Ouvido Bluetooth",
       "preco": 49.99,
-      "quantidade": 16,
+      "quantidade": 15,
       "descricao": "Fone de ouvido sem fio com alta qualidade de som e conexão Bluetooth",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_840376-MLA69998145691_062023-O.webp",
-      "favoritos": 18
+      "favoritos": 22
     },
     {
       "id": 4,
@@ -106,7 +124,7 @@
       "quantidade": 13,
       "descricao": "Smartphone Android com tela de 6 polegadas e câmera de alta resolução",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_795980-MLA53989138383_022023-O.webp",
-      "favoritos": 25
+      "favoritos": 26
     },
     {
       "id": 7,
@@ -115,7 +133,7 @@
       "quantidade": 7,
       "descricao": "Impressora multifuncional com scanner e conectividade sem fio",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_838196-MLA40933371824_022020-O.webp",
-      "favoritos": 10
+      "favoritos": 11
     },
     {
       "id": 8,
@@ -124,13 +142,13 @@
       "quantidade": 9,
       "descricao": "Roteador Wi-Fi de alta velocidade para uma conexão estável e rápida",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_986827-MLB50272786705_062022-W.webp",
-      "favoritos": 14
+      "favoritos": 5
     },
     {
       "id": 9,
       "nome": "Máquina de Café Automática",
       "preco": 129.99,
-      "quantidade": 5,
+      "quantidade": 4,
       "descricao": "Máquina de café automática com moedor de grãos e espumador de leite",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_939057-MLU72571026284_112023-O.webp",
       "favoritos": 8
@@ -187,13 +205,13 @@
       "quantidade": 9,
       "descricao": "Caixa de ferramentas com múltiplos compartimentos para armazenamento organizado",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_987349-MLB32654318655_102019-O.webp",
-      "favoritos": 7
+      "favoritos": 8
     },
     {
       "id": 16,
       "nome": "Máquina de Lavar Roupas",
       "preco": 1959,
-      "quantidade": 0,
+      "quantidade": 4,
       "descricao": "Máquina de lavar roupas com capacidade para 10 kg de roupa",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_807488-MLA48818518149_012022-O.webp",
       "favoritos": 6
@@ -375,6 +393,70 @@
         }
       ],
       "id": 12
+    },
+    {
+      "dataPedido": "11/7/2023",
+      "valorTotal": 49.99,
+      "idUser": 8,
+      "itens": [
+        {
+          "idProduto": 3,
+          "quantidade": 1
+        }
+      ],
+      "id": 13
+    },
+    {
+      "dataPedido": "11/7/2023",
+      "valorTotal": 87.99,
+      "idUser": 8,
+      "itens": [
+        {
+          "idProduto": 2,
+          "quantidade": 1
+        },
+        {
+          "idProduto": 1,
+          "quantidade": 1
+        }
+      ],
+      "id": 14
+    },
+    {
+      "dataPedido": "11/7/2023",
+      "valorTotal": 7836,
+      "idUser": 8,
+      "itens": [
+        {
+          "idProduto": 16,
+          "quantidade": 4
+        }
+      ],
+      "id": 15
+    },
+    {
+      "dataPedido": "11/7/2023",
+      "valorTotal": 129.99,
+      "idUser": 9,
+      "itens": [
+        {
+          "idProduto": 9,
+          "quantidade": 1
+        }
+      ],
+      "id": 16
+    },
+    {
+      "dataPedido": "11/7/2023",
+      "valorTotal": 29.99,
+      "idUser": 9,
+      "itens": [
+        {
+          "idProduto": 1,
+          "quantidade": 1
+        }
+      ],
+      "id": 17
     }
   ]
 }

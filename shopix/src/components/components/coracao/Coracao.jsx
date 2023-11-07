@@ -52,7 +52,7 @@ const Coracao = ({idProduto}) => {
         
         const usuarioLogado = await handleCarregarUsuario()
         
-        if (!Object.keys(usuarioLogado).length === 0) {
+        if (!isEmpty(usuarioLogado)) {
             handleCarregarEstado(usuarioLogado, produtoEncontrado)
         }
     }
@@ -89,12 +89,21 @@ const Coracao = ({idProduto}) => {
         return {}
     }
 
+    function isEmpty(obj) {
+        for(var prop in obj) {
+          if(obj.hasOwnProperty(prop)) {
+            return false;
+          }
+        }
+        return JSON.stringify(obj) === JSON.stringify({});
+      }
+
 
     const handleCarregarEstado = (usuario, produtoAtual) => {
         
         const produtoEcontrado = usuario.favoritos.filter((favorito) => favorito === produtoAtual.id)
-        
-        if (produtoEcontrado.length === 1) {
+
+        if (produtoEcontrado.length >= 1) {
             setEstado(true)
             return true
         }
@@ -143,8 +152,8 @@ const Coracao = ({idProduto}) => {
 
     const handleClick = () => {
 
-        if (!Object.keys(userLogin).length === 0) {
-   
+        if(!isEmpty(userLogin)) {
+
             if (!estado) {
                 handleIncluirNosFavoritos()
                 setEstado(true)
