@@ -163,7 +163,9 @@ const CardProdutoPedido = styled.div`
         align-items: center;
         
         img {
+            object-fit: contain;
             width: 6rem;
+            max-height: 60px;
             height: 100%;
         }
 

@@ -372,10 +372,10 @@ const Carrinho = () => {
                             
                                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: '20%', alignItems: "end"}}>
                                     <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                                        <div class="quantidade-container">
-                                            <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
-                                            <div class="quantidade">{pr.quantidadeCompra} </div>
-                                            <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
+                                        <div className="quantidade-container">
+                                            <button className="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
+                                            <div className="quantidade">{pr.quantidadeCompra} </div>
+                                            <button className="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
                                         </div>
                                     </div>
                                     <h3>R$ {pr.vlTotalPr.toFixed(2)}</h3>

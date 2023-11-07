@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from '../../../api/api'
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const DivFavorito = styled.div`
     
@@ -35,6 +36,7 @@ const Coracao = ({idProduto}) => {
     const [ produto, setProduto ] = useState({})
     const [ estado, setEstado ] = useState(false)
     const [ modificado, setModificado ] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         handleCarregarTudo()
@@ -50,7 +52,9 @@ const Coracao = ({idProduto}) => {
         
         const usuarioLogado = await handleCarregarUsuario()
         
-        handleCarregarEstado(usuarioLogado, produtoEncontrado)
+        if (!Object.keys(usuarioLogado).length === 0) {
+            handleCarregarEstado(usuarioLogado, produtoEncontrado)
+        }
     }
     
     const handleBuscarProduto = async () => {
@@ -139,15 +143,20 @@ const Coracao = ({idProduto}) => {
 
     const handleClick = () => {
 
-        if (!estado) {
-            handleIncluirNosFavoritos()
-            setEstado(true)
+        if (!Object.keys(userLogin).length === 0) {
+   
+            if (!estado) {
+                handleIncluirNosFavoritos()
+                setEstado(true)
+            } else {
+                handleExcluirNosFavoritos()
+                setEstado(false)
+            }
+            
+            setModificado(!modificado)    
         } else {
-            handleExcluirNosFavoritos()
-            setEstado(false)
+            navigate('/login')
         }
-
-        setModificado(!modificado)    
     }
 
 
