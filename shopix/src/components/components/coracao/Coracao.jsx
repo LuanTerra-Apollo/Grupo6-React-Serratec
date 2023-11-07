@@ -4,6 +4,16 @@ import styled from "styled-components";
 
 const DivFavorito = styled.div`
     
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+    
+    p {
+        color: red;
+        margin-left: 5px;
+    }
 
     
     button {
@@ -24,73 +34,120 @@ const Coracao = ({idProduto}) => {
     const [ userLogin, setUserLogin ] = useState({})
     const [ produto, setProduto ] = useState({})
     const [ estado, setEstado ] = useState(false)
+    const [ modificado, setModificado ] = useState(false)
 
     useEffect(() => {
-
-        if (localStorage.user_id) {
-            handleCarregarUsuario(JSON.parse(localStorage.getItem('user_id')).id)
-        }
-
-        handleBuscarProduto(idProduto)
+        handleCarregarTudo()
     },[])
+    
+    useEffect(() => {
+        handleCarregarTudo()
+    },[modificado])
 
-    const handleCarregarUsuario = async (id) => {
-                
-        try {
-            const response = await api.get(`/users/${id}`)
-            
-            if (response.status === 200) {
-                setUserLogin(response.data)
-            }
+    const handleCarregarTudo = async () => {
 
-        } catch (error) {
-            localStorage.removeItem('user_id')
-            console.clear()
-        }
+        const produtoEncontrado = await handleBuscarProduto()
+        
+        const usuarioLogado = await handleCarregarUsuario()
+        
+        handleCarregarEstado(usuarioLogado, produtoEncontrado)
     }
-
-    const handleBuscarProduto = async (id) => {
-        const response = await api.get(`/produtos/${id}`)
-
+    
+    const handleBuscarProduto = async () => {
+        const response = await api.get(`/produtos/${idProduto}`)
         setProduto(response.data)
+
+        return response.data
     }
 
+    const handleCarregarUsuario = async () => {
+        if (localStorage.user_id) {
+            const id = JSON.parse(localStorage.getItem('user_id')).id
+
+            try {
+                const response = await api.get(`/users/${id}`)
+                
+                if (response.status === 200) {
+                    setUserLogin(response.data)
+                    return response.data
+                }
+            } catch (error) {
+                localStorage.removeItem('user_id')
+                setUserLogin({})
+                setEstado(false)
+                console.clear()
+            }
+        } else {
+            setUserLogin({})
+            setEstado(false)
+        }
+        
+        return {}
+    }
+
+
+    const handleCarregarEstado = (usuario, produtoAtual) => {
+        
+        const produtoEcontrado = usuario.favoritos.filter((favorito) => favorito === produtoAtual.id)
+        
+        if (produtoEcontrado.length === 1) {
+            setEstado(true)
+            return true
+        }
+
+        setEstado(false)
+        return false        
+    }
 
     const handleIncluirNosFavoritos = async () => {
-        api.patch(`/users/${userLogin.id}`, {
+        
+        await api.patch(`/users/${userLogin.id}`, {
             favoritos: [...userLogin.favoritos, produto.id]
         })
-    }
+        
+        await api.patch(`/produtos/${produto.id}`, {
+            favoritos: produto.favoritos + 1
+        })
 
+        let novoProduto = produto
+
+        novoProduto.favoritos += 1
+
+        setProduto(novoProduto)
+    }
+    
+    
     const handleExcluirNosFavoritos = async () => {
         
         const novoFavoritos = userLogin.favoritos.filter(p => produto.id !== p)
         
-        api.patch(`/users/${userLogin.id}`, {
+        await api.patch(`/users/${userLogin.id}`, {
             favoritos: novoFavoritos
         })
+        
+        await api.patch(`/produtos/${produto.id}`, {
+            favoritos: produto.favoritos - 1
+        })
+        
+        let novoProduto = produto
+
+        novoProduto.favoritos -= 1
+
+        setProduto(novoProduto)
     }
+
 
     const handleClick = () => {
 
-        let likeAtivo = false  
-        
-        userLogin.favoritos.forEach((produtoFavoritado) => {
-            if (produto.id === produtoFavoritado) {
-                likeAtivo = true
-            }
-        })
-            
-        if (!likeAtivo) {
+        if (!estado) {
             handleIncluirNosFavoritos()
             setEstado(true)
         } else {
             handleExcluirNosFavoritos()
             setEstado(false)
         }
-       
-        
-        handleCarregarUsuario(userLogin.id)
+
+        setModificado(!modificado)    
     }
 
 
@@ -99,14 +156,19 @@ const Coracao = ({idProduto}) => {
 
     return (
             <DivFavorito>
-
                 {(estado) ? (
-                    <div><button onClick={handleClick}><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div>
-                ) : (
-                    <div><button onClick={handleClick}><img src="https://i.imgur.com/K9ZdsT4.png%7D" alt="" /></button></div>
-                )
+                    <>
+                        <div><button onClick={handleClick}><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div>
+                        <p style={{color: 'red'}}>{produto.favoritos}</p>
+                    </>
+                    ) : (
+                    <>
+                        <div><button onClick={handleClick}><img src="https://i.imgur.com/K9ZdsT4.png%7D" alt="" /></button></div>
+                        <p style={{color: 'black'}}>{produto.favoritos}</p>
+                    </>
+                    )
                 }
-                </DivFavorito>
+            </DivFavorito>
     )
 }
 

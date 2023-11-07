@@ -157,8 +157,6 @@ const Navibar = () => {
     const handlePesquisar = async (e) => {
         e.preventDefault()
 
-
-        console.log(window.location.pathname)
         if (window.location.pathname !== '/') {
             navigate('/')
         }
