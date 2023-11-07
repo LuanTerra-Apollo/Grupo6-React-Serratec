@@ -1,17 +1,16 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-    width: ${(prop) => prop.width};
-    height: ${(prop) => prop.height};
+    width: 150px;
+    height: 50px;
     background-color: #64298b;
     color: white;
     border: none;
-    padding: 10px 20px;
+    margin: auto;
     border-radius: 5px;
     cursor: pointer; 
-    font-size: 26px;
+    font-size: 18px;
     box-shadow: -1px 1px 3px black;
-    margin-top: 15px;
 
       &:hover {
     background-color: #9e42db;

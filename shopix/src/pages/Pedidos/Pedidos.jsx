@@ -48,7 +48,7 @@ const Pedidos = () => {
         let produtoEncontrado = {}
 
         produtos.forEach(produto => {
-            if (produto.id === item.idProduto) {
+            if (produto.id === item.idProduto) { 
                 const itemAtualizado = {
                     nome: produto.nome,
                     imgurl: produto.imgurl,
