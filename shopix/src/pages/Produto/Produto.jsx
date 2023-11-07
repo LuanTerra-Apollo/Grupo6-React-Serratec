@@ -10,6 +10,9 @@ import Footer from "../../components/components/footer/Footer";
 // import Contador from "../../components/components/contador/Contador";
 
 
+const Container = styled.div`
+
+`
 
 const CartContainer = styled.div`
     margin: 20px;
@@ -116,14 +119,12 @@ const ProdutoImg = styled.div`
 `;
 
 const BodyCarrinho = styled.div`
-    padding: 25px;
     background: #EBEBEB;
     display: flex;
     justify-content: center;
     align-items: center;
     /* width: 100vw; */
-    min-height: 40rem;
-    margin-bottom: 150px;
+    min-height: 100vh;
 `;
 
 const GreenButton = styled.button`
@@ -167,7 +168,6 @@ const Produto = () => {
 
         const buscarProduto = async () => {
             const response = await api.get(`/produtos/${id}`)
-            console.log(response.data)
             setProduto(response.data);
             setQuantidadeCompra(1)
             
@@ -200,7 +200,7 @@ const Produto = () => {
                     setVlTotal(vlTotal + produto.preco * quantidadeCompra)
                     setCarrinho([...carrinho, {produto, quantidadeCompra, vlTotalPr: produto.preco * quantidadeCompra}])
                     
-                    navigate('/carrinho')
+                    navigate('/')
                 }
             }
         }

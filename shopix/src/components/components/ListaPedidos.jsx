@@ -1,38 +1,50 @@
 import React from 'react'
 import { Button } from '../styles/Buttons.style'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const ContainerPedido = styled.div`
-    width: 100vw;
-    height: 100vh;
+const ContainerPedidos = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 5%;
+
+    .ContainerPedido {
+        width: 80%;
+    }
 `
 
 const DescricaoPedido = styled.div`
-    width: 80%;
+    width: 100%;
+    max-height: 40%;
     background-color: #9C9C9C;
     border-radius: 8px 8px 0px 0px;
     padding: 10px;
     font-size: 18px;
+    margin-top: 5%;
+
 
         .PrimeiraLinha {
             display: flex;
             margin-bottom: 12px;
             font-weight: bold;
+            min-width: 100%;
 
             .StatusPedido {
-                width: 10%;
+                width: 25%;
             }
 
             .Total {
-                margin-left: 60px;
+                width: 15%;
+                text-align: start;
             }
 
             .CodigoPedido {
-                margin-left: 77%;
+                width: 73%;
+                text-align: end;
                 
             }
         }
@@ -41,15 +53,15 @@ const DescricaoPedido = styled.div`
             display: flex;
 
             .DataPedido {
-                width: 10%;
+                width: 22.3%;
             }
 
             .ValorTotal {
-                margin-left: 60px;
+                width: 15%;
             }   
         }
 
-    @media (max-width: 1280px) {
+    /* @media (max-width: 1280px) {
         .PrimeiraLinha {
         display: flex;
         margin-bottom: 12px;
@@ -99,7 +111,7 @@ const DescricaoPedido = styled.div`
             }
 
             .CodigoPedido {
-                margin-left: 57%;
+                margin-left: 80%;
             }
         }
         
@@ -114,44 +126,78 @@ const DescricaoPedido = styled.div`
                 margin-left: 0px;
             }   
         }
-    }
+    } */
 
 `
 
 const CardProdutoPedido = styled.div`
     display: flex;
     align-items: center;
-    width: 80%;
-    height: 20%;
-    background-color: #D9D9D9;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 10rem;
+    max-height: 50%;
+    background-color: #ffffff;
     border-radius: 0px 0px 8px 8px;
     padding: 10px ;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 4px 8px #8f8f8f;
+    margin-top: -3px;
+    
 
     .divImagem {
-        width: 13%;
-        height: 95%;
+        width: 6rem;
+        height: 6rem;
         background-color: #E06004;
         border-radius: 8px;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
     }
 
     .CardProduto {
-        width: 20%;
+        width: 80%;
         margin-left: 10px;
         font-size: 18px;
-        margin-bottom: 7%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         
-        .BotaoProduto {
-            margin-top: 15px;
-            width: 100%;
-            font-size: 24px;
-            background-color: #471796;
-            border: 0px;
-            height: 32px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        img {
+            width: 6rem;
+            height: 100%;
         }
 
+        .CardTexto {
+            width: 80%;
+            padding-left: 15px;
+            overflow: hidden;
+
+            h3 {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            }
+        }
+
+    }
+
+    .DivBotao {
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        width: 8rem;
+
+
+        .BotaoProduto {
+            padding: 0px;
+            margin: 0px;
+            width: 6rem;
+            height: 6rem;
+            font-size: 18px;
+            background-color: #471796;
+            border: 0px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
     }
 
     .divFavorito {
@@ -169,7 +215,7 @@ const CardProdutoPedido = styled.div`
         }
     }
 
-    @media (max-width: 1280px) {
+    /* @media (max-width: 1280px) {
         .divImagem {
         width: 12%;
         }
@@ -224,15 +270,18 @@ const CardProdutoPedido = styled.div`
                 filter: drop-shadow(2px 3px 5px #222222cf);
             }
         }
-    }
+    } */
 `
 
 const ListaPedidos = ({pedidos}) => {
+    
+    console.log(pedidos)
     return (
         <> 
-            <ContainerPedido>
-                {pedidos.map((pedido, idx) => {
-                    <DescricaoPedido key={idx}>
+            <ContainerPedidos>
+            {pedidos.map((pedido, idx) => (
+                <div className='ContainerPedido' key={idx}>
+                    <DescricaoPedido>
                         <div className='PrimeiraLinha'>
                             <p className='StatusPedido'>Pedido Realizado</p>
                             <p className='Total'>Total</p>
@@ -240,24 +289,28 @@ const ListaPedidos = ({pedidos}) => {
                         </div>
                         <div className='SegundaLinha'>
                             <p className='DataPedido'>{pedido.dataPedido}</p>
-                            <p className='ValorTotal'>R$ {pedido.valorTotal}</p>
+                            <p className='ValorTotal'>R$ {parseFloat(pedido.valorTotal).toFixed(2)}</p>
                         </div>
                     </DescricaoPedido> 
-                    {pedidos.itens.map((item, idx) => {
-                        <CardProdutoPedido key={idx}>
-                            <div className='divImagem'>
-                                <img src={item.imgurl} alt="" />
-                            </div>
+                    {pedido.itens.map((item, produtoidx) => (
+                        <CardProdutoPedido key={produtoidx}>
                             <div className='CardProduto'>
-                                <h3>{item.nome}:</h3>
-                                <h4>{item.quantidade}</h4>
-                                <Button className='BotaoProduto'> comprar novamente </Button>
+                                <img src={item.imgurl} alt="" />
+                                <div className='CardTexto'>
+                                    <h3>{item.nome}:</h3>
+                                    <h4>Quantidade comprada: {item.quantidade}</h4>
+                                </div>
+                            </div>
+                            <div className='DivBotao'>
+                                <Link to={`/produto/${item.id}`}><Button className='BotaoProduto'> comprar novamente </Button></Link>
                             </div>
                             {/* <div className='divFavorito'><button><img src="https://i.imgur.com/mKjFPY5.png" alt="" /></button></div> */}
                         </CardProdutoPedido>
-                    })}
-                })}
-            </ContainerPedido>
+                    ))}
+                </div>
+        ))}
+
+            </ContainerPedidos>
         </>
     )
 }

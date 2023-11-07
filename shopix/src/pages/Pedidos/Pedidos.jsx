@@ -56,10 +56,9 @@ const Pedidos = () => {
                 const itemAtualizado = {
                     nome: produto.nome,
                     imgurl: produto.imgurl,
-                    quantidade: item.quantidade
+                    quantidade: item.quantidade,
+                    id: produto.id
                 }
-
-                console.log(itemAtualizado)
 
                 produtoEncontrado = itemAtualizado
             }
@@ -71,7 +70,6 @@ const Pedidos = () => {
     return (
         <Wrapper>
             <Navibar/>
-                {pedidos.map((elemento, idx) => <div key={idx}>{elemento.nome}</div>)}
                 <ListaPedidos pedidos={pedidos} />
             <Footer/>            
         </Wrapper>

@@ -306,7 +306,6 @@ const Carrinho = () => {
             setCarrinho([])
             setQtdTotal(0)
             setVlTotal(0)
-
         }else{
             alert("carrinho vazio")
         }

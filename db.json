@@ -82,7 +82,7 @@
     {
       "nome": "Kit Mousepad + Apoio Ergonômico Punho de Teclado Home Office",
       "preco": 58,
-      "quantidade": 32,
+      "quantidade": 31,
       "descricao": "Cadeira legal que não vale o que custa",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_934546-MLB72198017168_102023-O.webp",
       "favoritos": 250,
@@ -92,7 +92,7 @@
       "id": 3,
       "nome": "Fone de Ouvido Bluetooth",
       "preco": 49.99,
-      "quantidade": 20,
+      "quantidade": 19,
       "descricao": "Fone de ouvido sem fio com alta qualidade de som e conexão Bluetooth",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_840376-MLA69998145691_062023-O.webp",
       "favoritos": 18
@@ -101,7 +101,7 @@
       "id": 4,
       "nome": "Monitor 27 polegadas",
       "preco": 199.99,
-      "quantidade": 10,
+      "quantidade": 8,
       "descricao": "Monitor de 27 polegadas com resolução Full HD e cores vibrantes",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_728888-MLU72700302191_112023-O.webp",
       "favoritos": 15
@@ -146,7 +146,7 @@
       "id": 9,
       "nome": "Máquina de Café Automática",
       "preco": 129.99,
-      "quantidade": 6,
+      "quantidade": 5,
       "descricao": "Máquina de café automática com moedor de grãos e espumador de leite",
       "imgurl": "https://http2.mlstatic.com/D_NQ_NP_939057-MLU72571026284_112023-O.webp",
       "favoritos": 8
@@ -228,15 +228,48 @@
       ]
     },
     {
-      "valorTotal": 49.99,
+      "dataPedido": "06/11/2023",
+      "valorTotal": 58,
+      "idUser": 12,
+      "itens": [
+        {
+          "idProduto": 18,
+          "quantidade": 1
+        }
+      ],
+      "id": 3
+    },
+    {
+      "dataPedido": "06/11/2023",
+      "valorTotal": 249.98000000000002,
       "idUser": 12,
       "itens": [
         {
           "idProduto": 3,
           "quantidade": 1
+        },
+        {
+          "idProduto": 4,
+          "quantidade": 1
         }
       ],
-      "id": 2
+      "id": 4
+    },
+    {
+      "dataPedido": "06/11/2023",
+      "valorTotal": 329.98,
+      "idUser": 12,
+      "itens": [
+        {
+          "idProduto": 4,
+          "quantidade": 1
+        },
+        {
+          "idProduto": 9,
+          "quantidade": 1
+        }
+      ],
+      "id": 5
     }
   ]
 }

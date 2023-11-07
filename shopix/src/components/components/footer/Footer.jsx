@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import linkedinLogo from '../../../img/linkedin.png'
 import githubLogo from '../../../img/github.png'
+import { Link } from "react-router-dom"
 
 const FooterBody = styled.div`
     width: 100%;
@@ -124,69 +125,93 @@ const Footer = () => {
             <DivInfo>
                 <DivInfoPessoal>
                     <p id="tituloPessoa">Gabriel Teixeira</p>
-                    <div id="redesocial">
-                        <img src={linkedinLogo}></img>
-                        <p>Linkedin</p>
-                    </div>
-                    <div id="redesocial">
-                        <img src={githubLogo}></img>
-                        <p>Github</p>
-                    </div>
+                    <Link style={{cursor:'pointer'}} to='https://www.linkedin.com/in/gabriel-silva-teixeira/' target='_blank'>
+                        <div id="redesocial">
+                            <img src={linkedinLogo}></img>
+                            <p style={{color: 'black'}}>Linkedin</p>
+                        </div>
+                    </Link>
+                    <Link style={{cursor:'pointer'}} to='https://github.com/GabSTeixeira' target='_blank'>
+                        <div id="redesocial">
+                            <img src={githubLogo}></img>
+                            <p style={{color: 'black'}}>Github</p>
+                        </div>
+                    </Link>
                 </DivInfoPessoal>
                 <DivInfoPessoal>
                     <p id="tituloPessoa">Michael Vieira</p>
-                    <div id="redesocial">
-                        <img src={linkedinLogo}></img>
-                        <p>Linkedin</p>
-                    </div>
-                    <div id="redesocial">
-                        <img src={githubLogo}></img>
-                        <p>Github</p>
-                    </div>
+                    <Link style={{cursor:'pointer'}} to='https://www.linkedin.com/in/michaelvieira021/' target='_blank'>
+                        <div id="redesocial">
+                            <img src={linkedinLogo}></img>
+                            <p style={{color: 'black'}}>Linkedin</p>
+                        </div>
+                    </Link>
+                    <Link style={{cursor:'pointer'}} to='https://github.com/MichaelVieira021' target='_blank'>
+                        <div id="redesocial">
+                            <img src={githubLogo}></img>
+                            <p style={{color: 'black'}}>Github</p>
+                        </div>
+                    </Link>
                 </DivInfoPessoal>
                 <DivInfoPessoal>
                     <p id="tituloPessoa">Fabiana Audi</p>
-                    <div id="redesocial">
-                        <img src={linkedinLogo}></img>
-                        <p>Linkedin</p>
-                    </div>
-                    <div id="redesocial">
-                        <img src={githubLogo}></img>
-                        <p>Github</p>
-                    </div>
+                    <Link style={{cursor:'pointer'}} to='https://www.linkedin.com/in/fabianaaudi/' target='_blank'>
+                        <div id="redesocial">
+                            <img src={linkedinLogo}></img>
+                            <p style={{color: 'black'}}>Linkedin</p>
+                        </div>
+                    </Link>
+                    <Link style={{cursor:'pointer'}} to='https://github.com/Fabiaudi' target='_blank'>
+                        <div id="redesocial">
+                            <img src={githubLogo}></img>
+                            <p style={{color: 'black'}}>Github</p>
+                        </div>
+                    </Link>
                 </DivInfoPessoal>
                 <DivInfoPessoal>
                     <p id="tituloPessoa">Bruna Zimbrão</p>
-                    <div id="redesocial">
-                        <img src={linkedinLogo}></img>
-                        <p>Linkedin</p>
-                    </div>
-                    <div id="redesocial">
-                        <img src={githubLogo}></img>
-                        <p>Github</p>
-                    </div>
+                    <Link style={{cursor:'pointer'}} to='https://www.linkedin.com/feed/' target='_blank'>
+                        <div id="redesocial">
+                            <img src={linkedinLogo}></img>
+                            <p style={{color: 'black'}}>Linkedin</p>
+                        </div>
+                    </Link>
+                    <Link style={{cursor:'pointer'}} to='https://github.com/brunazimbrao' target='_blank'>
+                        <div id="redesocial">
+                            <img src={githubLogo}></img>
+                            <p style={{color: 'black'}}>Github</p>
+                        </div>
+                    </Link>
                 </DivInfoPessoal>
                 <DivInfoPessoal>
                     <p id="tituloPessoa">Manoel Vitor</p>
-                    <div id="redesocial">
-                        <img src={linkedinLogo}></img>
-                        <p>Linkedin</p>
-                    </div>
-                    <div id="redesocial">
-                        <img src={githubLogo}></img>
-                        <p>Github</p>
-                    </div>
+                    <Link style={{cursor:'pointer'}} to='https://www.linkedin.com/in/manoel-vitor-laque-costa-859a92234/' target='_blank'>
+                        <div id="redesocial">
+                            <img src={linkedinLogo}></img>
+                            <p style={{color: 'black'}}>Linkedin</p>
+                        </div>
+                    </Link>
+                    <Link style={{cursor:'pointer'}} to='https://github.com/VitorLack' target='_blank'>
+                        <div id="redesocial">
+                            <img src={githubLogo}></img>
+                            <p style={{color: 'black'}}>Github</p>
+                        </div>
+                    </Link>
                 </DivInfoPessoal>
                 <DivInfoPessoal>
                     <p id="tituloPessoa">Luan Terra</p>
-                    <div id="redesocial">
-                        <img src={linkedinLogo}></img>
-                        <p>Linkedin</p>
-                    </div>
-                    <div id="redesocial">
-                        <img src={githubLogo}></img>
-                        <p>Github</p>
-                    </div>
+                    <Link style={{cursor:'pointer'}} to='https://www.linkedin.com/in/luan-c-3b85a597/' target='_blank'>
+                        <div id="redesocial">
+                            <img src={linkedinLogo}></img>
+                            <p style={{color: 'black'}}>Linkedin</p>
+                        </div>
+                    </Link>
+                    <Link style={{cursor:'pointer'}} to='https://github.com/LuanTerra-Apollo' target='_blank'>
+                        <div id="redesocial">
+                            <img src={githubLogo}></img>
+                            <p style={{color: 'black'}} >Github</p>
+                        </div>
+                    </Link >
                 </DivInfoPessoal>
                 
             </DivInfo>
