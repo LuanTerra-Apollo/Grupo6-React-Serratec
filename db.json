@@ -4,43 +4,50 @@
       "id": 1,
       "nome": "Raphael da Rocha Pinto Barboza",
       "email": "Raphael da Rocha Pinto",
-      "senha": "123456"
+      "senha": "123456",
+      "favoritos": []
     },
     {
       "id": 2,
       "nome": "Gabriel Teixeira",
       "email": "gabriel@gmail.com",
-      "senha": "123"
+      "senha": "123",
+      "favoritos": []
     },
     {
       "id": 3,
       "nome": "Luan Terra",
       "email": "luan@gmail.com",
-      "senha": "123"
+      "senha": "123",
+      "favoritos": []
     },
     {
       "id": 4,
       "nome": "Michael Vieira",
       "email": "michael@gmail.com",
-      "senha": "123"
+      "senha": "123",
+      "favoritos": []
     },
     {
       "id": 5,
       "nome": "Manoel Vitor",
       "email": "manoel@gmail",
-      "senha": "123"
+      "senha": "123",
+      "favoritos": []
     },
     {
       "id": 6,
       "nome": "Bruna Zimbrão",
       "email": "bruna@gmail.com",
-      "senha": "123"
+      "senha": "123",
+      "favoritos": []
     },
     {
       "id": 7,
       "nome": "Fabiana Audi",
       "email": "fabiana@gmail.com",
-      "senha": "123"
+      "senha": "123",
+      "favoritos": []
     }
   ],
   "produtos": [
