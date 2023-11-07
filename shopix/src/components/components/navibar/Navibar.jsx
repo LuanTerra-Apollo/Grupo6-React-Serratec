@@ -1,5 +1,5 @@
 import logo from '../../../img/SHOPIX2.png'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import boneco from '../../../img/boneco.png'
 import styled from 'styled-components';
 import carrinho from '../../../img/carrinho.png'
@@ -106,24 +106,6 @@ const DireitaNav = styled.div`
     }
 `
 
-const NomeUsuario = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-
-    p {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    a {
-        color: white;
-        text-decoration: none;
-    }
-`
-
 const DeslogarDiv = styled.div`
     align-items: center;
     width: 30px;
@@ -136,26 +118,20 @@ const DeslogarDiv = styled.div`
     }
 `
 
-const LoginDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-
-`
-
 const Navibar = () => {
-    const [isLoginCadastroPages, SetIsLoginCadastroPages] = useState(false);
-    const [ inputPesquisa, setInputPesquisa ] = useState('')
-    const { setProdutos } = useContext(ProdutosContext);
+    const [isLoginCadastroPages, SetIsLoginCadastroPages] = useState(false)
+    const { inputPesquisa, setInputPesquisa } = useContext(ProdutosContext)
+    const { setProdutos } = useContext(ProdutosContext)
     const [ userLogin, setUserLogin ] = useState({})
+    const navigate = useNavigate()
 
     useEffect(() => {
         const currentUrl = window.location.pathname;
         SetIsLoginCadastroPages(currentUrl === '/login' || currentUrl === '/cadastro')
 
         if(localStorage.user_id) {
-            handleCarregarUsuario(JSON.parse(localStorage.getItem('user_id')).id) 
+            handleCarregarUsuario(JSON.parse(localStorage.getItem('user_id')).id)
         }
-
 
     }, [])
 
@@ -188,12 +164,20 @@ const Navibar = () => {
         
         const response = await api.get('/produtos')
 
-        setProdutos(response.data)
+        const produtosComEstoque = response.data.filter((produto) => produto.quantidade > 0)
+
+        setProdutos(produtosComEstoque)
     }
 
 
     const handlePesquisar = async (e) => {
         e.preventDefault()
+
+
+        console.log(window.location.pathname)
+        if (window.location.pathname !== '/') {
+            navigate('/')
+        }
         
         const response = await api.get('/produtos', {params: {
             nome_like: inputPesquisa
@@ -213,7 +197,7 @@ const Navibar = () => {
     return (
         <Navi >
             <Marca>
-                <Link className='Marca' to ='/'><img src={logo} /></Link>
+                <Link className='Marca' to ='/' onClick={()=> setInputPesquisa('')}><img src={logo} /></Link>
             </Marca>
 
             {isLoginCadastroPages ? (

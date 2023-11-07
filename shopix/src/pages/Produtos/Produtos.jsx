@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react"
-import { LoginContext } from "../../context/LoginContext"
 import { ProdutosContext } from "../../context/ProdutosContext"
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { api } from "../../api/api"
@@ -9,7 +8,6 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import Footer from "../../components/components/footer/Footer"
 import bannerSite from "../../img/banner.png"
-import stSite from "../../img/st.png"
 
 const Display = styled.div`
     display: grid;
@@ -40,22 +38,11 @@ const Display = styled.div`
 `
 
 const Produtos = () => {
-    const { login, user} = useContext(LoginContext)
-    const { produtos, setProdutos } = useContext(ProdutosContext)
-
-    useEffect(() => {
-        handleCarregarProdutos()
-    },[])
+    const { produtos } = useContext(ProdutosContext)
 
     useEffect(() => {
         imprimirProdutos()
     }, [produtos])
-
-    const handleCarregarProdutos = async () => {
-        const response = await api.get('/produtos')
-        
-        setProdutos(response.data)
-    }
 
     const imprimirProdutos = () => {
         
