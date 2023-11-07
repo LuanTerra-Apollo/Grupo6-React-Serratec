@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Input } from './Inputs.style'
 import { Link } from 'react-router-dom'
 import { Button } from './Buttons.style'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const LoginContainer = styled.div`
 
@@ -39,11 +39,12 @@ const FormLoginStyled = styled.form`
         height: 100%;
         display: flex;
         justify-content: center;
+        
 
         .ImagemLogin {
             width: 80%;
             height: 100%;
-            padding: 20px 0px 20px 0px; 
+            padding: 20px 0px 20px 0px;
         }
     }
 
@@ -57,7 +58,7 @@ const FormLoginStyled = styled.form`
         min-height: 400px;
 
         .InputLogin {
-            margin-bottom: -16px
+            margin-bottom: 16px
         }
     }
     @media (max-width: 854px) {
@@ -102,17 +103,22 @@ export const FormLogin = (props) => {
         e.preventDefault()
 
         props.handleLogin(email, senha)
-      }
+    }
+
+    // useEffect(() => {alert("fsdfsdf")},[handleLogin(email, senha)])
+
     
     return (
         <LoginContainer>
             <FormLoginStyled width='55%' height='50%' className='formLogin' onSubmit={handleSubmit}>
+
                 <div className='divImagem'>
-                    <img className='ImagemLogin'src="https://educationtribe.in/wp-content/uploads/2020/11/Digital-Marketing.png" alt="" />
+                    <img className='ImagemLogin'src="https://educationtribe.in/wp-content/uploads/2020/11/Digital-Marketing.png" alt="" style={{objectFit: "contain"}}/>
                 </div>
-                <div style={{width: "65%"}}>
+
+                <div style={{width: "65%", marginRight: "20px"}}>
                     <div style={{width: "100%", marginBottom: "20px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <h1 style={{margin: "40px 0 40px 0"}}>Login</h1>
+                        <h1 style={{margin: "0px 0 40px 0"}}>Login</h1>
                         <Input className="InputLogin" width='90%' height='8%' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}} placeholder='email' required='required' /> <br />
                         <Input width='90%' height='8%' type="password" value={senha} onChange={(e) => {setSenha(e.target.value)}} placeholder='senha' required='required' /> <br />
                     </div>

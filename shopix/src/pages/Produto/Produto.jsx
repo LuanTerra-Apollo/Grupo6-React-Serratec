@@ -7,6 +7,7 @@ import { CarrinhoContext } from "../../context/CarrinhoContext";
 import styled from "styled-components";
 import Navibar from "../../components/components/navibar/Navibar";
 import Footer from "../../components/components/footer/Footer";
+import paginaNot from "../../img/404.png"
 // import Contador from "../../components/components/contador/Contador";
 
 
@@ -166,9 +167,13 @@ const Produto = () => {
     useEffect(() => {
 
         const buscarProduto = async () => {
-            const response = await api.get(`/produtos/${id}`)
-            console.log(response.data)
-            setProduto(response.data);
+            try{
+                const response = await api.get(`/produtos/${id}`)
+                console.log(response.data)
+                setProduto(response.data);
+            }catch(error){
+                setProduto({}); 
+            }
             setQuantidadeCompra(1)
             
         };
@@ -219,6 +224,9 @@ const Produto = () => {
     }, [quantidadeCompra])
 
 
+    
+
+
     return (
 
     /*
@@ -233,7 +241,8 @@ const Produto = () => {
             <Navibar />
             {/* {quantidadeCompra} */}
             <BodyCarrinho>
-                <CartContainer> 
+                {(Object.keys(produto).length !== 0) ? (
+                <CartContainer>
                     <ProdutoImg>       
                         <img src={produto.imgurl} alt="" />
                     </ProdutoImg>
@@ -243,19 +252,12 @@ const Produto = () => {
                             <h1 id="nome" >{produto.nome}</h1>
                             <h2 style={{marginTop: '6px'}}>R$ {produto.preco}</h2>
                             <p style={{color: 'green', marginBottom: '16px'}}>em ate 3x R$ {parseFloat(produto.preco/3).toFixed(3) } sem juros</p>
-                            {/* <Descricao > */}
-                                {/* <Contador /> */}
                                 <h4 >Descrição do produto</h4>
                                 <p style={{marginTop: '5px'}}>{produto.descricao}</p>
-                            {/* </Descricao> */}
+
                         </div>
                         <div style={{width: '100%', display: "flex", flexDirection: "column", justifyContent: "space-between", margin: "auto auto 0"}}>
                             <div style={{display: "flex", width: '100%', alignItems: "center"}}>
-                                {/* <div class="quantidade-container">
-                                    <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
-                                    <div class="quantidade">{quantidadeCompra} </div>
-                                    <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
-                                </div> */}
                                 <p style={{fontSize: "20px"}}>Quantidade: </p>
                                 <input type="number" min="1" value={quantidadeCompra} onChange={handleQuantidadeChange}/>
                             </div>
@@ -264,7 +266,12 @@ const Produto = () => {
                         </div>
 
                     </InfoProduto> 
-                </CartContainer>
+                </CartContainer> ) : 
+                (<div style={{display: "flex", flexDirection: "column", textAlign: "center", fontSize: "20px"}}>
+                    <p>Parece que você encontrou um beco sem saída! </p>
+                    <img src={paginaNot} alt="" />
+                    <p>A página que você está procurando não foi encontrada. </p>
+                </div>)}
             </BodyCarrinho>
             <Footer />
 
