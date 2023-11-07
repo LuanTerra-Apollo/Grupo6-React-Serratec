@@ -41,17 +41,12 @@ const DivCard = styled.div`
             }
         }
     }
-
-
 `
 const DivImg = styled.div`
-    
     width: 100%;
-    
     height: 16rem;
     min-height: 16rem;
     background-color: #fff;
-    
     background-position: center;
     border-top-right-radius: 1.2rem;
     border-top-left-radius: 1.2rem;
@@ -59,15 +54,11 @@ const DivImg = styled.div`
     img {
         border-top-right-radius: 1.2rem;
         border-top-left-radius: 1.2rem;
-        
         object-fit: contain;
-
         height: 100%;
         width: 100%;
-
         min-height: 100%;
         min-width: 100%;
-
         max-width: 100%;
         max-height: 100%;
     }
@@ -79,10 +70,8 @@ const DivInfo = styled.div`
     height: 100%;
     width: 100%;
     padding: 0.5rem;
-
     border-bottom-left-radius: 1.2rem;
     border-bottom-right-radius: 1.2rem;
-    
     background-color: #fff;
     
     #preco {
@@ -105,7 +94,6 @@ const DivInfo = styled.div`
         color: black;
     }
 `
-
 
 const ProdutoCard = ({ nome, preco, imgurl }) => {
   return (

@@ -6,7 +6,6 @@ import carrinho from '../../../img/carrinho.png'
 import { InputBarraPesquisa } from '../../styles/Inputs.style';
 import { api } from '../../../api/api'
 import { useState, useEffect, useContext } from 'react';
-import { LoginContext } from '../../../context/LoginContext';
 import { ProdutosContext } from '../../../context/ProdutosContext'
 import logoutLogo from '../../../img/saida.png'
 
@@ -46,40 +45,26 @@ const Navi = styled.nav`
             width: 25px;
             height: 25px;
         }
-    }
-        
-    
+    } 
 `
 
-
 const Marca = styled.div`
-  
     width: 200px;
     height: 45px;
 
     .Marca{
-
         filter: invert(100%);
         margin-left: 20px;
-        
-        &:hover{
-            /* -webkit-filter: drop-shadow(5px 5px 5px #df6fda); */
-            /* filter: drop-shadow(6px 4px 4px #df6fda); */
-        }
-    }
-    
-
+    } 
 `
 const Car = styled.div`
     width: auto;
     height: 30px;
     
-
     &:hover{
         -webkit-filter: drop-shadow(5px 5px 5px #df6fda);
         filter: drop-shadow(6px 4px 4px #df6fda);
     }
- 
 `
 const User = styled.div`
     width: 30px;
@@ -106,24 +91,6 @@ const DireitaNav = styled.div`
     }
 `
 
-const NomeUsuario = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-
-    p {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    a {
-        color: white;
-        text-decoration: none;
-    }
-`
-
 const DeslogarDiv = styled.div`
     align-items: center;
     width: 30px;
@@ -134,12 +101,6 @@ const DeslogarDiv = styled.div`
         width: 100%;
         height: 100%;
     }
-`
-
-const LoginDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-
 `
 
 const Navibar = () => {
@@ -155,7 +116,6 @@ const Navibar = () => {
         if(localStorage.user_id) {
             handleCarregarUsuario(JSON.parse(localStorage.getItem('user_id')).id) 
         }
-
 
     }, [])
 
@@ -185,12 +145,9 @@ const Navibar = () => {
     }
 
     const handleCarregarProdutos = async () => {
-        
         const response = await api.get('/produtos')
-
         setProdutos(response.data)
     }
-
 
     const handlePesquisar = async (e) => {
         e.preventDefault()
@@ -223,7 +180,6 @@ const Navibar = () => {
                 <>
                 <form action="" onSubmit={handlePesquisar}>
                     <InputBarraPesquisa className='Pesquisa' type="search" placeholder='pesquisar' value={inputPesquisa} onChange={handleChangePesquisa}/> 
-
                 </form>
 
             <DireitaNav className='DireitaNav'>
@@ -254,14 +210,11 @@ const Navibar = () => {
                             </Link>
                         </>
                     )}
-                
             </DireitaNav>
             </>
             )}
-            
         </Navi>
     )
-    
 }
 
 export default Navibar

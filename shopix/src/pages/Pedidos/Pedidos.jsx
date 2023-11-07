@@ -1,5 +1,4 @@
 
-import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import ListaPedidos from "../../components/components/ListaPedidos"
 import Footer from "../../components/components/footer/Footer"
@@ -9,13 +8,13 @@ import { api } from "../../api/api"
 
 const Pedidos = () => {
     const [pedidos, setPedidos] = useState([])
-
     const userId = JSON.parse(localStorage.getItem('user_id')).id;
 
     useEffect(() => {
         if(!localStorage.user_id) {
             navigate('/login')
         }
+
         handleCarregarPedidos()
     }, [])
 
@@ -33,18 +32,15 @@ const Pedidos = () => {
 
             const itensAtualizados = pedido.itens.map((item) => {
                 const response = handleCarregarProduto(responseProdutos.data, item)
-                
                 return response
 
             })
 
             pedido.itens = itensAtualizados
-
             return pedido
         })
         
         setPedidos(pedidosAtualizados)
-
     }
 
     const handleCarregarProduto = (produtos, item) => {
@@ -63,7 +59,6 @@ const Pedidos = () => {
                 produtoEncontrado = itemAtualizado
             }
         })
-
         return produtoEncontrado
     }
     
