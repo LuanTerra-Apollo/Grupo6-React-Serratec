@@ -316,6 +316,7 @@ const Carrinho = () => {
 
     const closeModal = () => {
         setShowModal(false);
+        navigate("/pedidos");
     };
 
     const carrinhoVazio = () => {
