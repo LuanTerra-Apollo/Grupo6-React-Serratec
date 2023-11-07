@@ -8,7 +8,6 @@ import styled from "styled-components";
 import Navibar from "../../components/components/navibar/Navibar";
 import Footer from "../../components/components/footer/Footer";
 import paginaNot from "../../img/404.png"
-// import Contador from "../../components/components/contador/Contador";
 
 
 
@@ -26,10 +25,7 @@ const CartContainer = styled.div`
 
 const InfoProduto = styled.div`
     padding: 20px;
-    /* margin: 15px; */
     border-radius: 4px;
-    /* box-shadow: 2px 2px 15px #7c7c7c; */
-    /* background-color: #EBEBEB; */
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -48,16 +44,9 @@ const InfoProduto = styled.div`
     }
 
     #nome {
-    /* background-color: #64298b; */
-    /* color: white; */
     margin-bottom: 20px;
     margin-top: 6px;
-    /* border: none; */
-    /* padding: 10px 20px; */
-    /* border-radius: 5px; */
-    /* cursor: pointer;  */
-    /* font-size: 24px; */
-    /* box-shadow: -1px 1px 3px black; */
+
     width: 100%;
     }
 
@@ -69,35 +58,35 @@ const InfoProduto = styled.div`
         width: 100%;
     }
 
-.botao-diminuir,
-.botao-aumentar {
-  width: 35px;
-  height: 35px;
-  font-size: 28px;
-  cursor: pointer;
-  background-color: #64298b;
-  border: none;
-  color: white;
-}
+    .botao-diminuir,
+    .botao-aumentar {
+        width: 35px;
+        height: 35px;
+        font-size: 28px;
+        cursor: pointer;
+        background-color: #64298b;
+        border: none;
+        color: white;
+    }
 
-.botao-diminuir{
-    border-radius: 4px 0 0 4px;
-}
+    .botao-diminuir{
+        border-radius: 4px 0 0 4px;
+    }
 
-.botao-aumentar{
-    border-radius: 0 4px 4px 0;
-}
+    .botao-aumentar{
+        border-radius: 0 4px 4px 0;
+    }
 
-.botao-diminuir:hover,
-.botao-aumentar:hover{
-    background-color: #9e42db;
-}
+    .botao-diminuir:hover,
+    .botao-aumentar:hover{
+        background-color: #9e42db;
+    }
 
 
-.quantidade {
-  font-size: 18px;
-  margin: 0 10px;
-}
+    .quantidade {
+        font-size: 18px;
+        margin: 0 10px;
+    }
 `;
 
 const ProdutoImg = styled.div`
@@ -122,7 +111,6 @@ const BodyCarrinho = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 100vw; */
     min-height: 40rem;
     margin-bottom: 150px;
 `;
@@ -143,14 +131,6 @@ const GreenButton = styled.button`
     background-color: #9e42db;
     box-shadow: none;
   }
-`;
-
-const Descricao = styled.div`
-    /* background: #ffffff; */
-    /* box-shadow: 0px 0px 5px #c2c2c2; */
-    border-radius: 3px;
-    height: 12rem;
-    padding: 10px 5px;
 `;
 
 const Produto = () => {
@@ -197,14 +177,11 @@ const Produto = () => {
             }else{
                 if(quantidadeCompra > produto.quantidade){
                     alert("Estoque insuficiente")
-                }else{   
-                    //setQuantidadeCompra([...quantidadeCompra, {id: produto.id, qtdCompra: quandidadeCompra}])
-                    // setQtdTotal(qtdTotal + quantidadeCompra)
+                }else{
                     setQtdTotal(parseInt(qtdTotal) + parseInt(quantidadeCompra));
                     setVlTotalPr(produto.preco * quantidadeCompra)
                     setVlTotal(vlTotal + produto.preco * quantidadeCompra)
                     setCarrinho([...carrinho, {produto, quantidadeCompra, vlTotalPr: produto.preco * quantidadeCompra}])
-                    
                     navigate('/carrinho')
                 }
             }
@@ -223,23 +200,10 @@ const Produto = () => {
         }
     }, [quantidadeCompra])
 
-
-    
-
-
     return (
-
-    /*
-        <Wrapper>
-            <Link to={'/'}>sdfsdf</Link>
-            {quantidadeCompra}
-            <CardProduto produto={produto} handleAddCarrinho={handleAddCarrinho} handleQuantidadeChange={handleQuantidadeChange} /> 
-        </Wrapper>
-    */  
         <Wrapper>
 
             <Navibar />
-            {/* {quantidadeCompra} */}
             <BodyCarrinho>
                 {(Object.keys(produto).length !== 0) ? (
                 <CartContainer>
@@ -251,7 +215,7 @@ const Produto = () => {
                         <div style={{width: '100%', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                             <h1 id="nome" >{produto.nome}</h1>
                             <h2 style={{marginTop: '6px'}}>R$ {produto.preco}</h2>
-                            <p style={{color: 'green', marginBottom: '16px'}}>em ate 3x R$ {parseFloat(produto.preco/3).toFixed(3) } sem juros</p>
+                            <p style={{color: 'green', marginBottom: '16px'}}>em ate 3x R$ {parseFloat(produto.preco/3).toFixed(2) } sem juros</p>
                                 <h4 >Descrição do produto</h4>
                                 <p style={{marginTop: '5px'}}>{produto.descricao}</p>
 
@@ -275,7 +239,6 @@ const Produto = () => {
             </BodyCarrinho>
             <Footer />
 
-        
         </Wrapper>
     )
 }
