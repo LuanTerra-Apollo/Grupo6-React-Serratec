@@ -7,6 +7,8 @@ import { CarrinhoContext } from "../../context/CarrinhoContext";
 import styled from "styled-components";
 import Navibar from "../../components/components/navibar/Navibar";
 import Footer from "../../components/components/footer/Footer";
+import { ProdutosContext } from "../../context/ProdutosContext";
+import Coracao from "../../components/components/coracao/Coracao";
 // import Contador from "../../components/components/contador/Contador";
 
 
@@ -158,29 +160,22 @@ const Produto = () => {
     const navigate = useNavigate()
     const { carrinho, setCarrinho, quantidadeCompra, setQuantidadeCompra, qtdTotal, setQtdTotal,
             vlTotal, setVlTotal, produto, setProduto, vlTotalPr, setVlTotalPr} = useContext(CarrinhoContext);
-    const [quantidade, setQuantidade] = useState(0)
-
-    
-    
-
-    useEffect(() => {
-
-        const buscarProduto = async () => {
-            const response = await api.get(`/produtos/${id}`)
-            console.log(response.data)
-            setProduto(response.data);
-            setQuantidadeCompra(1)
-            
-        };
-        
+   
+    useEffect(() => { 
         buscarProduto()
     }, []);
+    
+    const buscarProduto = async () => {
+        const response = await api.get(`/produtos/${id}`)
+        setProduto(response.data);
+        setQuantidadeCompra(1)
+    };
 
     const handleQuantidadeChange = (e) => {
         if(quantidadeCompra <= produto.quantidade){
             setQuantidadeCompra(e.target.value);
         }
-      };
+    };
 
     const handleAddCarrinho = () => {
         if (localStorage.getItem('user_id') !== null && localStorage.getItem('user_id') !== undefined) {
@@ -233,7 +228,7 @@ const Produto = () => {
             <Navibar />
             {/* {quantidadeCompra} */}
             <BodyCarrinho>
-                <CartContainer> 
+                <CartContainer>
                     <ProdutoImg>       
                         <img src={produto.imgurl} alt="" />
                     </ProdutoImg>
@@ -250,14 +245,17 @@ const Produto = () => {
                             {/* </Descricao> */}
                         </div>
                         <div style={{width: '100%', display: "flex", flexDirection: "column", justifyContent: "space-between", margin: "auto auto 0"}}>
-                            <div style={{display: "flex", width: '100%', alignItems: "center"}}>
+                            <div style={{display: "flex", width: '100%', alignItems: "center", justifyContent: "space-between"}}>
                                 {/* <div class="quantidade-container">
                                     <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
                                     <div class="quantidade">{quantidadeCompra} </div>
                                     <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
                                 </div> */}
+                                <div style={{display: "flex", flexDirection: 'row'}}>
                                 <p style={{fontSize: "20px"}}>Quantidade: </p>
                                 <input type="number" min="1" value={quantidadeCompra} onChange={handleQuantidadeChange}/>
+                                </div>
+                                <Coracao idProduto={id} />
                             </div>
                             <GreenButton onClick={handleAddCarrinho}>ADICIONAR AO CARRINHO</GreenButton>
                                 <p style={{color: 'green', textAlign: "center", marginTop: '5px', fontSize: '14px'}}> Apenas {produto.quantidade} em estoque </p>

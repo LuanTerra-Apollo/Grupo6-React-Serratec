@@ -45,7 +45,6 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <LoginProvider>
       <ProdutosProvider>
         <CarrinhoProvider>
@@ -56,5 +55,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </CarrinhoProvider>
       </ProdutosProvider>
     </LoginProvider>
-  </React.StrictMode>
 )

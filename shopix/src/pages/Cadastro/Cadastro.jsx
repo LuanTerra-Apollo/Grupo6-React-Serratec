@@ -35,13 +35,13 @@ const Cadastro = () => {
       })
 
       if(emailEncontrado.length == 0) {
-        console.log(response.data)
-        console.log(emailEncontrado)
+      
         try {
           await api.post('/users', {
             nome: nomeCadastrar,
             email: emailCadastrar,
             senha: senhaCadastrar,
+            favoritos: []
           });
     
           alert('Cadastro realizado com sucesso!');
