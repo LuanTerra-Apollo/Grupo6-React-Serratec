@@ -25,7 +25,7 @@ export const InputBarraPesquisa = styled.input`
 export const Input = styled.input`
     padding-left: 10px;
     width: ${(prop) => prop.width};
-    height: ${(prop) => prop.height};
+    /* height: ${(prop) => prop.height}; */
     font-family: 'Inter';
     font-size: 24px;
     /* font-weight: bold; */
@@ -37,7 +37,7 @@ export const Input = styled.input`
 
     &::placeholder{
         color: #323232cc;
-        font-size: 20px;
+        font-size: 16px;
         font-family: 'Inter';
         /* font-weight: bold; */
     }

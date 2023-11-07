@@ -21,7 +21,8 @@ const ContainerPedidos = styled.div`
 const DescricaoPedido = styled.div`
     width: 100%;
     max-height: 40%;
-    background-color: #9C9C9C;
+    background-color: #64298b;
+    color: white;
     border-radius: 8px 8px 0px 0px;
     padding: 10px;
     font-size: 18px;
@@ -130,19 +131,28 @@ const DescricaoPedido = styled.div`
     } */
 
 `
+const ProdutoImg = styled.div`
+    padding: 6px;
+    margin-right: 15px;
+    min-width: 150px;
+    max-width: 150px;
+    img{
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+    }
+`;
+
 
 const CardProdutoPedido = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 12px;
+    height: 130px;
     width: 100%;
-    min-height: 10rem;
-    max-height: 50%;
     background-color: #ffffff;
-    border-radius: 0px 0px 8px 8px;
-    padding: 10px ;
-    box-shadow: 2px 4px 8px #8f8f8f;
-    margin-top: -3px;
+    box-shadow: 2px 2px 8px #8f8f8f;
+    border-radius: 0 0 6px 6px;
+    display: flex;
+    justify-content: space-between;
     
 
     .divImagem {
@@ -161,11 +171,6 @@ const CardProdutoPedido = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
-        
-        img {
-            width: 6rem;
-            height: 100%;
-        }
 
         .CardTexto {
             width: 80%;
@@ -294,17 +299,16 @@ const ListaPedidos = ({pedidos}) => {
                         </DescricaoPedido> 
                         {pedido.itens.map((item, produtoidx) => (
                             <CardProdutoPedido key={produtoidx}>
+                                    <ProdutoImg>
+                                        <img src={item.imgurl} alt="" />
+                                    </ProdutoImg>
                                 <div className='CardProduto'>
-                                    <img src={item.imgurl} alt="" />
                                     <div className='CardTexto'>
                                         <h3>{item.nome}:</h3>
                                         <h4>Quantidade comprada: {item.quantidade}</h4>
                                     </div>
                                 </div>
-                                
-                                <div className='DivBotao'>
-                                    <Link to={`/produto/${item.id}`}><Button className='BotaoProduto'> comprar novamente </Button></Link>
-                                </div>
+                                <Button className='BotaoProduto'> comprar novamente </Button>
                             </CardProdutoPedido>
                         ))}
                     </div>
