@@ -4,7 +4,7 @@ import { Wrapper } from "../../components/styles/Wrapper.style"
 import { api } from "../../api/api"
 import { useEffect } from "react"
 import Footer from "../../components/components/footer/Footer"
-import Navibar from "../../components/components/navibar/Navibar"
+import Navbar from "../../components/components/Navbar/Navbar"
 
 const Cadastro = () => {
     const navigate = useNavigate()
@@ -52,7 +52,7 @@ const Cadastro = () => {
     return (
         <>
           <Wrapper>
-            <Navibar />
+            <Navbar />
               <FormCadastro handleCadastro={handleCadastro}/> 
             <Footer />
           </Wrapper>

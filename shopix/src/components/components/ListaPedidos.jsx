@@ -103,6 +103,13 @@ const CardProdutoPedido = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+        
+        img {
+            object-fit: contain;
+            width: 6rem;
+            max-height: 60px;
+            height: 100%;
+        }
 
         .CardTexto {
             width: 80%;

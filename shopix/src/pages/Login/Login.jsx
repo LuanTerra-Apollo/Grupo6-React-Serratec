@@ -3,7 +3,7 @@ import { useContext, useEffect, useState, } from 'react'
 import { api } from '../../api/api'
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { FormLogin } from "../../components/styles/Login.style"
-import Navibar from "../../components/components/navibar/Navibar"
+import Navbar from "../../components/components/Navbar/Navbar"
 import { LoginContext } from "../../context/LoginContext"
 import Footer from "../../components/components/footer/Footer"
 
@@ -36,7 +36,7 @@ const Login = () => {
    
     return (
         <Wrapper>
-            <Navibar/>
+            <Navbar/>
                 <FormLogin handleLogin={handleLogin} email={email} setEmail={setEmail} senha={senha} setSenha={setSenha} />
             <Footer />
         </Wrapper>

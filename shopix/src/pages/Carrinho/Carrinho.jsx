@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
 import { Wrapper } from "../../components/styles/Wrapper.style"
-import Navibar from "../../components/components/navibar/Navibar.jsx"
+import Navbar from "../../components/components/Navbar/Navbar.jsx"
 import Footer from "../../components/components/footer/Footer";
 import carrinhoVazioLogo from "../../img/carrinhoVazio.png"
 
@@ -215,8 +215,6 @@ const CarrinhoVazio = styled.div`
     }
 `
 
-
-
 const Carrinho = () => {
     
     const navigate = useNavigate()
@@ -348,7 +346,7 @@ const Carrinho = () => {
 
     return (
         <Wrapper>
-            <Navibar/>
+            <Navbar/>
             <BodyCarrinho>
                 <ListaProdutos>
                     {carrinhoVazio()}
@@ -373,10 +371,10 @@ const Carrinho = () => {
                             
                                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: '20%', alignItems: "end"}}>
                                     <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                                        <div class="quantidade-container">
-                                            <button class="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
-                                            <div class="quantidade">{pr.quantidadeCompra} </div>
-                                            <button class="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
+                                        <div className="quantidade-container">
+                                            <button className="botao-diminuir" onClick={() => {diminuirQtd(pr)}}>-</button>
+                                            <div className="quantidade">{pr.quantidadeCompra} </div>
+                                            <button className="botao-aumentar" onClick={() => {aumentarQtd(pr)}}>+</button>
                                         </div>
                                     </div>
                                     <h3>R$ {pr.vlTotalPr.toFixed(2)}</h3>

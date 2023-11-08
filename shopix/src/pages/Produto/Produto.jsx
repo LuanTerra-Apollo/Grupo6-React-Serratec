@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
 import styled from "styled-components";
-import Navibar from "../../components/components/navibar/Navibar";
+import Navbar from "../../components/components/Navbar/Navbar";
 import Footer from "../../components/components/footer/Footer";
 import Coracao from "../../components/components/coracao/Coracao";
 import paginaNot from "../../img/404.png"
@@ -190,7 +190,7 @@ const Produto = () => {
 
     return (
         <Wrapper>
-            <Navibar />
+            <Navbar />
             <BodyCarrinho>
                 {(Object.keys(produto).length !== 0) ? (
                 <CartContainer>

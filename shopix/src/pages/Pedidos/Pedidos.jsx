@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import ListaPedidos from "../../components/components/ListaPedidos"
 import Footer from "../../components/components/footer/Footer"
-import Navibar from "../../components/components/navibar/Navibar"
+import Navbar from "../../components/components/Navbar/Navbar"
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { api } from "../../api/api"
 
@@ -47,8 +47,9 @@ const Pedidos = () => {
         
         let produtoEncontrado = {}
 
-        produtos.forEach(produto => {
-            if (produto.id === item.idProduto) { 
+
+        produtos.map(produto => {
+            if (produto.id === item.idProduto) {
                 const itemAtualizado = {
                     nome: produto.nome,
                     imgurl: produto.imgurl,
@@ -64,7 +65,7 @@ const Pedidos = () => {
     
     return (
         <Wrapper>
-            <Navibar/>
+            <Navbar/>
                 <ListaPedidos pedidos={pedidos} />
             <Footer/>            
         </Wrapper>

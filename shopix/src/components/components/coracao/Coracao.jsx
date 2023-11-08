@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from '../../../api/api'
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const DivFavorito = styled.div`
     
@@ -35,6 +36,7 @@ const Coracao = ({idProduto}) => {
     const [ produto, setProduto ] = useState({})
     const [ estado, setEstado ] = useState(false)
     const [ modificado, setModificado ] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         handleCarregarTudo()
@@ -50,7 +52,9 @@ const Coracao = ({idProduto}) => {
         
         const usuarioLogado = await handleCarregarUsuario()
         
-        handleCarregarEstado(usuarioLogado, produtoEncontrado)
+        if (!isEmpty(usuarioLogado)) {
+            handleCarregarEstado(usuarioLogado, produtoEncontrado)
+        }
     }
     
     const handleBuscarProduto = async () => {
@@ -85,12 +89,21 @@ const Coracao = ({idProduto}) => {
         return {}
     }
 
+    function isEmpty(obj) {
+        for(var prop in obj) {
+          if(obj.hasOwnProperty(prop)) {
+            return false;
+          }
+        }
+        return JSON.stringify(obj) === JSON.stringify({});
+      }
+
 
     const handleCarregarEstado = (usuario, produtoAtual) => {
         
         const produtoEcontrado = usuario.favoritos.filter((favorito) => favorito === produtoAtual.id)
-        
-        if (produtoEcontrado.length === 1) {
+
+        if (produtoEcontrado.length >= 1) {
             setEstado(true)
             return true
         }
@@ -139,15 +152,20 @@ const Coracao = ({idProduto}) => {
 
     const handleClick = () => {
 
-        if (!estado) {
-            handleIncluirNosFavoritos()
-            setEstado(true)
-        } else {
-            handleExcluirNosFavoritos()
-            setEstado(false)
-        }
+        if(!isEmpty(userLogin)) {
 
-        setModificado(!modificado)    
+            if (!estado) {
+                handleIncluirNosFavoritos()
+                setEstado(true)
+            } else {
+                handleExcluirNosFavoritos()
+                setEstado(false)
+            }
+            
+            setModificado(!modificado)    
+        } else {
+            navigate('/login')
+        }
     }
 
 

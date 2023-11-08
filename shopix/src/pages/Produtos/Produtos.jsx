@@ -3,7 +3,7 @@ import { ProdutosContext } from "../../context/ProdutosContext"
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { api } from "../../api/api"
 import ProdutoCard from "../../components/components/ProdutoCard/ProdutoCard"
-import Navibar from "../../components/components/navibar/Navibar"
+import Navbar from "../../components/components/Navbar/Navbar"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import Footer from "../../components/components/footer/Footer"
@@ -57,7 +57,7 @@ const Produtos = () => {
 
     return (
         <Wrapper>
-            <Navibar />
+            <Navbar />
             <img src={bannerSite} alt="" style={{ minWidth: "100%", height: "260px", margin: "3px 0 3px 0"}}/>
             <div style={{textAlign: "center", background: "#64298b", padding: "6px", borderBottom: "2px solid white", color: "white"}}>
                 <h2>Lançamentos</h2>

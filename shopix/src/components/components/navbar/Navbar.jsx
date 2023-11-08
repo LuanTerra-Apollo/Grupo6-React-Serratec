@@ -103,7 +103,7 @@ const DeslogarDiv = styled.div`
     }
 `
 
-const Navibar = () => {
+const Navbar = () => {
     const [isLoginCadastroPages, SetIsLoginCadastroPages] = useState(false)
     const { inputPesquisa, setInputPesquisa } = useContext(ProdutosContext)
     const { setProdutos } = useContext(ProdutosContext)
@@ -226,4 +226,4 @@ const Navibar = () => {
     )
 }
 
-export default Navibar
+export default Navbar
