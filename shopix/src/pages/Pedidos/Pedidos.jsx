@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import ListaPedidos from "../../components/components/ListaPedidos"
 import Footer from "../../components/components/footer/Footer"
-import Navibar from "../../components/components/navibar/Navibar"
+import Navbar from "../../components/components/Navbar/Navbar"
 import { Wrapper } from "../../components/styles/Wrapper.style"
 import { api } from "../../api/api"
 
@@ -64,7 +64,7 @@ const Pedidos = () => {
     
     return (
         <Wrapper>
-            <Navibar/>
+            <Navbar/>
                 <ListaPedidos pedidos={pedidos} />
             <Footer/>            
         </Wrapper>

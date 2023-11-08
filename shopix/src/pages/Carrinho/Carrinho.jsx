@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import { api } from "../../api/api";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
 import { Wrapper } from "../../components/styles/Wrapper.style"
-import Navibar from "../../components/components/navibar/Navibar.jsx"
+import Navbar from "../../components/components/Navbar/Navbar.jsx"
 import Footer from "../../components/components/footer/Footer";
 import carrinhoVazioLogo from "../../img/carrinhoVazio.png"
 
@@ -215,8 +215,6 @@ const CarrinhoVazio = styled.div`
     }
 `
 
-
-
 const Carrinho = () => {
     
     const navigate = useNavigate()
@@ -347,7 +345,7 @@ const Carrinho = () => {
 
     return (
         <Wrapper>
-            <Navibar/>
+            <Navbar/>
             <BodyCarrinho>
                 <ListaProdutos>
                     {carrinhoVazio()}
